@@ -1,0 +1,286 @@
+/* -------------------- BODY ------------------- */
+@import url('https://fonts.googleapis.com/css?family=Lato:300');
+body
+{	text-align: center;
+	font-family: 'Lato', sans-serif;
+	background-color: #ccc;}
+button
+{	font-family: 'Lato', sans-serif; }
+#questions
+{	max-width: 800px;
+	background-color: #eee;
+	margin: 20px auto;
+	padding-bottom: 8px;
+	border: 1px solid white; }
+/* ------------------- ----- -------------------- */
+
+.generatorContainer
+{	max-width: 800px;
+	display: block;
+	margin: auto;	}
+
+.fileselector
+{	position: relative;
+	width: 200px;
+	margin:  -10px auto 0px;
+	padding: 10px;
+	overflow: hidden;
+	border: 3px dotted #888; }
+
+.fileselector:hover
+{	background-color: rgba(0,0,0,0.05); }
+
+#generate
+{	position: absolute;
+	top: -50px;
+	left: -50px;
+	height: 1000px;
+	width: 1000px; }
+
+/* ------------------ LOADING  ------------------ */
+#spinner
+{	margin-top: 15%; }
+.outer-spin
+{	width: 100px;
+  height: 100px;
+	margin-top: 20px;
+  animation-name: outer-spin-animation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+.inner-spin
+{	animation-name: inner-spin-animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+@keyframes inner-spin-animation
+{	0%    {stroke-dashoffset: 700;}
+  100%  {stroke-dashoffset: 0;} }
+@keyframes outer-spin-animation
+{	0%    {transform: rotate(0deg);}
+	100%  {transform: rotate(360deg);} }
+/* ------------------ --------  ------------------ */
+
+/* ------------------ HEADER  ------------------ */
+.header
+{	background-color: rgba(68,68,68,1);
+	color: #eee;
+	padding: 10px; }
+.header h1
+{ display: inline-block;
+	margin: auto;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 68%; }
+.header #left
+{	float: left; }
+.header #right
+{ float: right; }
+.header button
+{	width: 10%;
+	background-color: transparent;
+	color: #eee;
+	border: solid 4px #eee;
+	font-size: 25px; }
+.header button:hover
+{ background-color: rgba(255, 255, 255, 0.2); }
+.header button:active
+{ background-color: rgba(255, 255, 255, 0.4); }
+.header button:disabled
+{ color: #888;
+	border-color: #888; }
+.header button:disabled:hover
+{ background-color: transparent; }
+/* ------------------ ---------- ------------------ */
+
+/* ------------------ CORRECTNESS ----------------- */
+.correctnessOverlay
+{	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,30,0.5);
+	z-index: 1000; }
+.correctness
+{	margin: auto;
+	top: 40%;
+	position: relative;
+  width: 150px;
+  border-radius: 5px;
+	border: 4px solid white; }
+.correctnessOverlay button
+{	width: 90%;
+	margin: -10px 5% 8px;
+	font-size: 25px;
+	background-color: white;
+	border: solid 1px transparent;
+	padding: 10px; }
+.correctnessOverlay button:active
+{	outline: solid 2px rgba(0,0,0,0.1); }
+.appear
+{	animation-name: appear;
+  animation-duration: 1s; }
+.tick
+{ background-color: #77ee11; }
+.cross
+{	background-color: #ee2222; }
+#correctOverlay .correctness
+{	background-color: #77ee11; }
+#incorrectOverlay .correctness
+{	background-color: #ee2222; }
+@keyframes appear
+{	0% {stroke-dashoffset: 200;}
+	100% {stroke-dashoffset: 0;} }
+#correctnesshint
+{	color: white;
+	position: relative;
+	top: 40%;
+	font-size: 18px; }
+/* ------------------ -------- ----------------- */
+
+/* ------------------- IMAGES ------------------ */
+.captionedimage
+{	padding: 10px;
+	margin: 20px 0px;
+	border: solid 1px #888;
+	display: inline-block; }
+.captionedimage img
+{	max-width: 100%;
+	height: auto; }
+/* ------------------- ----- ------------------ */
+
+/* ------------------- HINT ------------------- */
+.hint
+{ margin-bottom: 10px; }
+.hint a
+{ color: #444;
+	cursor: help;
+	user-select: none; }
+.hint p
+{	background-color: #eee;
+	padding: 10px;
+	margin: 0px 10px; }
+/* -------------------- ---- -------------------- */
+
+/* ----------------- CONTAINERS ----------------- */
+.questionContainer
+{ padding: 10px; }
+.questionContainer h4
+{ margin-top: 0px;
+	color: #888; }
+.answerContainer
+{ padding: 10px;
+	margin: 10px;
+	background-color: #fff; }
+/* ------------------ --------- ------------------ */
+
+/* ------------------ SELECTION ------------------ */
+.selection
+{ margin: auto;
+	text-align: left; }
+.selection td:first-child
+{	min-width: 225px; }
+/* ------------------ --------- ------------------ */
+
+/* --------------------- BLANK ------------------- */
+.blank
+{	margin: 2px;
+	border: 2px solid #888;
+	text-align: center;}
+.blank:active
+{	outline: none; }
+/* --------------------- ---- -------------------- */
+
+/* --------------------- SORT -------------------- */
+.sortList
+{ border: solid 3px #888;
+	max-width: 600px;
+	margin: auto; }
+.sortItem
+{	background-color: #ccc;
+	margin: 10px;
+	line-height: 30px;
+	cursor: move;
+	user-select: none; }
+.sortItem span:first-child
+{	float: left; }
+.sortItem span:last-child
+{	float: right; }
+.sortItem span
+{	margin: 0px 6px;
+	color: #666; }
+/* ------------------ ------- ------------------ */
+
+/* ------------------- CLOZE ------------------- */
+.cloze
+{	border: solid 2px #888;
+	background-color: #ccc;
+	margin: auto;}
+.cloze th
+{	border: solid 1px #888; }
+.cloze td
+{	border: solid 1px #888; }
+.cloze input
+{ width: 110px;
+	height: 25px;
+	text-align: center;
+	border: 1px solid #888;}
+/* ------------------ ----- ------------------ */
+
+/* ------------------ MATRIX ----------------- */
+.matrixList
+{ width: 100%; }
+.matrixList tr
+{ background-color: #ccc; }
+.matrixList tr > td:first-child
+{ background-color: #aaa;
+	width: 30%;
+	padding: 10px; }
+.matrixMultipleDrop
+{	border: solid 3px #888;
+	overflow: auto;
+	min-height: 60px;
+	margin-bottom: 20px;
+	text-align: left; }
+.matrixSingleDrop
+{	min-height: 40px;
+	border: solid 2px transparent; }
+.matrixItem
+{	background-color: #ccc;
+	float: left;
+	padding: 10px;
+	min-height: 20px;
+	cursor: move;
+	user-select: none; }
+.matrixMultipleDrop .matrixItem
+{	margin: 10px; }
+.matrixSingleDrop .matrixItem
+{	float: inherit; }
+/* ------------------ ----- ------------------ */
+
+/* ----------------- SUBMIT ------------------ */
+#submit button
+{	margin: 10px;
+	background-color: #888;
+	color: white;
+	font-size: 25px;
+	border: none;
+	padding: 10px; }
+#submit button:hover
+{ background-color: rgba(0, 0, 0, 0.2); }
+#submit button:active
+{ background-color: rgba(0, 0, 0, 0.4); }
+/* ----------------- ------ ------------------ */
+
+/* ---------------- DYNAMICS ----------------- */
+.dragHidden
+{	border: dashed 2px #888;
+	background-color: transparent;
+	color: transparent; }
+.dragHidden span
+{	color: transparent; }
+table
+{margin: auto;}
+/* ---------------- -------- ----------------- */

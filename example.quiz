@@ -1,0 +1,188 @@
+{
+  // example quiz text
+  // <- (this is a comment and will be ignored)
+
+  // this is the url for your quiz
+  "url": "http://so-cool.github.io/quick-quiz/",
+
+  // this are your UoB candidate numbers as a comma separated list
+  "candidate_number": [12345, 54321],
+
+  // this is the title of the quiz
+  "title": "Quizk-quiz show-off.",
+
+  // this is an example question.
+  // the number signifies the question order,
+  // meaning questions can be placed in random order
+  // within the file
+  "1": {
+    "difficulty": "1",
+    "reference": "5.2",
+    "problem_type": "definitions",
+    "question": "Which of the following is $\\LaTeX$ \
+                 equation\
+                 ?",
+    "images": [
+      { "url": "img/unicorn.jpg",
+        "caption": "my caption"
+      },
+      { "url": "img/unicorn.jpg"}
+    ],
+		"graphs": [
+			{ "url": "csv/test.csv",
+				"caption": "my other caption"
+			}
+		],
+    // these are answers, a correct answer
+    // is indicated by a "+", incorrect answer has a "-"
+    "answer_type": "single",
+    "answers": [
+      { "correctness": "-",
+        "answer": "2 * 2"
+      },
+      { "correctness": "-",
+        "answer": "2 - 3"
+      },
+      { "correctness": "+",
+        "answer": "$\\frac{7}{2} + 3$",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": "-",
+        "answer": "seven plus two"
+      }
+    ],
+    "hint": "you do the math",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "wikipedia url",
+    "comments": "What's special about this question?"
+  },
+
+  "2": {
+    "difficulty": "5",
+    "reference": "2.2",
+    "problem_type": "calculations",
+    "question": "Mark all the letters:",
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "+",
+        "answer": "T",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": "+",
+        "answer": "F",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": "-",
+        "answer": "7"
+      },
+      { "correctness": "-",
+        "answer": "<img src=\"img/unicorn.jpg\" style=\"width:304px;height:228px;\">"
+      },
+      { "correctness": "+",
+        "answer": "W",
+        "explanation": "why this answer is correct"
+      }
+    ],
+    "hint": "you do the alphabet",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "some book",
+    "comments": "What's special about this question?"
+  },
+
+  "3": {
+    "difficulty": "2",
+    "reference": "12.2",
+    "problem_type": "beyond scope of the book",
+    "question": "Order the following numbers:",
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "2",
+        "answer": "26",
+        "explanation": "why this order is correct"
+      },
+      { "correctness": "1",
+        "answer": "19",
+        "explanation": "why this order is correct"
+      },
+      { "correctness": "3",
+        "answer": "70",
+        "explanation": "why this order is correct"
+      }
+    ],
+    "hint": "you do the alphabet",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "some book",
+    "comments": "What's special about this question?"
+  },
+
+  "4": {
+    "difficulty": "4",
+    "reference": "3.3",
+    "problem_type": "beyond scope of the book",
+    "answer_type": "blank_answer",
+    "question": [
+      "$2+2$ is ", 1, ". ",
+      "What colour is a red truck: ", 2, "."
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "4",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": 2,
+        "answer": "red,mArOoN",
+        "explanation": "why this answer is correct"
+      }
+    ],
+    "hint": "you do the alphabet",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "some book",
+    "comments": "What's special about this question?"
+  },
+
+  "5": {
+    "difficulty": "3",
+    "reference": "3.3",
+    "problem_type": "beyond scope of the book",
+    "question": "Fill in contingency matrix.<br><br>1TP<br>5TN<br>12 in total<br>5 actual positive",
+    "answer_type": "cloze_answer",
+    "answers": {
+      "answer": ["1 | 4 | 5 ",
+                 "----------",
+                 "2 | 5 | 7 ",
+                 "----------",
+                 "3 | 9 | 12"],
+      "explanation": "why this answer is correct"
+    },
+    "hint": "you do the alphabet",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "some book",
+    "comments": "What's special about this question?"
+  },
+
+  "6": {
+    "difficulty": "5",
+    "reference": "3.3",
+    "problem_type": "beyond scope of the book",
+    "question": "Match the following sentences.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "The letter after 'a' is ",
+        "answer": "'B'.",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": "The letter after 'g' is ",
+        "answer": "'H'.",
+        "explanation": "why this answer is correct"
+      },
+      { "correctness": "I like ",
+        "answer": "alphabet.",
+        "explanation": "why this answer is correct"
+      }
+    ],
+    "hint": "you do the alphabet",
+    "workings": "how to arrive at the correct answer and why all the others are incorrect",
+    "source": "some book",
+    "comments": "What's special about this question?"
+  }
+}

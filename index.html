@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+
+<head>
+  <title>Generate Quiz</title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script src="templates.js"></script>
+  <script src="generate.js"></script>
+	<script src="scripts.js"></script>
+	<script src="mustache.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+
+<body>
+	<div class="generatorContainer">
+		<div class="generatorHeader">
+			<h1>Quiz Generation Tool</h1>
+			<div class="fileselector">
+				<span>Select a File...</span>
+				<input id="generate" type="file"></input>
+			</div>
+		</div>
+		<hr></hr>
+		<div id="spinner" hidden>
+			<svg mlns="http://www.w3.org/2000/svg" viewbox="-50, -50, 100, 100" class="outer-spin">
+				<circle class="inner-spin" r="44" cx="0" cy="0" stroke-dasharray="100,250" stroke-width="10" stroke="white" fill="none"/>
+			</svg>
+		</div>
+		<div id="questions" hidden></div>
+	</div>
+</body>
+
+</html>
