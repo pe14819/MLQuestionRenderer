@@ -14,11 +14,11 @@ button
 	border: 1px solid white; }
 /* ------------------- ----- -------------------- */
 
+/* ------------------ SELECTION ----------------- */
 .generatorContainer
 {	max-width: 800px;
 	display: block;
 	margin: auto;	}
-
 .fileselector
 {	position: relative;
 	width: 200px;
@@ -26,16 +26,15 @@ button
 	padding: 10px;
 	overflow: hidden;
 	border: 3px dotted #888; }
-
 .fileselector:hover
 {	background-color: rgba(0,0,0,0.05); }
-
 #generate
 {	position: absolute;
 	top: -50px;
 	left: -50px;
 	height: 1000px;
 	width: 1000px; }
+/* ------------------ ------- ------------------- */
 
 /* ------------------ LOADING  ------------------ */
 #spinner
@@ -282,5 +281,9 @@ button
 .dragHidden span
 {	color: transparent; }
 table
-{margin: auto;}
+{ margin: auto;}
+.workings
+{ background-color: rgba(0,0,0,0.1);
+	margin: 10px;
+	cursor: pointer; }
 /* ---------------- -------- ----------------- */
