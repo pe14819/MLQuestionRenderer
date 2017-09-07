@@ -30,7 +30,8 @@
     ],
 		"graphs": [
 			{ "url": "csv/test.csv",
-				"caption": "my other caption"
+				"caption": "my other caption",
+				"algorithm": "knn"
 			}
 		],
     // these are answers, a correct answer
