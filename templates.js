@@ -272,7 +272,7 @@ Templates.Score = [
 		'{{#workings}}',
 		'<div id="{{id}}_score">',
 			'<div>',
-				'<div><a onclick="onclick=\'setQuestion({{id}})\'"><b>Goto Question {{id}}</b></a></div>',
+				'<div><a onclick="setQuestion({{id}})"><b>Goto Question {{id}}</b></a></div>',
 				'<div class="workings">',
 					'<div><a onclick="$(\'#{{id}}_working\').toggle()"><u>Show/Hide Workings</u></a></div>',
 					'<div id="{{id}}_working" style="display: none;">{{{working}}}</div>',
