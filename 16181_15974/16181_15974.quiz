@@ -1,0 +1,933 @@
+{
+  // example quiz text
+  // <- (this is a comment and will be ignored)
+
+  // this is the url for your quiz
+  "url": "http://so-cool.github.io/quick-quiz/",
+
+  // this are your UoB candidate numbers as a comma separated list
+  "candidate_number": [16181, 15974],
+
+  // this is the title of the quiz
+  "title": "Quizk-quiz show-off.",
+
+  // this is an example question.
+  // the number signifies the question order,
+  // meaning questions can be placed in random order
+  // within the file
+"1": {
+    "difficulty": "2",
+    "reference": "8.1",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "question": [
+                "Given the two vectors in the image below, calculate the following distance measures.<br><br> ",
+                     "Manhattan Distance: ", 1, ".",
+                     "Euclidean Distance: ", 2, ".",
+                     "Chebyshev Distance: ", 3, "."
+                ],
+    "images": [
+                { "url": "img/16181_15974/Question1.jpg",
+                "caption": "Vectors X and Y"
+                }
+                ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "19",
+                "explanation": "See workings."
+                },
+                { "correctness": 2,
+                "answer": "9",
+                "explanation": "See workings."
+                },
+                { "correctness": 3,
+                "answer": "6",
+                "explanation": "See workings."
+                }
+                ],
+    "hint": "Remember the Minkowski distance, from which you derive the equations for all three distances.",
+    "workings": "Manhattan Distance: Sum the direct differences between each element in X and Y. |(5-2)| + |(11-7)| +... = 19.<br>Euclidean Distance: Similar to the Manhattan, but square each distance before you add them ,before square rooting the final value. 3^2 + 4^2 + ... = 81. Root(81) = 9.<br> Chebyshev Distance: This is the largest distance between any two points form the vectors. Hence, 13-7 = 6.",
+    "source": "Machine Learning, P.Flach.",
+    "comments": "This question tests the basic distance measures, which are useful in many different ways. This is a basic set of calculations, and so is a level 2 question."
+    },
+
+
+"2": {
+    "difficulty": "3",
+    "reference": "4.1",
+    "problem_type": "definition",
+    "question": "Mark all the following stattements that are true:",
+    "answer_type": "multiple",
+    "answers": [
+                { "correctness": "-",
+                "answer": "The idea of internal disjunction is that you can add a condition to a concept that combines features. For example, if you're observing a certain feature of your classification to occur over 2 or 3 days, it can be written as Days = [2, 3]. Following this logic, it makes sense to convert the feature describing either daytime or nighttime to Time = [Daytime, Nighttime]."
+                },
+                { "correctness": "+",
+                "answer": "The Least General Generalisation (LGG) is the nearest concept in the hypothesis space where paths upward from both instances intersect.",
+                "explanation": "This answer is basically in the name. The LGG is following the path back up the hypothesis space until you reach a common point in the space for two particular nodes."
+                },
+                { "correctness": "-",
+                "answer": "The hypothesis space, the space of possible concepts, can be quite large for even the most simple of processes, the number of extensions of which can reach into the millions. This is not a good thing when generalising over training data, as it can require a lot of tweaking to reach a suitable hypothesis space."
+                }
+                ],
+    "hint": "The number of days can have more values than just 2 and 3.",
+    "workings": "For the incorrect answers:<br><br> For the internal disjunction, this is not a sensible thing to do. Time = [Daytime, Nighttime] covers the only two options available for that particular feature, and hence there would be no sense in combining it into one.<br>For the hypothesis question, the correct answer is basically the opposite. Having a large amount of extensions forces the learner to generalise beyond the the training data being used, which in turn covers instances that won't have been seen before.",
+    "source": "Machine Learning, P.Flach.",
+    "comments": "This questions goes over some key parts of concept learning, and can help ensure a good grounding for tree models and rule models. While it is a reasonable question, it involves information from a non-examinable section, and so is a level 3 question."
+    },
+
+
+
+
+
+"3": {
+    "difficulty": "2",
+    "reference": "9.2",
+    "problem_type": "calculation",
+    "question": "Steve is designing a simple spam detector. He has come up with 4 words (A, B, C and D) that he has found in both SPAM and HAM emails, and found the probability at which they occur in both types of email, which can be seen in the image below.<br>Steve is testing his spam detector on three emails, each with a different combination of words present. Using these probabilities, rank the emails in order of most likely SPAM to least likely SPAM.",
+    "images": [
+                { "url": "img/16181_15974/probability_Table.jpg",
+                "caption": "Probability Table"
+                }
+                ],
+    "answer_type": "sort",
+    "answers": [
+                { "correctness": "3",
+                "answer": "A = 1, B = 1, C = 0, D = 1",
+                "explanation": "This answer gives the lowest value, meaning it is the least likely to be SPAM."
+                },
+                { "correctness": "2",
+                "answer": "A = 1, B = 0, C = 0, D = 1",
+                "explanation": "This gives a value between the two other answers."
+                },
+                { "correctness": "1",
+                "answer": "A = 0, B = 1, C = 1, D = 0",
+                "explanation": "This gives the highest value, hence the most likely to be SPAM."
+                }
+                ],
+    "hint": "The equation to use is P(+)/P(-).",
+    "workings": "The equation given in the hint, P(+)/P(-), provides a score, and if this is below one, seeing as spam is being defined as the positive value here, it is classified as non spam.<br> For (1,1,0,1), P(+) = 0.32x0.58x(1-0.81)x0.32 = 0.0113, and P(-) = 0.55x0.72x(1-0.11)x0.37) = 0.130. This yields a score of 0.087, and so is extremely likely to be non spam.<br>Doing similar calculations for the other two yields values of 3.85 for (1,0,0,1) and 9.68 for (0,1,1,0), explaining the final ordering. ",
+    "source": "Machine Learning, P.Flach.",
+    "comments": "This question tests the ability to classify a simple set of emails into the two categories, SPAM or HAM. In order to do so, you need to remember how to provide a score using the equation in the hint, as well as to use (1-x) when the word is not present in the email. However, the question is still relatively simple and so has been given a difficulty rating of 2."
+    },
+
+
+"4": {
+    "difficulty": "3",
+    "reference": "2.1",
+    "problem_type": "calculation",
+    "question": "Fill in contingency matrix, given the following values.<br><br>20 True positives.<br>110 Total Classifications.<br>TPR of 2/3.<br>Precision of 1/3.",
+    "answer_type": "cloze_answer",
+    "answers": {
+        "answer": ["20 | 10 | 30 ",
+                   "----------",
+                   "40 | 40  | 80 ",
+                   "----------",
+                   "60 | 50 | 110"],
+        "explanation": "See workings."
+                },
+    "hint": "TPR = TP/Total positives<br>Precision = TP / Total predicted positives",
+    "workings": "Using the TPR, you can calculate the number of positives to be 30, and hence the false positives are 10. Using the precision, the total number of predicted positives can be calculated as 60, and therefore there are 40 false negatives. From here, its a simple case of wokring through the table and filling in the blanks.",
+    "source": "Machine Learning, P.Flach.",
+    "comments": "In order to complete this question, you need to have a good understanding of a few evaluation measures. Without it, it's not possible to complete this question. This question was ranked as a three due to the fact you need to understand what values you can get out of the two measures you are given. If you don't spot this, they're basically useless to you. Due to the hidden values, and the need to think about what information you can get out of the provided measures, this question has been marked as a level 3."
+    },
+
+"5": {
+    "difficulty": "2",
+    "reference": "7.1",
+    "problem_type": "calculation",
+    "question": "You are provided with a two sets of values, one for X and one for Y. Given that the two sets represent points on a graph when plotted against each other, calulate the values for a and b, where a+bx is the linear regression line.<br>X = [5, 7, 6, 10, 12, 8, 15, 20, 11, 6, 13, 17]<br>Y = [26, 34, 30, 52, 63, 39, 70, 91, 50, 31, 67, 85]",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+                { "correctness": "The value for a is: ",
+                "answer": "3.426",
+                "explanation": "See workings."
+                },
+                { "correctness": "The value for b is: ",
+                "answer": "4.591",
+                "explanation": "See workings."
+                },
+                { "correctness": "The incorrect value given is: ",
+                "answer": " 3.729 ",
+                "explanation": "This value is not a valid answer, as shown in the workings the other two answers are correct."
+                }
+                ],
+    "hint": "b = (Σ(x.y)-nMean(x)Mean(y))/(Σ(x.x) -nMean(x)^2), a = Mean(y) - bMean(x)",
+    "workings": "Mean(x) = 65/6, Mean(y) = 319/6, n = 12<br><br>Σ(x.y) = 8058, nMean(x)Mean(y) = 6911.66667<br>Σ(x.x) = 1658, nMean(x)^2 = 1408.333333<br><br>b = (8058 - 6911.6667)/(1658 - 1408.3333) = 4.59145 = 4.591 to 3 decimal places.<br>a = Mean(y) - bMean(x) = 319/6 - 4.59145(65/6) = 3.42591 = 3.426 to 3 decimal places.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question is a quick overview of linear regression, running through the steps in order to complete the equation of the line. Due to the simple calculations, this question is ranked level 2."
+    },
+
+"6": {
+    "difficulty": "3",
+    "reference": "3.1",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "question": ["Using the confusion matrix below, answer the following questions, accurate to 3 decimal places.<br><br>",
+                     
+                "Calculate the error rate from the table:", 1, ". <br>",
+                "Discover which class has the lowest one-vs-rest F-measure, and note this value:", 2, ". <br>",
+                "Calculate the weighted average precision: ", 3, ".<br><br>"
+                ],
+    "images": [
+                { "url": "img/16181_15974/confusionMatrix.jpg",
+                "caption": "Confusion Matrix "
+                }
+                ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "0.222",
+                "explanation": "See workings."
+                },
+                { "correctness": 2,
+                "answer": "0.693",
+                "explanation": "See workings."
+                },
+                { "correctness": 3,
+                "answer": "0.778",
+                "explanation": "See workings."
+                }
+                ],
+    "hint": "Error rate is 1 - accuracy.<br>Weighted average precision is the sum of the precision for each class multiplied by the number of instances in each class.",
+    "workings": "For the error rate, you need to calculate the accuracy, which is (30+35+75)/180. With this, do 1 - accuracy to receive an error rate of 0.222.<br><br>For the F-measure, you need the precision and recall for each class:<br>Class1: precision = 0.789, recall = 0.75<br>Class2: precision = 0.686, recall = 0.7<br>Class3: precision = 0.824, recall = 0.833<br>Using these values, work out the f-measure, which is (2*recall*precision)/(recall+precision). This gives values of 0.769, 0.693 and 0.829 for classes 1,2 and 3 respectively. Hence, class two has the lowest value for the F-measure.<br><br>For the weighted average precision, simply multiply the precision values by the proportion of values in each class:<br>0.789*(40/180) + 0.686*(50/180) + 0.824*(90/180) = 0.778.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question tests the knowledge on precision and recall, as well as how to apply it in calculating the F-measure. The question is also displayed in such a form as to test whether you can pull out the correct values for each calculation. As this involves a bit of applied learning, this question is ranked a level 3."
+    },
+
+
+"7": {
+    "difficulty": "3",
+    "reference": "1.2",
+    "problem_type": "calculations",
+    "question": "Using the following training data, a simple linear classifier is made by defining the decision boundary as the perpendicular bisector between the classes’ centres of mass. However, the training data is missing one point. With this data point included, a test point at (2.3, 3.4) is classified as negative, whereas a test point at (2.9, 0.7) is classified as positive. Out of the following, which is the missing training data point?<br><br>Positive class: (1.2, 2.4), (1.3, 2), (1.7, 2.8), (0.9, 1.9), (1.2, 2.5), (1.1, 2.1), (1.5, 2.9), (2.6, 2.1), (1.4, 1.5), (0.8, 2.8), (2, 2.4), (1.8, 2.2)<br>Negative class: (2.2, 2.6), (3.1, 3), (2.9, 2.8), (3.5, 3.6), (4.6, 3.2), (1.9, 0.6), (2.9, 2.7), (3.4, 3.1), (4.7, 3.9), (3.1, 2.2), (3.6, 3.3), (3.8, 2.4)<br>",
+    "answer_type": "single",
+    "answers": [
+                { "correctness": "+",
+                "answer": "Positive training data point at (2.1, 1.7)",
+                "explanation": " See workings. "
+                },
+                { "correctness": "-",
+                "answer": "Positive training data point at (1.5, 2.9)"
+                },
+                { "correctness": "-",
+                "answer":  "Negative training data point at (4, 2.5)"
+                },
+                { "correctness": "-",
+                "answer":  "Negative training data point at (5, 1.3)"
+                },
+                { "correctness": "-",
+                "answer":  "Positive training data point at (2, 2.5)"
+                }
+                ],
+    "hint": "Calculate the perpendicular bisector and compare where the new data points would lie.",
+    "workings": "Let (x1, y1) be the COM of the positive class, and (x2, y2) be the COM of the negative class. The perpendicular bisector can be described by the equation<br><br>y = ((x1-x2)/(y2-y1))(x-((x1+x2)/2))+((y1+y2)/2)<br><br>By plotting the graph and seeing on what side of the decision boundary the test points lie, it can be shown that only the training point (2.1, 1.7) satisfies the conditions presented in the question.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question is an example of how one can use particular conditions of the data in order to retrieve missing data. It also covers the basics of creating a perpendicular bisector. Due to the depth of reasoning and calculations, this question is ranked a level 3."
+    },
+
+
+"8": {
+    "difficulty": "3",
+    "reference": "5.1",
+    "problem_type": "calculation, problem-solving",
+    "question": "Roger is attempting to build a machine classifier to distinguish between regular cars and sports cars. He is starting by comparing features of a set of sports cars (positive class) and regular cars (negative class), the features of which can be seen below:<br><br>Spoiler [yes, no] --> [34+ 10-] [6+ 30-]<br>6 cylinder engine [yes, no] --> [25+ 13-] [15+ 27-]<br>4 wheel drive [yes, no] --> [22+ 16-] [18+ 24-]<br>2 seater [yes, no] --> [36+ 24] [4+ 16-]<br>Price range [0-50k][50k-100k][100k+] --> [10+27-][10+ 7-] [20+ 6-]<br><br>Using entropy, rank the features from best to worst.",
+    "answer_type": "sort",
+    "answers": [
+            { "correctness": "1",
+            "answer": "Spoiler",
+            "explanation": "See workings."
+            },
+            { "correctness": "2",
+            "answer": "Price",
+            "explanation": "See workings."
+            },
+            { "correctness": "3",
+            "answer": "2 Seats",
+            "explanation": "See workings."
+            },
+            { "correctness": "4",
+            "answer": "6 Cylinder",
+            "explanation": "See workings."
+            },
+            { "correctness": "5",
+            "answer": "4WD",
+            "explanation": "See workings."
+            }
+            ],
+    "hint": "Entropy(X) = -ΣP(xi)logP(xi)",
+    "workings": "To find the order, calculate the entropy for each feature:<br><br>Spoiler: (44/80 * 0.77322667) + (36/80 * 0.650022) = 0.71778<br>6 cylinder: (38/80 * 0.92681906) + (42/80 * 0.940286) = 0.93389<br>4WD: (38/80 * 0.98194079) + (42/80 * 0.985228) = 0.98367<br>2 seats: (60/80 * 0.97095059) + (20/80 * 0.721928) = 0.90869<br>Price: (37/80 * 0.84185218) + (17/80 * .9774179175) + (26/80 * 0.7793498373) = 0.8503466378<br><br>The ranking is therefore: Spoiler, price, 2 seats, 6 cylinder, 4WD",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question is one example of how features can be ranked in order of significance, in this particular case through entropy. With the calculations needed, this question is ranked a level 3."
+},
+
+"9": {
+    "difficulty": "3",
+    "reference": "6.1",
+    "problem_type": "training",
+    "answer_type": "blank_answer",
+    "question": ["Below is a data set, split into positive and negative examples, which are going to be used to learn an ordered rule set.<br><br>",
+                 
+                 "P1: spoiler = yes ^ 2-seater = yes ^ price = 100k+<br>",
+                 "P2: spoiler = yes ^ 2-seater = yes ^ price = 50k-100k<br>",
+                 "P3: spoiler = no ^ 2-seater = yes ^ price = 50k-100k <br>",
+                 "P4: spoiler = no ^ 2-seater = yes ^ price = 0-50k<br><br>",
+                 "N1: spoiler = no ^ 2-seater = yes ^ price = 50k-100k<br>",
+                 "N2: spoiler = no ^ 2-seater = no ^ price = 50k-100k<br>",
+                 "N3: spoiler = no ^ 2-seater = no ^ price = 0-50k <br>",
+                 "N4: spoiler = yes ^ 2-seater = no ^ price = 0-50k<br><br>",
+                     
+                 "Firstly, from the images below, can you determine which of them display the correct coverage counts once the first rule has been learnt? (1,2,3)", 1,". <br>",
+                 "Now complete the following blanks to complete the first three rules that can be learnt from this data set.<br><br>",
+                 
+                 "-if ", 2," = no then class = ", 3,".<br>",
+                 "-elseif ", 4," = ", 5," then class = ", 6,".<br>",
+                 "-elseif price = ", 7," then class = ", 8,".<br><br>",
+                 
+                 "With the remaining examples, can the set of rules be comleted to completed to differentiate between positive and negative exmples entirely? (Yes, No)", 9,""
+                 ],
+    "images": [
+              { "url": "img/16181_15974/coverageCountIncorrect1.jpg",
+              "caption": "Coverage Count 1 "
+              },
+              { "url": "img/16181_15974/coverageCountCorrect.jpg",
+              "caption": "Coverage Count 2 "
+              },
+              { "url": "img/16181_15974/coverageCountIncorrect2.jpg",
+              "caption": "Coverage Count 3 "
+              }
+              ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "2",
+                "explanation": "This coverage count has removed the 2-Seater = no feature, which best splits the data for the first rule."
+                },
+                { "correctness": 2,
+                "answer": "2-Seater",
+                "explanation": "2-Seater best splits the data for the first rule."
+                },
+                { "correctness": 3,
+                "answer": "negative",
+                "explanation": "All 2-Seater = no features are a negative class."
+                },
+                { "correctness": 4,
+                "answer": "Spoiler",
+                "explanation": "With the first feature removed, spoiler is the best split."
+                },
+                { "correctness": 5,
+                "answer": "yes",
+                "explanation": "Spoiler = Yes is the best split remaining."
+                },
+                { "correctness": 6,
+                "answer": "positive",
+                "explanation": "This feature is an all positive class feature."
+                },
+                { "correctness": 7,
+                "answer": "0-50k",
+                "explanation": "0-50k is the only pure feature left."
+                },
+                { "correctness": 8,
+                "answer": "positive",
+                "explanation": "Its only example is in the positive class."
+                },
+                { "correctness": 9,
+                "answer": "No",
+                "explanation": "The remaining two examples are exactly the same and hence cannot be differentiated."
+                }
+                ],
+    "hint": "Look for the best features that split the data i.e. pure features are good to start.",
+    "workings": "The best way to look at this is to draw out the first coverage plot, before the first rule is developed. The first split you want to take is the largest, purest one, which in this case is 2-seater=no. This forms the first rule, assigning all these values to negative.<br>Removing the three cases with this rule and then redrawing the coverage plot will display the correct plot from the diagrams, this being number 2. From here, you again remove the purest of all the splits, which is spoiler=yes, classing all these examples as positives. This leaves only one more pure split, which is price=0-50k, classing these examples as positive.<br>Once this rule set has been established, you're left with two examples that are identical, and therefore cannot be split using any of the features, and so no more rules can be completed.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question runs through the basis of creating an ordered rule set from a number of positive and negative examples. Through the deduction of the correct coverage plot and buildign the set of rules, this question incorporates enough reasoning to classify it as a difficulty 3 question. "
+    },
+
+"10": {
+    "difficulty": "3",
+    "reference": "5.3",
+    "problem_type": "calculations",
+    "question": "Chris is a jukebox collector. He has been monitoring the sales of jukeboxes, and has collected the data as displayed in the table below.<br>Each jukebox is a particular model (AMi, Seeburg, Wurlitzer, or Rock-Ola), is in a particular condition (E = excellent, G = good, F = fair), and may have been bought from SL Jukeboxes (condensely labelled as SL). Chris wants to construct a regression tree that will help him determine a reasonable price for his next purchase.<br>Which of the following regression trees is the most appropriate to best determine prices?",
+    "answer_type": "single",
+    "images": [
+                { "url": "img/16181_15974/jukeboxTable.png",
+                "caption": "Coverage Count 1 "
+                }
+                ],
+    "answers": [
+                { "correctness": "+",
+                "answer": "<img src=\"img/16181_15974/jukeboxOption3.png\" style=\"width:604px;height:228px;\">",
+                "explanation": " This is the correct version of the tree that needs to be used, as explained in the workings. "
+                },
+                { "correctness": "-",
+                "answer": "<img src=\"img/16181_15974/jukeboxOption2.png\" style=\"width:604px;height:228px;\">"
+                },
+                { "correctness": "-",
+                "answer":  "<img src=\"img/16181_15974/jukeboxOption1.png\" style=\"width:604px;height:228px;\">"
+                }
+                ],
+    "hint": "Compare the weighted averages of squared means for the first feature split, then compare the variances of the remaining splits to determine the next best split.",
+    "workings": "Model [AMi, Seeburg, Wurlitzer, Rock-Ola] --> [10.5, 12.5, 13.5] [9.5, 10, 12] [9.5, 10] [9, 13]<br>Condition [E, G, F] --> [10, 12, 13.5] [9, 12.5, 13] [9.5, 9.5, 10, 10.5]<br>SL? [yes, no] --> [9.5, 10, 10, 13] [9, 9.5, 10.5, 12, 12.5, 13.5]<br><br>Calculating the weighted averages of squared means (WASM) for each feature:<br>Model WASM = 120.6958333<br>Condition WASM = 120.6895833<br>SL? WASM = 119.9729167<br><br>The Model WASM is the largest, and therefore we branch on Model at the top level. Comparing the other features under each model:<br><br>AMi: Condition [E, G, F] --> [13.5] [12.5] [10.5], SL? [yes, no] --> [] [10.5, 12.5, 13.5]<br>Seeburg:Condition [E, G, F] --> [12] [] [10], SL? [yes, no] --> [10] [12]<br>Wurlitzer:Condition [E, G, F] --> [10] [] [9.5], SL? [yes, no] --> [9.5, 10] []<br>Rock-Ola:Condition [E, G, F] --> [] [9.5, 13] [], SL? [yes, no] --> [13] [9.5]<br><br>As the results show, the Condition feature has less variance than the SL? Feature, due to the large number of pure splits. Therefore we now split at Condition. The answer is therefore the regression tree that first branches off at Model, and then Condition.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question is an example of how regression trees can be used to find the best feature splits in data. It requires a good understanding of the whole process, and hence is classed as a level 3."
+    },
+
+"11": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "beyond scope of the book",
+    "answer_type": "blank_answer",
+    "question": ["Reinforcement Learning is based off a reward and punishment system. Certain actions can yield rewards, while others can bring punishment.<br>",
+                 "Below are two images, the first displaying a state space split into sections. The basic rules behind this is that when in any of the individual sections, you are able to move in any direction to another section. However, each movement you make results in a a punishment, equal to the value of -1. The only exception to this rule is when you move into a green space. These spaces represent rewards, and result in your total being changed by +3, but they can only be entered once. Using this information, answer the following questions.<br><br> ",
+                 
+                 "Looking at the first image, the 5x5 state space, work out and fill in the optimal return if you were to start in the following places. That is to say, find the path that gives the largest reward once a terminal state is reached.<br>",
+                 
+                 "The reward for starting in space N is ", 1,".<br>",
+                 "The reward for starting in space K is ", 2,".<br>",
+                 "The reward for starting in space M is ", 3,".<br><br>",
+                 
+                 "The hardest thing about reinforcement learning is building a system that learns how to maximise the reward it receives. It's an extremley difficult task, but one that is made easier through the use of dynamic programming.<br>",
+                 "The second image shows a markov chain, which can be used to represent the transition between different states. By using equations (1) and (2) below, the Bellman equation, and setting the discount factor gamma to a value of 2, express the error of state 1, e(1), as a function of e(T), for both the shortest and longest paths.<br>V*(x(t)) is the optimal value function for a specific state x(t), where V(x(T)) is the approximation of the value function. <br><br>",
+                 
+                 "Equation (1): V(x(t)) = e(x(t)) + V*(x(t))<br>",
+                 "Equation (2): V(x(t+1)) = e(x(t+1)) + V*(x(t+1))<br>",
+                 "Bellman Equation: V*(x(T)) = r(x(t)) + gammaV*(x(t+1))<br><br>",
+                 
+                 "The error for the shortest path is e(1) = ", 4,".<br>",
+                 "The error for the longest path is e(1) = ", 5,".<br>"
+                 ],
+    "images": [
+                { "url": "img/16181_15974/5x5Reinforcement.jpg",
+                "caption": "5x5 State Space"
+                },
+                { "url": "img/16181_15974/markovChain.jpg",
+                "caption": "Markov Chain"
+                }
+                ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "-1",
+                "explanation": "Starting at N, first collect the reward at space I, before taking the path to either of the terminal states.It does also allow you to reach trivial state A with the same score as reaching W if the reward is collected, which could prove useful in certain situations."
+                },
+                { "correctness": 2,
+                "answer": "0",
+                "explanation": "Starting at K, it's beneficial to collect the reward at U, before moving across to W, as this beats the score of -2 you would get by going directly to space A."
+                },
+                { "correctness": 3,
+                "answer": "-2",
+                "explanation": "Starting at M, collecting the reward at I makes no difference to your final score. It does however allow you to reach trivial state A with the same score as reaching W if the reward is collected, which could prove useful in certain situations."
+                },
+                { "correctness": 4,
+                "answer": "8e(T)",
+                "explanation": "You have to pass through 3 states to reach this point. The derivation is shown in the workings."
+                },
+                { "correctness": 5,
+                "answer": "32e(T)",
+                "explanation": "You have to pass through 5 states to reach this point. The derivation is shown in the workings."
+                }
+                ],
+    "hint": "Some paths may have the same score with or without the reward.<br>The Bellman equation can be expresed in the same way for V(x(t)).",
+    "workings": "The ideal path form space N is N-I-N-S-X-W, providing a score of -1. The same can also be reached by going to A from I.<br>Starting at K, the path is K-P-U-V-W, giving a score of 0, and from M the path is M-R-W, as collecting the reward does not affect the score, giving a score of -2.<br><br>Subbing equation 1 into the equivalent bellman equation for V(x(t)), and then subbing equation 2 into the right hand side, the equation can be reduced down to e(x(t)) = gamma*e(x(t+1)), by subtracting the given bellman equation. Applying this to state 1, you get e(1) =  2e(2). e(2) can then be replaced by 2e(3), which in turn can be replaced by 2e(T), giving e(1) = 8e(T). A similar process can be followed to reach the longer path, giving 32e(T).",
+    "source": "Machine Learning, P.Flach ; http://artint.info/html/ArtInt_262.html ; http://old.nbu.bg/cogs/events/2000/Readings/Petrov/rltutorial.pdf",
+    "comments": "This question breaks into the topic of reinforcement learning, displaying how different actions can have both rewards and punishments, and forcing you to logically think about the optimal way of doing the present tasks. It also goes a litle further into how you can train optimal solutions. Due to this being a topic outside the book, it's classed as a level 5 question."
+                 },
+
+"12": {
+    "difficulty": "4",
+    "reference": "10.2",
+    "problem_type": "training",
+    "question": "Consider the following classifications for 20 sets of training data:<br><br>+ + + - - + - - - + + - + + + - - - - +<br><br>Using information gain, locate where the first, second, third and fourth best splits occur in the data.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+               { "correctness": "Between values 1 and 2 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 2 and 3 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 3 and 4 there is: ",
+               "answer": "First Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 4 and 5 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 5 and 6 there is: ",
+               "answer": "Second Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 6 and 7 there is: ",
+               "answer": "No Split",
+               "explanation": "why this answer is correct"
+               },
+               { "correctness": "Between values 7 and 8 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 8 and 9 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 9 and 10 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 10 and 11 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 11 and 12 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 12 and 13 there is: ",
+               "answer": "Fourth Split",
+               "explanation": "wSee workings."
+               },
+               { "correctness": "Between values 13 and 14 there is: ",
+               "answer": "TNo Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 14 and 15 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 15 and 16 there is: ",
+               "answer": "Third Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 16 and 17 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 17 and 18 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 18 and 19 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               },
+               { "correctness": "Between values 19 and 20 there is: ",
+               "answer": "No Split",
+               "explanation": "See workings."
+               }
+               ],
+    "hint": "Plotting the coverage curve allows one to see where the data splits should occur better.",
+    "workings": "After plotting the coverage curve, draw arcing curves from the start point to the end point with an increasing amount of curvature. The curvature corresponds to the information gain. There will exist a corner on the coverage curve that touches an arc which has a larger curve than any other corner. This corner denotes where the first split should occur. In the data provided, this occurs between the third and fourth data points.<br><br>The second split requires producing arcs from the split point to either the start or end point. In this case the arcs will go to the end point, as there is still information to be gained from the system in this region. Repeating what we did in step one, we find the second split occurs between the 5th and 6th data points. Repeating this process, we find the third split occurs between the 15th and 16th points, and the fourth split occurs between the 12th and 13th points.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question entails employing information gain to deduce where the best split of the data is. Due to the splits not being in chronological order and being the subject of something not covered in the course, this has been ranked as a level 4 difficulty."
+    },
+
+"13": {
+    "difficulty": "3",
+    "reference": "11.2",
+    "problem_type": "training, calculation",
+    "question": "Graham is developing a linear classifier, the results of which are shown below. He ideally wants future classifications models to have as few incorrect classifications as possible; in doing so he wants to weigh the results such that the incorrect classifications are heavily penalised, making up two thirds of the total weightings.  Using boosting, update the weights of the contingency table to achieve this.",
+    "images": [
+                { "url": "img/16181_15974/contingencyTable.jpg",
+                "caption": "Contingency Table "
+                }
+              ],
+    "answer_type": "cloze_answer",
+    "answers": {
+            "answer": ["552 | 546 | 1098 ",
+                       "----------",
+                       "1134 | 288 | 1422 ",
+                       "----------",
+                       "1686 | 834 | 2520"],
+            "explanation": "See workings."
+                },
+    "hint": "Non uniform weighting, in which ⅔ of the data points need to be misclassified. Perhaps 2/(3E) will make a suitable weighting. You will still need to calculate the weighting for the correctly classified data.",
+    "workings": "Error = (27+13)/180 = 2/9<br><br>Weighting(error) = 2/3E = 3<br>Weighting(accurate) = 1 / 3(1 - E) = 3/7.<br><br> Multiplying the contingency table by these weightings we get<br>552   546   1098<br>1134   288   1422<br>1686   834   2520",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question takes a conventional approach to manipulating the data, boosting, however does so in a non-uniform way, making the problem require an extra degree of thought. This makes it level 3 worthy."
+        },
+
+"14": {
+    "difficulty": "2",
+    "reference": "5.2",
+    "problem_type": "training",
+    "question": "Below are three images. The first displays a coverage plot that matches one of the two decision tree splits. Select the decision tree that matches the coverage plot.<br> Secondly, work out the optimal leaf ordering for both decision trees, based off what would be plotted in the coverage plot, and select the ordering below that would provide the best coverage plot between the two trees. ",
+    "answer_type": "multiple",
+    "images": [
+                { "url": "img/16181_15974/coveragePlot.jpg",
+                "caption": "Coverage Plot"
+                },
+                { "url": "img/16181_15974/treeSplit1.jpg",
+                "caption": "Tree Split 1"
+                },
+                { "url": "img/16181_15974/treeSplit2.jpg",
+                "caption": "Tree Split 2"
+                }
+                ],
+    "answers": [
+                { "correctness": "+",
+                "answer": "Tree Split 1",
+                "explanation": " This plot matches the points in the graph, and hence is the correct one. "
+                },
+                { "correctness": "-",
+                "answer": "Tree Split 2"
+                },
+                { "correctness": "+",
+                "answer":  "D-I-F-G-H",
+                "explanation": " This is the optimal ordering for the leaves. "
+                },
+                { "correctness": "-",
+                "answer":  "D-F-G-I-H"
+                },
+                { "correctness": "-",
+                "answer":  "D-I-G-F-H"
+                }
+                ],
+    "hint": "Look closely at the points in the graph.",
+    "workings": "As stated in the explanation, the first tree split matches the points in the graph correctly.<br><br>In order to get the correct ordering, you need to select the points in such a way that the graph gets as close to the top left corner as possible. Hence, the leaf with the best positive to negative ration, in this case D, is chosen first. Following this, I has the best ratio, followed by F, G and H.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question has a brief look at how trees can be implemented in coverage plots, but works in the opposite direction, pulling the tree from the coverage plot. In order to get the ordering correct, you need to know the basics on coverage curves, but this doesn't require a huge amount of knowledge, and hence this is classed a level 2."
+        },
+
+"15": {
+    "difficulty": "2",
+    "reference": "2.3",
+    "problem_type": "problem-solving",
+    "answer_type": "blank_answer",
+    "question": ["Suppose one model (Model 1) predicts (0.2, 0.3, 0.2, 0.2, 0.1) for a particular example x in a five-class task, while another model (Model 2) predicts (0.2, 0.3, 0.3, 0.1, 0.1) for the same tasks. Using squared error, correctly assign the model [1,2] that provides the best prediction given the actual class.<br><br>",
+                 
+                 "The first class is the actual class:", 1,".<br>",
+                 "The second class is the actual class:", 2,".<br>",
+                 "The third class is the actual class:", 3,".<br>",
+                 "The fourth class is the actual class:", 4,".<br>",
+                 "The fifth class is the actual class:", 5,".<br>"
+                     ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "1",
+                "explanation": "See workings."
+                },
+                { "correctness": 2,
+                "answer": "1",
+                "explanation": "See workings."
+                },
+                { "correctness": 3,
+                "answer": "2",
+                "explanation": "See workings."
+                },
+                { "correctness": 4,
+                "answer": "1",
+                "explanation": "See workings."
+                },
+                { "correctness": 5,
+                "answer": "1",
+                "explanation": "See workings."
+                }
+                ],
+    "hint": "Squared error = Σ(P(x_n) - 1) + ΣP(x_m) where n is the actual class and m n.",
+    "workings": "Squared error = Σ(P(x_n) - 1) + ΣP(x_m) where n is the actual class and m n.<br><br>When actual class is the first class:<br>Model 1: (0.2 - 1)^2 + 0.3^2 + 0.2^2 + 0.2^2 + 0.1^2 = 41/50<br>Model 2: (0.2 - 1)^2 + 0.3^2 + 0.3^2 + 0.1^2 + 0.1^2 = 42/50<br>Model 1 has a lower error than Model 2; Model 1 is better.<br><br>When actual class is the second class:<br>Model 1: 0.2^2 + (0.3 - 1)^2 + 0.2^2 + 0.2^2 + 0.1^2 = 31/50<br>Model 2: 0.2^2 + (0.3 - 1)^2 + 0.3^2 + 0.1^2 + 0.1^2 = 32/50<br>Model 1 has a lower error than Model 2; Model 1 is better.<br><br>When actual class is the third class:<br>Model 1: 0.2^2 + 0.3^2 + (0.2 - 1)^2 + 0.2^2 + 0.1^2 = 41/50<br>Model 2: 0.2^2 + 0.3^2 + (0.3 - 1)^2 + 0.1^2 + 0.1^2 = 32/50<br>Model 2 has a lower error than Model 1; Model 2 is better.<br><br>When actual class is the fourth class:<br>Model 1: 0.2^2 + 0.3^2 + 0.2^2 + (0.2 - 1)^2 + 0.1^2 = 41/50<br>Model 2:0.2^2 + 0.3^2 + 0.3^2 + (0.1 - 1)^2 + 0.1^2 = 52/50<br>Model 1 has a lower error than Model 2; Model 1 is better.<br><br>When actual class is the fifth class:<br>Model 1: 0.2^2 + 0.3^2 + 0.2^2 + 0.2^2 + (0.1 - 1)^2 = 51/50<br>Model 2: 0.2^2 + 0.3^2 + 0.3^2 + 0.1^2 + (0.1 - 1)^2 = 52/50<br>Model 1 has a lower error than Model 2; Model 1 is better.<br><br>",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question reflects on how model errors can impact on the way classes can be assumed. It uses squared error multiple times, which is a simple process, and so this question is a level 2."
+        },
+
+"16": {
+    "difficulty": "3",
+    "reference": "7.4",
+    "problem_type": "problem-solving, training, calculation",
+    "answer_type": "blank_answer",
+    "question": ["Consider the following training data points:<br><br>",
+                 
+                 "Positive class: (20,6), (17,9), (15,14), (18,16), (20,18), (19,11), (11,16), (18,21), (14,14), (13,19)<br>Negative class: (15,17), (8,15), (18,16), (16,19), (13,8)<br><br>",
+                 
+                 "Using the training data to derive priors, calculate which class [+,-] the following data is more likely to belong to using probabilistic classification.<br><br>",
+                 
+                 "(16, 18):", 1,".<br>",
+                 "(12, 11):", 2,".<br>",
+                 "(19, 16):", 3,".<br>",
+                 "(14, 20):", 4,".<br>",
+                 "(18, 19):", 5,".<br>"
+                 ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "-",
+                "explanation": "See workings."
+                },
+                { "correctness": 2,
+                "answer": "+",
+                "explanation": "See workings."
+                },
+                { "correctness": 3,
+                "answer": "-",
+                "explanation": "See workings."
+                },
+                { "correctness": 4,
+                "answer": "+",
+                "explanation": "See workings."
+                },
+                { "correctness": 5,
+                "answer": "-",
+                "explanation": "See workings."
+                }
+                ],
+    "hint": "Likelihood ratio (LR) of point x = exp(perpendicular distance of x to decision boundary). If LR > 1, it will be + class, else it’ll will be - class.",
+    "workings": "Mean(+) = (16.5, 14.4), Mean(-) = (14, 15)<br><br>M+ - M- = (2.5, -0.6) => Gradient of bisector = 25/6<br><br>(15.25, 14.7) => 14.7 = (25/6)*(15.25) + C => -5861/120<br><br>Y = (25/6)X -(5861/120)<br><br>Unit vector w = (2.5, -0.6)/(2.5^2+0.6^2)^0.5 = (2.5,-0.6)/2.57099 = (0.972387302, -.2333729525)<br><br>(a,b) + D*(0.972387302,-.2333729525) = (X, (25/6)X -(5861/120))<br><br>X = 0.972387302D + a<br>(25/6)X - (5861/120) = -0.2333729525D + b<br>X = (6/25)(b + (5861/120)-0.2333729525D)<br><br>0.972387302D + a = (6/25)(b + (5861/120)-0.2333729525D)<br>0.972387302D + a = 6b/25 + 5861/500 - 0.0560095086D<br>1.028396811D = 6b/25 + 11.722 - a<br><br>D = (6b/25 + 11.722 - a)/1.028396811<br><br>(a,b) = (16, 18) => D1 = -1.903934336<br>(a,b) = (12, 11) => D2 = 2.296778806<br>(a,b) = (19, 16) => D3 = -3.343067543<br>(a,b) = (14, 20) => D4 = 2.452360775<br>(a,b) = (18, 19) => D5 = -1.670561384<br><br>exp(D1) = 0.1489813221 (- class)<br>exp(D2) = 9.942105369 (+ class)<br>Based off of these results, it can be seen based off of the values of D that the next three points will be classified as -, +, and - respectively.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question brings in the ideas of probabilistic classifiers and entails an assortment of techniques required to solve the problem. For this reason, it's a level 3 question."
+    },
+
+"17": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "beyond scope of the book",
+    "answer_type": "blank_answer",
+    "images": [
+                { "url": "img/16181_15974/Level5_2.png",
+                "caption": "Letters A-F"
+                },
+                { "url": "img/16181_15974/Level5_3.png",
+                "caption": "Input"
+                },
+                { "url": "img/16181_15974/Level5_4.png",
+                "caption": "Potential Outputs"
+                }
+                ],
+    "question": [
+                 "An artificial neural network is designed to recognise characters A, B, C, D, E, and F, based off particular features. The network produces an output for each of the letters, as shown to the right of each letter, in the image below.<br><br>",
+                 
+                 "You have been provided with the input displayed in the second image. In the third is a selection of outputs. Which one is the correct output for the input image?", 1,"<br><br>",
+                 
+                 "Secondly, which two letters is the input most likely to be classified as?", 2,"", 3,"<br>"
+                 ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "5",
+                "explanation": "See workings."
+                },
+                { "correctness": 2,
+                "answer": "B",
+                "explanation": "See workings."
+                },
+                { "correctness": 3,
+                "answer": "E",
+                "explanation": "See workings."
+                }
+                ],
+    "hint": "Look at the edit distances for each row. In the event of a tie, go with the majority class.",
+    "workings": "Compare the edit distances of each letter to achieve the input. For the 1st (top) box, ‘B’ has the smallest edit distance of 2, and it classifies this row as white. For the 2nd box, ‘A’ has the smallest edit distance of 1, and it classifies this row as red. For the 3rd box, ‘A’, ‘B’ and ‘D’ all have the smallest edit distance of 3, and they all classify this row as white. For the 4th box, ‘A’ has the smallest edit distance of 0, and it classifies this row as white. For the 5th box, ‘C’, ‘E’ and ‘F’ all have the smallest edit distance of 2. As two of these letters classify this row as red, the majority class is red. For the 6th box, ‘F’ has the smallest edit distance of 2, and it classifies it as red.<br><br>Based off of the output, both the outputs for letters ‘B’ and ‘E’ have the smallest edit distance of 1. This means that the output is most likely to be either classified as ‘B’ or ‘E’.",
+    "source": "https://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol3/cs11/test.html",
+    "comments": "This question introduces an application of artificial neural networks and reaffirms knowledge about classification, majority classes and edit distance. Due to this topic being outside the scope of the book, it was classed as a level 5."
+    },
+
+"18": {
+    "difficulty": "2",
+    "reference": "12.1",
+    "problem_type": "calculations",
+    "question": "Suppose a ranker obtains the following ranking on a test set:<br><br> (+ + + - - + - + + + - - - + -)<br><br> Calculate the expected accuracy to three decimal places.",
+    "answer_type": "single",
+    "answers": [
+                { "correctness": "+",
+                "answer": "0.592",
+                "explanation": " See workings. "
+                },
+                { "correctness": "-",
+                "answer": "0.691"
+                },
+                { "correctness": "-",
+                "answer":  "0.2"
+                },
+                { "correctness": "-",
+                "answer":  "0.345"
+                },
+                { "correctness": "-",
+                "answer":  "0.713"
+                }
+                ],
+    "hint": "Expected accuracy = (n/n +1)((2AUC−1)/4)+1/2",
+    "workings": "(8 postives, 7 negatives): AUC = 39/56, n = 15.<br>Expected Accuracy = (15/16)*((-1+39/28)/4) + 0.5 = 1061/1792 = 0.592 to 3DP.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question gives a simple view into ho to work out the expected accuracy of a ranked test set. This is a simple calculation using the expected accuracy equation, and hence a level 2 question."
+    },
+
+"19": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "training",
+    "question":
+                 "Q-learning is an extension of reinforcement learning. It is a model free algorithm that allows the agent to learn 'Q-factors', which are value functions extended to state action pairs, rather than just the states themselves. The theory behind it is that using the reward system associated with reinforcement learning, you can learn the optimal solution for an example.<br>Use the below image as an example. This image shows a very simple network with three nodes, and the arrows represent the direction that it is possible to travel between these nodes. Furthermore, the numbers on each arrow represent the reward for travelling in these directions.<br>Q-Learning is useful because it can be scaled up to extremely large networks, and iterating over the equation a number of times results in a convergence, but for simplicity the three node network will be used. The Q-learning equation is as follows:<br><br> Q(state, action) = R(state, action) + gamma*Max[Q(next state, all actions)]<br><br>In the equation above, Q is a matrix of the states against possible actions, in this case a 3x3. Initially, this is full of zeros. Taking a random state, say 1, we can use this equation to begin to fill the matrix Q, and it will eventually result in a converged matrix, displaying the optimal paths to take at each state.<br>To get you started, take a state, say 1, and take an action of the two possible, say you travel to 3. Using the equation you get <br>Q(1,3) = R(1,3) + gamma*Max[Q(3,1)]<br>Now R(1,3) represents the reward for travelling from state 1 to state 3, which is 50. Q(3,1) for now is zero, and is the only possible action to take from state 3, and so the max term becomes 0. Hence, the new term for Q(1,3) is 50, although this will change as values are added for the other terms in the matrix.<br><br>Using this information, and a gamma value of 0.5, continue the process, plugging in the different states and actions until the matrix converges and stops changing, and select the set of correct entries in the Q matrix, which are converged to the nearest whole number.",
+    "images": [
+                { "url": "img/16181_15974/qLearning.jpg",
+                "caption": "Three node network"
+                }
+               ],
+    "answer_type": "single",
+    "answers": [
+                { "correctness": "+",
+                "answer": "Q(1,2) = 33, Q(1,3) = 67, Q(2,3) = 67, Q(3,1) = 33",
+                "explanation": " See workings. "
+                },
+                { "correctness": "-",
+                "answer": "Q(1,2) = 32, Q(1,3) = 66, Q(2,3) = 66, Q(3,1) = 33"
+                },
+                { "correctness": "-",
+                "answer":  "Q(1,2) = 25, Q(1,3) = 63, Q(2,3) = 63, Q(3,1) = 25"
+                },
+                { "correctness": "-",
+                "answer":  "Q(1,2) = 25, Q(1,3) = 50, Q(2,3) = 50, Q(3,1) = 25"
+                }
+                ],
+    "hint": "Lay your calculations out in this form:<br><br>Q(1,2) = 0 + 0.5*max(Q(2,3))<br>Q(1,3) = 50 + 0.5*max(Q(3,1))<br>Q(2,3) = 50 + 0.5*max(Q(3,1))<br>Q(3,1) = 0 +0.5* max(Q(1,3), Q(1,2))<br><br>Run through these calculations in order until the numbers converge.",
+    "workings": "By doing what is suggested in the hints, you only have to run through the set of equations 5 times before you reach a converged set of whole numbers. The calculations are done exactly as is specified in the question. For example, once you've done Q(1,3) and gotten 50, Q(2,3) returns 50 as well, and Q(3,1) returns 25. This is because the max function returns the value of 50 found in Q(1,3) beforehand, and multiplying this by gamma=0.5, you get 25. Contnuing to loop through this set of equations, updating your Q matrix as you go, gives the required result.",
+    "source": "http://mnemstudio.org/path-finding-q-learning-tutorial.htm ; ",
+    "comments": "This question delves into how reinforcemnt learning can be used to train large scale systems. It can be extremley complex to do by hand, but with only 4 possible actions across the 3 nodes it is achieveable if the work is laid out in a well structured manner. Being an extension of the book, and having a lot of complexity tied behind it, this question has beeen ranked as a 5."
+    },
+
+"20": {
+    "difficulty": "2",
+    "reference": "3.3",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "question": [
+                 "Given the two set of data points in the table below, answer the following questions.<br><br> ",
+                 
+                 "Visualise the data points in some way. If a k-means or k-medoids algorithm was to be run over the data set, what would be a suitable value to use for k?", 1, ".<br>",
+                 "Suppose k = 2. Using the k-medoids algorithm (the difference is you use a data point as a centroid rather than a randomly selected value) calculate the total cost involved if the inital exemplars are (0.1, 0.3) and (0.72, 0.84). Use the Manhattan distance for all calculations.", 2, "<br>."
+                 ],
+    "images": [
+                { "url": "img/16181_15974/kMeansTable.jpg",
+                "caption": "Data points"
+                }
+                ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "2",
+                "explanation": "When plotted, there are quite clearly two distinct classes."
+                },
+                { "correctness": 2,
+                "answer": "1.88",
+                "explanation": "This is the sum between each point and its closest exemplar."
+                }
+                ],
+    "hint": "The cost is the distance from each point to its closest exemplar.",
+    "workings": "Using the manhattan distance, you can split the set of points into two sets, each point having a distance from its closest exemplar. Adding these up give you a score of 1.88. ",
+    "source": "Machine Learning, P.Flach.",
+    "comments": "This question ensures you have the basic knowledge of how k-means works, and a reminder of the Manhattan distance. Due to the simple calculations, this has been classified as a 2."
+    },
+
+"21": {
+    "difficulty": "3",
+    "reference": "8.4",
+    "problem_type": "calcualation",
+    "answer_type": "blank_answer",
+    "question": [" Consider the following data points: (2,0), (4,1), (-3,1), (-1,-1), (5,2). By finding the scatter matrix of these points, calculate it's trace.", 1,".<br><br>",
+                 
+                 "Now split the data into two clusters, using two different splits. Firstly, cluster the first three points and put the other two in another cluster and calculate the within-cluster matrices. Then, take the third and fourth points into one cluster, leaving the other three for the second cluster, and repeat the calculations for the within-cluster matrices.<br> Which split, first or second, proves to be better? That is to say, which split provides tighter clusters?", 2,"."
+                 ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "50.4",
+                "explanation": "By finding the scatter matrix, the trace is the sum of the diagonal elements."
+                },
+                { "correctness": 2,
+                "answer": "2",
+                "explanation": "The within cluster traces are much smaller for the second split than they are for the first."
+                }
+                ],
+    "hint": "To find the scatter matrix, first zero center the points, and then multiply the matrix by its transpose.",
+    "workings": "For the first answer, the set of points need to be zero centred, providing [(0.6,-0.6), (2.6,0.4), (-4.4,-2.4), (-2.4,-1.6), (3.6,1.4)]. With this done, the scatter matrix can be found by multiplying this matrix of points by its transpose, and summing the diagonal values of this matrix, 45.2 and 5.2, you can achieve the answer for the trace of 50.4.<br><br>For the second part, you simply repeat the first but with the smaller matrices. The first one, once zero centred, has values of [(1,-$\\frac{2}{3}$), (3,$\\frac{1}{3}$), (-4,$\\frac{1}{3}$)] and [(-3,1.5), (3,1.5)], giving traces of $\\frac{80}{3}$ and 22.5 respectively.<br>The second split gives centred points of [(-1,1), (1,-1)] and [(-$\\frac{5}{3}$,-1), ($\\frac{1}{3}$,0), ($\\frac{4}{3}$,1)]. These give traces of 4 and $\\frac{20}{3}$, proving that the second split provides much tighter clusters, and hencea better split.",
+    "source": "Machine Learning, P.Flach",
+    "comments": "This question tests the ability to create a scatter matrix, and follow up by splitting this into well defined within-clusters. To complete this question, you need a good understanding of this process, and there's enough calculation to make this a level 3."
+        },
+
+"22": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "training, calculation",
+    "answer_type": "blank_answer",
+    "question": ["Arnold is developing a stock market predictor based off an online learning algorithm, called Winnow2. This algorithm takes features from the stock market, makes predictions from them as to whether he should buy particular stock, and adjusts the weightings of the features accordingly, depending on whether it was the right decision to make. Each feature starts with a weighting of 1. Arnold uses a weight-changing factor of 2, and a threshold of 4. Below are the first 6 iterations of the algorithm. Also included are incomplete iterations, 7 and 8.<br><br>",
+                 
+                 "Calculate the weightings for each of the features from the first 6 iterations. What is the prediction from iteration 7?", 1,".<br><br>",
+                 
+                 "It then turns out that the prediction from iteration 7 is incorrect. Once the weightings have been readjusted, what is the prediction from iteration 8?", 2,"."
+                 ],
+    "images": [
+                { "url": "img/16181_15974/Table_Winnow.png",
+                "caption": "Table of stock market features and outputs"
+                }
+                ],
+    "answers": [
+                { "correctness": 1,
+                "answer": "1",
+                "explanation": "By finding the scatter matrix, the trace is the sum of the diagonal elements."
+                },
+                { "correctness": 2,
+                "answer": "0",
+                "explanation": "The within cluster traces are much smaller for the second split than they are for the first."
+                }
+                ],
+    "hint": "If the sum of WiXi for i = {1, 2, 3, … n} > threshold, predict 1, else predict 0.<br>If prediction is correct, do nothing.<br>If prediction = 0 and output = 1, for all Xi = 1, the corresponding weighting Wi = 2Wi.<br>If prediction =1 and output = 0, for all Xi = 1, the corresponding weighting Wi = Wi/2.<br>",
+    "workings": "Initial weights = 1, alpha = 2.<br><br>Iteration 1:<br>w2x2 + w3x3 + w4x4 + w5x5 + w6x6 =1+1+1+1+1= 5 > 4 => Predict 1.<br>Actual output = 0 => w2, w3, w4, w5, w6 = ½<br><br>Iteration 2:<br>w1x1 + w3x3 + w7x7 = 1 + ½ + 1 =5/2 < 4 => Predict 0.<br>Actual output = 0 => weights remain the same.<br><br>Iteration 3:<br>w1x1 + w2x2 + w4x4 + w6x6 + w8x8 = 1 + ½ + ½ + ½ + 1 = 7/2 < 4 => Predict 0<br>Actual output = 1 => (w1, w2, w4, w6, w8) = alpha*(w1, w2, w4, w6, w8) = (2, 1, 1, 1, 2)<br><br>Iteration 4:<br>w2x2 + w3x3 + w7x7 + w8x8 = 1 + ½ + 1 + 2 = 9/2 > 4 => Predict 1<br>Actual output = 0 => w2, w3, w7, w8 = ½, ¼, ½, 1<br><br>Iteration 5:<br>w1x1 + w2x2 + w5x5 = 2 + ½ + ½ = 4 which is not > 4 => Predict 0<br>Actual output = 1 => w1, w2, w5 = 1, ¼, ¼<br><br>Iteration 6:<br>w3x3 + w4x4 + w5x5 + w6x6 + w8x8 = ¼ + 1 + ¼ +1 + 1 = 7/2 < 4 => Predict 0<br>Actual output = 0 => w3, w4, w5, w6, w8 = 1/2, 2, 1/2 , 2, 2<br><br>Current weightings:<br>w1 = 1, w2 = ¼, w3 = ½, w4 = 2, w5 = ½, w6 = 2, w7 = ½, w8 = 2<br><br>Iteration 7:<br>w1x1 + w2x2 + w5x5 + w7x7 + w8x8 => 1 + ¼ + ½ + ½ + 2 = 17/4 > 4 => Prediction = 1<br>Output = 0 => w1,w2,w5,w7,w8 = ½, 1/8, ¼, ¼, 1<br><br>Iteration 8:<br>w2x2 + w3x3 + w5x5 + w6x6 = 1/8 + ½ + ¼ + 2 = 23/8 < 4 => Prediction = 0",
+    "source": "http://link.springer.com/article/10.1023%2FA%3A1022869011914",
+    "comments": "This question provides an insight into online learning, and displays a simple example of how it can be used. With the winnow2 algorithm, which can be found easily, this process involves working your way through  each iteration to calculate the appropriate weightings for each feature. These can then be used ot find the missing values. Due to the complexity of the question, and the topic being something outside the scope of the book, this question has been classed as a level 5."
+    },
+
+"23": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculation, training",
+    "question": "In the diagram below you have a neural network. Using this, progress both inputs through the system and recieve the values for both the outputs, o1 and o2. Using these values, calculate the error for each output using the squared error function, and then sum them to find the total error. Tick this value below.<br><br>The idea of back propogation is that by passing backwards through the system, you can edit the weights (W1, W2 etc,) to minimize the total error for the outputs. Considering W7, find how much the error is affected by it and calculate the new value for W7+. Also tick this value form the choices below.",
+    "images": [
+                { "url": "img/16181_15974/BackPropogationImage.png",
+                "caption": "Data points"
+                }
+                ],
+    "answer_type": "multiple",
+    "answers": [
+                { "correctness": "+",
+                "answer": "0.03144",
+                "explanation": "See workings for explanation."
+                },
+                { "correctness": "+",
+                "answer": "0.41522",
+                "explanation": "See workings for explanation."
+                },
+                { "correctness": "-",
+                "answer": "0.07563"
+                },
+                { "correctness": "-",
+                "answer": "0.40157"
+                }
+                ],
+    "hint": "In order to find the outputs, you need to add up everything that goes into each node before progressing. For example, the net input for h1 is W1*i1 + W3*i2. Folloowing working this out, it needs to be squashed using the logistic function to find the output. This can then be used in the calculation of o1 and o2.<br><br>To work backwards, you need to find how much the total error is affected by W7, i.e. the partial derivative of the error with respect to W7. Onc you find this value, it can be used to change the value for W7. You might find the chain rule helpful in finding this derivative.",
+    "workings": "Working forwards:<br>net(h1) = 0.1*0.4 + 0.3*0.9 = 0.31 and hence out(h1) = $\\frac{1}{1+e^(-net(h1))}$ = 0.57688. The same working process can be used to find the remaining values.<br>net(h2) = 0.44, out(h2) = 0.60826<br>net(o1) = 0.36025, out(o1) = 0.58910<br>net(o2) = 0.53802, out(o2) = 0.63135<br><br> The total error is found from: E(tot) = 0.5[(target(o1) - out(o1))^2 + (target(o2) - out(o2))^2] = 0.03144, which is the first answer.<br><br>To find the value to change W7 by, you need to find the partial derivative of the total error with respect to the weight itself. Using the chain rule this can be split into three parts, each of which can be calculated separately:<br><br> d(E(tot))/d(out(o1)): By differentiating the error function by out(o1) returns 2*0.5(target(o1) - out(o1)) = 0.24910<br>d(out(o1))/d(net(01)): Differentiating the logistic function returns a reallny nice expression of out(o1)*(1-out(o1)) = 0.24206<br>d(net(o1))/d(W7): This is a really simple derivative, returning the value for out(h1) = 0.57659<br><br>Multiplying all these numbers together provides the combined derivative that is required, giving a value of 0.03478. Subtracting this from the original value for W7 gives the edited value required, 0.41522.",
+    "source": "https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/",
+    "comments": "This question covers a really simple version of back propogation, requiring the user to complete all the necessary work beforehand as well. It helps give an insight into neural networks, as well as an introduction into how back propogation can help improve these networks. It should also be clear that the process could be done for all the weights. Due to this topic being outside the scope, and the large amount of maths and reasoning required, its been classed as a leel 5."
+    },
+
+"24": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculations, problem-solving",
+    "question": "Every day Cathy travels from her home to see her mother in a local nursing home. She travels either by walking, cycling, or driving, depending on the weather. Below is the diagram of her probability of mode of transport depending on the weather, as well as the probabilities of how the weather changes as each day passes. Suppose one week her travels look like that in the table below this.<br><br>Her phone that she carries on her has sensors and an offline app called ActiviteX that can detect which mode of transport she is using. ActiviteX is a company that suggests daily leisure activities for its users. They want to use this information about modes of transport to see if they can deduce what the weather is so they can offer appropriate activities. <br><br>On the Monday there is a 50/50 chance that it is raining or sunny (Start denotes ‘Day 0’, Monday denotes ‘Day 1’). Using the Viterbi algorithm, is it more likely that on Sunday it is raining or sunny?",
+    "answer_type": "single",
+    "images": [
+               { "url": "img/16181_15974/HMM_Diagram.png",
+               "caption": "Tree Split 1"
+               },
+               { "url": "img/16181_15974/HMM_Table.png",
+               "caption": "Weekly travel plans"
+               }
+
+               ],
+    "answers": [
+                { "correctness": "-",
+                "answer": "Sunny"
+                },
+                { "correctness": "+",
+                "answer": "Raining",
+                "explanation": " See workings. "
+                }
+                ],
+    "hint": "To calculate the probability of transport mode T on a given day D occurs in a certain weather condition W(D) is:<br><br>P(T, D | W(D)) = P(T | W(D)) * max(P(T, D - 1 | W(D - 1))*P(W(D) | W(D - 1))) for W(D - 1) = {Rain, Sun}.",
+    "workings": "T = transport mode; D = day; R = rain; S = sunny; W = weather.<br><br>As there is a lot of multiplication occurring in the algorithm, it is easier to convert all probabilities into logarithmic values; that way the probabilities can be summed rather than multiplied through.<br><br>Calculating the first day probabilities (in logarithms) is:<br>P(T, 1 | R) = 0.5 + P(T | R); P(T, 1 | S) = 0.5 + P(T | S); <br><br>To calculate the logarithmic probability for every other day:<br><br>P(T, D | R) = P(T | R) + max(P(T, D - 1 | R) + P(R | R), P(T, D - 1 | S) + P(R | S)).<br>P(T, D | S) = P(T | S) + max(P(T, D - 1 | R) + P(S | R), P(T, D - 1 | S) + P(S | S)).<br><br>Iterating through every day, and converting back into regular probabilities, the final probability if it rains on the Sunday is 0.0000115248 and the probability it is sunny on the Sunday is 0.00001134. As the probability for it raining on Sunday is larger than it being sunny, it is more probable that it is raining on the Sunday.",
+    "source": "http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf",
+    "comments": "This question demonstrates how, by using probabilities that relate one set of classes to another, deductions about a particular class can be made based off of the results from the other class. This shows the use of hidden markov models, and as this topic is outside the scope of the book, the question has been classed as a level 5."
+                   }
+
+}

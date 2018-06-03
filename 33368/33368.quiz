@@ -1,0 +1,559 @@
+{
+  // example quiz text
+  // <- (this is a comment and will be ignored)
+
+  // this is the url for your quiz
+  "url": "127.0.0.1",
+
+  // this are your UoB candidate numbers as a comma separated list
+  "candidate_number": [33368],
+
+  // this is the title of the quiz
+  "title": "Nadia's Machine Learning Quiz",
+  
+  "1": {
+    "difficulty": "4",
+    "reference": "1.3",
+    "problem_type": "calculation",
+    "question": "Consider a data set consisting of three negative points $\\mathbf{n_{1}}=(,)$, $\\mathbf{n}_{2}=(,)$ and $\\mathbf{n_{3}=(,)}$ and three positive points $\\mathbf{p_{1}=(,)}$, $\\mathbf{p_{2}=(,)}$ and $\\mathbf{p_{3}=(,)}$.<br /> Apply a Gaussian kernel with $\\gamma=\\frac{1}{2}$ (where $\\gamma=\\frac{1}{2\\sigma^{2}}$) to the basic linear classifier, and calculate the resulting decision boundary. Which equation gives the correct decision boundary?",
+    "answer_type": "single",
+    "answers": [
+      { "correctness": "-",
+        "answer": "$\\frac{1}{2}e^{-\\frac{1}{3}||p_{1}-x||^{2}}+\\frac{1}{2}e^{-\\frac{1}{3}||p_{2}-x||^{2}}+\\frac{1}{2}e^{-\\frac{1}{3}||p_{3}-x||^{2}}-\\frac{1}{2}e^{-\\frac{1}{3}||n_{1}-x||^{2}}-\\frac{1}{2}e^{-\\frac{1}{3}||n_{2}-x||^{2}}-\\frac{1}{2}e^{-\\frac{1}{3}||n_{3}-x||^{2}}=t$"
+      },
+      { "correctness": "-",
+        "answer": "$e^{-\\frac{1}{2}||p_{1}-x||^{2}}+e^{-\\frac{1}{2}||p_{2}-x||^{2}}+e^{-\\frac{1}{2}||p_{3}-x||^{2}}-e^{-\\frac{1}{2}||n_{1}-x||^{2}}-e^{-\\frac{1}{2}||n_{2}-x||^{2}}-e^{-\\frac{1}{2}||n_{3}-x||^{2}}=t$"
+      },
+      { "correctness": "+",
+        "answer": "$\\frac{1}{3}e^{-\\frac{1}{2}||p_{1}-x||^{2}}+\\frac{1}{3}e^{-\\frac{1}{2}||p_{2}-x||^{2}}+\\frac{1}{3}e^{-\\frac{1}{2}||p_{3}-x||^{2}}-\\frac{1}{3}e^{-\\frac{1}{2}||n_{1}-x||^{2}}-\\frac{1}{3}e^{-\\frac{1}{2}||n_{2}-x||^{2}}-\\frac{1}{3}e^{-\\frac{1}{2}||n_{3}-x||^{2}}=t$",
+        "explanation": "Recall that the equation of the Gaussian kernel is $\\kappa(x,y)=e^{\\frac{-||x-y||^{2}}{2\\sigma^{2}}}$ and note that the value $\\gamma=\\frac{1}{2}$ implies that $\\sigma=1$, so that the kernel becomes $\\kappa(x,y)=e^{\\frac{1}{2}||x-y||^{2}}$. Next, note that $\\mathbf{n=\\frac{1}{3}}(n_{1}+n_{2}+n_{3})$ and $\\mathbf{p=\\frac{1}{3}}(p_{1}+p_{2}+p_{3})$. A basic linear classifier learns a decision boundary $\\mathbf{w\\cdot}\\mathbf{x=t}$ where $\\mathbf{w=p-n}$. Therefore, we can rewrite the decision boundary as $\\frac{1}{3}(p_{1}\\cdot x)+\\frac{1}{3}(p_{2}\\cdot x)+\\frac{1}{3}(p_{3}\\cdot x)-\\frac{1}{3}(n_{1}\\cdot x)-\\frac{1}{3}(n_{2}\\cdot x)-\\frac{1}{3}(n_{3}\\cdot x)=t.$Applying the kernel trick turns the decision boundary into $\\frac{1}{3}\\kappa(p_{1}\\cdot x)+\\frac{1}{3}\\kappa(p_{2}\\cdot x)+\\frac{1}{3}\\kappa(p_{3}\\cdot x)-\\frac{1}{3}\\kappa(n_{1}\\cdot x)-\\frac{1}{3}\\kappa(n_{2}\\cdot x)-\\frac{1}{3}\\kappa(n_{3}\\cdot x)=t.$ Substituting in the kernel gives the result."
+      },
+      { "correctness": "-",
+        "answer": "$e^{-\\frac{1}{2}||\\frac{1}{3}(p_{1}+p_{2}+p_{3})-x||^{2}}-e^{-\\frac{1}{2}||\\frac{1}{3}(n_{1}+n_{2}+n_{3})-x||^{2}}=t$"
+      }
+    ],
+    "hint": "The equation for the Guassian kernel is $\\kappa(x,y)=e^{\\frac{-||x-y||^{2}}{2\\sigma^{2}}}$.",
+    "workings": "Recall that the equation of the Gaussian kernel is $\\kappa(x,y)=e^{\\frac{-||x-y||^{2}}{2\\sigma^{2}}}$ and note that the value $\\gamma=\\frac{1}{2}$ implies that $\\sigma=1$, so that the kernel becomes $\\kappa(x,y)=e^{\\frac{1}{2}||x-y||^{2}}$. Next, note that $\\mathbf{n=\\frac{1}{3}}(n_{1}+n_{2}+n_{3})$ and $\\mathbf{p=\\frac{1}{3}}(p_{1}+p_{2}+p_{3})$. A basic linear classifier learns a decision boundary $\\mathbf{w\\cdot}\\mathbf{x=t}$ where $\\mathbf{w=p-n}$. Therefore, we can rewrite the decision boundary as $\\frac{1}{3}(p_{1}\\cdot x)+\\frac{1}{3}(p_{2}\\cdot x)+\\frac{1}{3}(p_{3}\\cdot x)-\\frac{1}{3}(n_{1}\\cdot x)-\\frac{1}{3}(n_{2}\\cdot x)-\\frac{1}{3}(n_{3}\\cdot x)=t.$Applying the kernel trick turns the decision boundary into $\\frac{1}{3}\\kappa(p_{1}\\cdot x)+\\frac{1}{3}\\kappa(p_{2}\\cdot x)+\\frac{1}{3}\\kappa(p_{3}\\cdot x)-\\frac{1}{3}\\kappa(n_{1}\\cdot x)-\\frac{1}{3}\\kappa(n_{2}\\cdot x)-\\frac{1}{3}\\kappa(n_{3}\\cdot x)=t.$ Substituting in the kernel gives the result.",
+    "source": "-",
+    "comments": " This question was based on Example 1.9. The kernel trick was explained briefly in the lecture, however, calculating the decision boundary was <b>not</b> shown. Furthermore, the equation for the kernel was not explicitly given in the question, requiring the student to recall the equation for the Gaussian kernel. The parameter given was $\\gamma$ rather than $\\sigma$, requiring the student to be comfortable changing between these two formulations of the Gaussian kernel. I decided to do this as on many resources, the Gaussian kernel is expressed in this alternative formulation. For all these reasons, the question has difficulty level 4."
+  },
+  
+
+  "2": {
+    "difficulty": "2",
+    "reference": "2.1",
+    "problem_type": "calculation",
+    "question": "Suppose you have a data set with 20 actual positives and 10 actual negatives. Draw the contingency table one could expect from a random classifier on this test data.",
+    "answer_type": "cloze_answer",
+    "answers": {
+      "answer": ["10 | 10 | 20 ",
+                 "----------",
+                 "5 | 5 | 10 ",
+                 "----------",
+                 "15 | 15 | 30"],
+      "explanation": "A random classifier makes a random choice as to which predictions are positive and which are negative. Therefore, we can expect a uniform distribution of predicted positives and negatives in each actual class. "
+    },
+    "hint": "A random classifier makes a random choice as to which predictions are positive and which are negative. What kind of distribution can you expect for each actual class?",
+    "workings": "A random classifier makes a random choice as to which predictions are positive and which are negative. Therefore, we can expect a uniform distribution of predicted positives and negatives in each actual class. We first fill in the contingency table with the information given. There are 20 actual positives. We can expect the random classifier to predict 10 of these as positive and 10 of these as negative, giving rise to 10 TPs and 10 FNs. Similarly, there are 10 actual negatives and we can expect the random classifier to predict 5 of these as positive and 5 of these as negative, giving rise to 5 FPs and 5 TNs.",
+    "source": "Similar to 2015 Exam, Question 2",
+    "comments": "The idea of a contingency matrix which represents 'random guessing' was introduced in the lectures and can be a useful baseline. Other answers to this question are possible - for instance, one could ask for the contingency table for a random classifier given that the marginals have to stay the same. However, no marginals were specified here. As was the case in the 2015 exam question, the student is expected to simply provide the values assuming a uniform distribution across each actual class. Because the calculations and theory are rather straightforward, this question has a difficulty level of 2."
+  },
+  
+
+  "3": {
+    "difficulty": "2",
+    "reference": "3.3",
+    "problem_type": "calculation",
+    "question": "Suppose there are six test instances that should be clustered as $\\{ e_{1},e_{4},e_{5}\\}$ and $\\{e_{2},e_{3},e_{6}\\}$. Suppose further that the classifier returns a clustering which evaluates these clusters as $\\{ e_{1},e_{2},e_{3}\\} $ and $\\{ e_{4},e_{5},e_{6}\\}$.<br />Tabulate this information in a contingency table.",
+    "answer_type": "cloze_answer",
+    "answers": {
+      "answer": ["2 | 4 | 6 ",
+                 "----------",
+                 "4 | 5 | 9 ",
+                 "----------",
+                 "6 | 9 | 15"],
+      "explanation": "There are six test instances, so $(6\\times5)/2=30/2=15$ possible pairs. Out of these, there are six 'must-link' pairs. These are $(e_{1}-e_{4})$, $(e_{1}-e_{5})$, $(e_{4}-e_{5})$, $(e_{2}-e_{3})$, $(e_{2}-e_{6})$, and $(e_{3}-e_{6})$. <br />In the clustering obtained from the classifier, the pairs $(e_{4}-e_{5})$ and $(e_{2}-e_{3})$ have been paired together, but the others have not.<br />The pairs $(e_{1}-e_{2}),$ $(e_{1}-e_{3})$, $(e_{4}-e_{6}),$ and $(e_{5}-e_{6})$ have also been paired together, but these should not be paired together.<br />Therefore, we have 6 pairs which should be together, of which only two are together. Out of the 9 remaining pairs which should not be together, 4 of them are together."
+    },
+    "hint": "Think of the labels within the contingency table as such:<br />'actual positives' are pairs which 'should be together'<br />'actual negatives' are pairs which 'should not be together'<br />'predicted positives' are pairs which 'are together'<br />and 'predicted negatives' are pairs which 'are not together'",
+    "workings": "There are six test instances, so $(6\\times5)/2=30/2=15$ possible pairs. Out of these, there are six 'must-link' pairs. These are $(e_{1}-e_{4})$, $(e_{1}-e_{5})$, $(e_{4}-e_{5})$, $(e_{2}-e_{3})$, $(e_{2}-e_{6})$, and $(e_{3}-e_{6})$. <br />In the clustering obtained from the classifier, the pairs $(e_{4}-e_{5})$ and $(e_{2}-e_{3})$ have been paired together, but the others have not.<br />The pairs $(e_{1}-e_{2}),$ $(e_{1}-e_{3})$, $(e_{4}-e_{6}),$ and $(e_{5}-e_{6})$ have also been paired together, but these should not be paired together.<br />Therefore, we have 6 pairs which should be together, of which only two are together. Out of the 9 remaining pairs which should not be together, 4 of them are together.",
+    "source": "-",
+    "comments": "This question shows how to present a clustering in a table, so as to then evaluate its performance. A similar problem was shown in lectures, so this question has difficulty level 2. The information about the pairs is tabulated and presented in a contingency table. The proportion of pairs on the 'good' diagonal (in this case 7/15) is then the Rand index. "
+  },
+
+  "4": {
+    "difficulty": "5",
+    "reference": "4.2",
+    "problem_type": "beyond scope of book",
+    "question": "The version space space candidate-elimination algorithm by Tom Mitchell is an incremental way of identifying the version space of a set of training examples.<br />Mark all advantages and disadvantages which apply to this method.",
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "+",
+        "answer": "Advantage: Fast, does not need to remember any of the instances.",
+        "explanation": "This requires specific knowledge of the algorithm. As it turns out, the algorithm does not store instances. Instead, it only updates the sets S and G accordingly. Therefore, this statement is true."
+      },
+      { "correctness": "+",
+        "answer": "Disadvantage: Noise in the training examples may cause the target concept to be pruned away.",
+        "explanation": "This can be deduced from the definition of a version space. All concepts of the version space must be consistent, that is, they cover none of the negative examples. However, suppose one of the negative examples has noise. This might cause the target concept to be pruned away. This is in fact the biggest disadvantage of this algorithm, as any pair of inconsistent examples can cause the version space to collapse."
+      },
+      { "correctness": "-",
+        "answer": "Disadvantage: Slow, has to remember all of the instances."
+      },
+      { "correctness": "-",
+        "answer": "Advantage: Can be used for multi-class classification."
+      }
+    ],
+    "hint": "A version space is the set of all complete and consistent concepts, where complete means covering all positive examples, and consistent means covering none of the negative examples. ",
+    "workings": "We consider all of the statements one by one.<br /><b>Advantage: Fast, does not need to remember any of the instances.</b><br />This requires specific knowledge of the algorithm. As it turns out, the algorithm does not store instances. Instead, it only updates the sets S and G accordingly. Therefore, this statement is true.<br /><b>Disadvantage: Noise in the training examples may cause the target concept to be pruned away.</b><br />This can be deduced from the definition of a version space. All concepts of the version space must be consistent, that is, they cover none of the negative examples. However, suppose one of the negative examples has noise. This might cause the target concept to be pruned away. This is in fact the biggest disadvantage of this algorithm, as any pair of inconsistent examples can cause the version space to collapse.<br /><b>Disadvantage: Slow, has to remember all of the instances.</b><br />This requires specific knowledge of the algorithm. As it turns out, the algorithm does not store instances. Therefore, this statement is false.<br /><b>Advantage: Can be used for multi-class classification.</b><br />This can be deduced from the explanation of concept learning. In concept learning, we only learn a description for the positive class. Therefore, this algorithm can only be used for binary classification. So this statement is false.",
+    "source": "http://www.cs.cornell.edu/courses/cs472/2004fa/Materials/2004/8-version-space-4up.pdf and http://www.ccs.neu.edu/home/rjw/csg220/lectures/version-spaces.pdf and https://en.wikipedia.org/wiki/Version_space_learning.",
+    "comments": "Answering this tests the student's knowledge on concept learning and the definition of a version space. With this knowledge alone, the student can select most of the statements correctly. However, the question also requires specific knowledge of the version space candidate-elimination algorithm, which is not found in the textbook. Therefore, the question has difficulty level 5. This is a simple algorithm which is of more conceptual rather than practical interest."
+  },
+
+  "5": {
+    "difficulty": "5",
+    "reference": "4.2",
+    "problem_type": "beyond scope of book",
+    "question": "Given the following training data about contact lens wearers, use the version space candidate-elimination algorithm to find the version space after every example (that is, do Example 1 first, then Example 2, etc). Match each example with the appropriate version space.<table><tr><td>Example</td><td>Age 40</td><td>M/F</td><td>Astigmatism?</td><td>Wear contact lenses?</td></tr><tr><td>Example 1</td><td>Y</td><td>F</td><td>N</td><td>Y</td></tr><tr><td>Example 2</td><td>Y</td><td>F</td><td>Y</td><td>Y</td></tr><tr><td>Example 3</td><td>N</td><td>M</td><td>N</td><td>N</td></tr><tr><td>Example 4</td><td>N</td><td>F</td><td>Y</td><td>Y</td></tr></table>",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "Example 1",
+        "answer": "S=$\\{\\langle Y,F,N \\rangle\\}$<br />G=$\\{\\langle ?,?,? \\rangle\\}$",
+        "explanation": "Initialise <b>S</b> as the set S=$\\{\\langle Y,F,N \\rangle\\}$ as this is the first positive example.<br />Initialise <b>G</b> as the set G=$\\{\\langle ?,?,? \\rangle\\}$, representing all possibilities."
+      },
+      { "correctness": "Example 2",
+        "answer": "S=$\\{\\langle Y,F,? \\rangle\\}$<br />G=$\\{\\langle ?,?,? \\rangle\\}$",
+        "explanation": "Generalise <b>S</b> to allow for the value of <b>Astigmatism?</b> for a positive instance to be <i>N</i>. <b>G</b> remains the same. Therefore, S=$\\{\\langle Y,F,? \\rangle\\}$ and G=$\\{\\langle ?,?,? \\rangle\\}$. "
+      },
+      { "correctness": "Example 3 ",
+        "answer": "S=$\\{\\langle Y,F,? \\rangle\\}$<br />G=$\\{\\langle Y,?,? \\rangle, \\langle ?,F,? \\rangle\\}$",
+        "explanation": "Specialise <b>G</b> to exclude this negative instance but stay consistent with <b>S</b>. That is, do not allow for <b>both</b> Age<40 to be <i>N</i> and <i>M/F</i> to be <i>M.</i> This gives G=$\\{\\langle Y,?,? \\rangle, \\langle ?,F,? \\rangle\\}$. <b>S</b> remains consistent."
+      },
+      { "correctness": "Example 4",
+        "answer": "S=$\\{\\langle ?,F,? \\rangle\\}$<br />G=$\\{\\langle ?,F,? \\rangle\\}$",
+        "explanation": "Finally, generalise <b>S</b> to allow for the value of <b>Age<40</b> to be <i>N</i>, giving S=$\\{\\langle ?,F,? \\rangle\\}$. Prune <b>G</b> to exclude $ \\langle Y,?,? \\rangle$, as this is inconsistent with the current positive instance. This gives G=$\\{\\langle ?,F,? \\rangle\\}$."
+      }
+    ],
+    "hint": "<b>S</b> is the set of maximally specific hypotheses, and is initialised as a singleton set including the first positive example.<br /><b>G</b> is the set of maximally general hypotheses, and is initialised as a singleton set that includes everything.",
+    "workings": "To use the version space candidate-elimination algorithm, we consider sets <b>S</b> and <b>G</b> after each example. <b>S</b> is the set of maximally specific hypotheses, and is initialised as a singleton set including the first positive example. <b>G</b> is the set of maximally general hypotheses, and is initialised as a singleton set that includes everything.<br /><b>Example 1</b><br />Therefore, after Example 1 we have S=$\\{\\langle Y,F,N \\rangle\\}$ as this is the first positive example, and we initialise G=$\\{\\langle ?,?,? \\rangle\\}$ as the set representing all possibilities.<br /><b>Example 2</b>.<br />Generalise <b>S</b> to allow for the value of <b>Astigmatism?</b> for a positive instance to be <i>N</i>. <b>G</b> remains the same. Therefore, S=$\\{\\langle Y,F,? \\rangle\\}$ and G=$\\{\\langle ?,?,? \\rangle\\}$.<br /><b>Example 3</b><br />Specialise <b>G</b> to exclude this negative instance but stay consistent with <b>S</b>. That is, do not allow for <b>both</b> Age<40 to be <i>N</i> and <i>M/F</i> to be <i>M.</i> This gives G=$\\{\\langle Y,?,? \\rangle, \\langle ?,F,? \\rangle\\}$. <b>S</b> remains consistent.<br /><b>Example 4</b><br />Finally, generalise <b>S</b> to allow for the value of <b>Age<40</b> to be <i>N</i>, giving S=$\\{\\langle ?,F,? \\rangle\\}$. Prune <b>G</b> to exclude $ \\langle Y,?,? \\rangle$, as this is inconsistent with the current positive instance. This gives G=$\\{\\langle ?,F,? \\rangle\\}$.",
+    "source": "http://www2.cs.uregina.ca/~dbd/cs831/notes/ml/vspace/vs_prob1.html",
+    "comments": "This question requires specific knowledge of the version space candidate-elimination algorithm, a concept learning method which is not found in the textbook. Therefore, the question has difficulty level 5. This is a simple algorithm which is of more conceptual rather than practical interest."
+  },
+
+  "6": {
+    "difficulty": "3",
+    "reference": "5.3",
+    "problem_type": "training",
+    "answer_type": "blank_answer",
+    "question": [
+      "Consider the following data set on house prices in Seattle. Use this data set to construct a regression tree that will allow you to predict the selling price for a house. <table><tr><td>House</td><td>Price ($1000)</td><td>Bedrooms</td><td>Bathrooms</td><td>Building Grade</td></tr><tr><td>1</td><td>220</td><td>3</td><td>less than 3</td><td>6-8</td></tr><tr><td>2</td><td>540</td><td>3</td><td>less than 3</td><td>6-8</td></tr><tr><td>3</td><td>180</td><td>2</td><td>less than 3</td><td>6-8</td></tr><tr><td>4</td><td>605</td><td>4</td><td>more than 3</td><td>6-8</td><tr><td>5</td><td>510</td><td>3</td><td>less than 3</td><td>8-10</td></tr><tr><td>6</td><td>1225</td><td>4</td><td>more than 3</td><td>10-12</td></tr></table><br />Now use the tree to predict the house price (in $1000) for the following house:<br /><table><tr><td>House</td><td>Bedrooms</td><td>Bathrooms</td><td>Building Grade</td></tr><tr><td>7</td><td>3</td><td>less than 3</td><td>6-8</td></tr></table>",
+      "<br />The predicted house price (in $1000) for House 7 is: ", 1, "."
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "380",
+        "explanation": "See workings."
+      }
+    ],
+    "hint": "To choose which feature to split one, find the one which minimises the weighted average variance. This is equivalent to maximising the average weighted average of squared means of the children.",
+    "workings": "We look for the split which maximises the weighted average of squared means of the children. There are three features, so three possible splits:<br /><b>Bedrooms = [2,3,4]</b>&emsp;&emsp;[180], [220,540,510], [605,1225]<br /><b>Bathrooms = [less than 3, more than 3]</b>&emsp;&emsp;[220, 540, 180, 510], [605, 1225]<br /><b>Building Grade = [6-8,8-10,10-12]</b>&emsp;&emsp;[220,540,180,605], [510], [1225]<br />The means of the first split, Bedrooms, are 180, 423, and 915. The weighted average of squared means is $\\frac{1}{2}\\times180^{2}+\\frac{3}{6}\\times423^{2}+\\frac{2}{6}\\times915^{2}=373940$.<br />The means of the second split, Bathrooms, are 362 and 915. The weighted average of squared means is $\\frac{4}{6}\\times362^{2}+\\frac{2}{6}\\times915^{2}=367048.$<br />The means of the third split, Grade, are 386, 510, and 1225. The weighted average of squared means is $\\frac{4}{6}\\times386^{2}+\\frac{1}{6}\\times510^{2}+\\frac{1}{6}\\times1225^{2}=392785$.<br />As Grade achieves the highest weighted average of squared means, we branch on Grade.<br /><br />This results in two single instance leaves, and four instances with grade 6-8. We consider the best split for the following instances:<br /><b>Bedrooms = [2,3,4]</b>&emsp;&emsp;[180], [220,540], [605]<br /><b>Bathrooms = [less than 3, more than 3]</b>&emsp;&emsp;[220, 540, 180], [605]<br />Similar calculations show that the weighted average of squared means is 171806 for Bedrooms and 165140 for Bathrooms.<br /> We therefore branch on Bedrooms.<br />This results in two single instance leaves, and two instances with grade 6-8 and 3 bedrooms. We take the average of these two instances, 220 and 540, as the label for the corresponding leaf. <br />This gives rise to the following regression tree:<img src = 'img/33368/q6.png'><br />To predict the house price of House #7, we follow the regression tree along the correct branches, and end in the leaf corresponding to Grade 6-8, 3 bedrooms, and less than 3 bathrooms. This leaf has mean 380 so the predicted house price is 380.",
+    "source": "The training data was taken from https://www.kaggle.com/harlfoxem/housesalesprediction.",
+    "comments": "This question is similar to Exercise 4 of the problem sheet on Tree Models. It has a difficulty level of 3 because the calculations involve training data and are rather involved."
+  },
+  
+  "7": {
+    "difficulty": "3",
+    "reference": "6.1",
+    "problem_type": "training",
+    "question": "Consider the following small dataset about weather conditions and whether or not to play tennis with positive examples:<br />p1: Outlook = Overcast ^ Temperature = Hot ^ Humidity = High ^ Wind = Weak<br />p2: Outlook = Rain ^ Temperature = Mild ^ Humidity = High ^ Wind = Weak<br />p3: Outlook = Rain ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Weak<br />p4: Outlook = Overcast ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Strong<br />p5: Outlook = Sunny ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Weak<br /> and negative examples:<br />n1: Outlook = Sunny ^ Temperature = Hot ^ Humidity = High ^ Wind = Weak<br />n2: Outlook = Sunny ^ Temperature = Hot ^ Humidity = High ^ Wind = Strong<br />n3: Outlook = Rain ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Strong<br />n4: Outlook = Sunny ^ Temperature = Mild ^ Humidity = High ^ Wind = Weak<br />n5: Outlook = Rain ^ Temperature = Mild ^ Humidity = High ^ Wind = Strong.<br /><br />Using highest purity to decide which literal is best, learn an ordered list of rules of the form<br /><b>if</b> R1<br /><b>else if</b> R2<br /><b>else if</b> R3<br /><b>else if</b> R4<br /><b>else</b> R5<br />Order the rules you obtain correctly.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "R1",
+        "answer": "Outlook = Overcast <b>then</b> Class = +",
+        "explanation": "There are 10 possible literals. These are shown with their coverage counts in the figure below.<img src = 'img/33368/q7-1.png'>We see that only the literal Outlook = Overcast is pure. Therefore, we formulate our first rule as<br />R1: if Outlook = Overcast <b>then</b> Class = +.<br />"
+      },
+      { "correctness": "R2",
+        "answer": "Wind = Strong <b>then</b> Class = -",
+        "explanation": "The revised coverage counts are shown in the figure below.<img src = 'img/33368/q7-2.png'>Now there are two pure literals, Temperature = Hot and Wind = Strong. We choose Wind = Strong, simply because it covers more examples than Temperature = Hot. Our second rule is therefore <br />R2: if Wind = Strong <b>then</b> Class = -.<br />"
+      },
+      { "correctness": "R3",
+        "answer": "Outlook = Rain <b>then</b> Class = +",
+        "explanation": "The updated coverage counts are shown in the figure below. <img src = 'img/33368/q7-3.png'>Now there are three pure literals. We can choose any of the three. We will choose Outlook = Rain arbitrarily, giving the rule <br />R3: if Outlook = Rain <b>then</b> Class = +.<br />"
+      },
+      { "correctness": "R4",
+        "answer": "Humidity = High <b>then</b> Class = -",
+        "explanation": "The updated coverage counts are shown in the figure below. <img src = 'img/33368/q7-4.png'>Now we choose the literal Humidity = High, giving the rule <br />R4: if Humidity = High <b>then</b> Class = -.<br />"
+      },
+      { "correctness": "R5",
+        "answer": "Class = +",
+        "explanation": "Now only one positive example remains. Therefore we set the default rule to be <br />R5: Class = +."
+      }
+    ],
+    "hint": "At some stages there may be more than one 'best literal' possible, so while doing your working check that you are getting the rules above. You should not have to compute impurity at any stage.",
+    "workings": "There are 10 possible literals. These are shown with their coverage counts in the figure below.<img src = 'img/33368/q7-1.png'>We see that only the literal Outlook = Overcast is pure. Therefore, we formulate our first rule as<br />R1: if Outlook = Overcast <b>then</b> Class = +<br />This literal covers examples p1 and p4, so we no longer consider these. The revised coverage counts are shown in the figure below.<img src = 'img/33368/q7-2.png'>Now there are two pure literals, Temperature = Hot and Wind = Strong. We choose Wind = Strong, simply because it covers more examples than Temperature = Hot. Our second rule is therefore <br />R2: if Wind = Strong <b>then</b> Class = -.<br />This literal covers examples n2, n3, and n4, so we remove these from our diagram giving the figure below.<img src = 'img/33368/q7-3.png'>Now there are three pure literals. We can choose any of the three. We will choose Outlook = Rain arbitrarily, giving the rule <br />R3: if Outlook = Rain <b>then</b> Class = +.<br />This literal covers examples p1 and p2, so we remove these from our diagram, giving the figure below.<img src = 'img/33368/q7-4.png'>Now we choose the literal Humidity = High, giving the rule <br />R4: if Humidity = High <b>then</b> Class = -.<br />Now only one positive example remains. Therefore we set the default rule to be <br />R5: Class = +.",
+    "source": "The training data was taken from https://www.cs.swarthmore.edu/~meeden/cs63/f05/lab05.html.",
+    "comments": "This question tests the student's understanding of Algorithm 6.1 as a method of learning an ordered rule list. It requires involved work using training data. For this reason, the question has difficulty level 3. "
+  },
+  
+  "8": {
+    "difficulty": "3",
+    "reference": "7.2",
+    "problem_type": "training",
+    "question": "Consider the following data points:<br /><b>p1</b> = (1,1)<br /><b>n1</b> = (-2,-1)<br /><b>n2</b> = (2,-2)<br /><b>p2</b> = (4,1)<br />Perform the perceptron algorithm on the data points in the order above with learning rate $\\eta=1$. Sort the weight vectors at each stage in the correct order.",
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "1",
+        "answer": "$\\mathbf{w}=(1,1)$",
+        "explanation": "<b>Iteration 1</b><br />We start with p1 = (1,1). Now $+(0,0)\\cdot(1,1)=0\\leq0$ so we update <b>w</b> to be  $\\mathbf{w}=(1,1)$."
+      },
+      { "correctness": "2",
+        "answer": "<b>w</b> stays the same",
+        "explanation": "<b>Iteration 2</b><br />n1 = (-2,-1) is a negative point, so it has class label -1 rather than +1. Now $-(1,1)\\cdot(-2,-1)=3\\nleq0$ so we do not update <b>w</b>."
+      },
+      { "correctness": "3",
+        "answer": "$\\mathbf{w}=(-1,3)$",
+        "explanation": "<b>Iteration 3</b><br />$-(1,1)\\cdot(2,-2)=0\\leq0$ so we update <b>w</b> to be $\\mathbf{w}=(1,1)-(2,-2)=(-1,3)$."
+      },
+       { "correctness": "4",
+        "answer": "$\\mathbf{w}=(3,4)$",
+        "explanation": "<b>Iteration 4</b><br />$+(-1,3)\\cdot(4,1)=-1\\leq0$ so we update <b>w</b> to be $\\mathbf{w}=(-1,3)+(4,1)=(3,4)$."
+      }
+    ],
+    "hint": "Positive data points p1 and p2 have class labels +1, negative data points n1 and n2 have class labels -1.",
+    "workings": "The algorithm starts with the weight vector at <b>w</b> = (0,0). For each data point $x_{i}$, we evaluate $y_{i}{w\\cdot}x_{i}$, where $y_{i}$ is the class label of point $x_{i}$. If this dot product is less than or equal to 0, then we update the weight vector.<br /><b>Iteration 1</b><br />We start with p1 = (1,1). Now $+(0,0)\\cdot(1,1)=0\\leq0$ so we update <b>w</b> to be $\\mathbf{w}=(1,1)$.<br /><b>Iteration 2</b><br />n1 = (-2,-1) is a negative point, so it has class label -1 rather than +1. Now $-(1,1)\\cdot(-2,-1)=3\\nleq0$ so we do not update <b>w</b>.<br /><b>Iteration 3</b><br />$-(1,1)\\cdot(2,-2)=0\\leq0$ so we update <b>w</b> to be $\\mathbf{w}=(1,1)-(2,-2)=(-1,3)$.<br /><b>Iteration 4</b><br />$+(-1,3)\\cdot(4,1)=-1\\leq0$ so we update <b>w</b> to be $\\mathbf{w}=(-1,3)+(4,1)=(3,4)$.",
+    "source": "-",
+    "comments": "This question tests the student's knowledge of the <b>perceptron algorithm</b>. It involves applying an algorithm to a small set of training data. Therefore I have given it a difficulty level of 3."
+  },
+  
+  "9": {
+    "difficulty": "3",
+    "reference": "7.2",
+    "problem_type": "training",
+    "question": "Consider the following data points:<br /><b>p1</b> = (1,1)<br /><b>n1</b> = (-2,-1)<br /><b>n2</b> = (2,-2)<br /><b>p2</b> = (2,1)<br />Perform the <b>dual</b> perceptron algorithm on the data points in the order above. Choose the correct final value of $\\alpha$.",
+    "answer_type": "single",
+    "answers": [
+      { "correctness": "-",
+        "answer": "$\\alpha=(1,0,1,0)$"
+      },
+      { "correctness": "-",
+        "answer": "$\\alpha=(1,0,0,0)$"
+      },
+      { "correctness": "+",
+        "answer": "$\\alpha=(1,0,1,1)$",
+        "explanation": "See workings."
+      },
+      { "correctness": "-",
+        "answer": "$\\alpha=(1,0,0,1)$"
+      }
+    ],
+    "hint": "The algorithm starts with $\\alpha_{i}=0$ for $i=1,2,3,4$.",
+    "workings": "The algorithm starts with $\\alpha_{i}=0$ for $i=1,2,3,4$. For each data point $x_{i}$, we evaluate $y_{i}\\sum_{j=1}^{4}\\alpha_{j}y_{j}x_{i}\\cdot x_{j}$. If this is less than or equal to 0, then we add 1 to $\\alpha_{i}.$<br /><b>Iteration 1</b><br />As $\\alpha_{i}=0$ for $i=1,2,3,4$ the expression $y_{i}\\sum_{j=1}^{4}\\alpha_{j}y_{j}x_{i}\\cdot x_{j}$ will necessarily be equal to 0. Therefore $\\alpha_{1}=1$, giving $\\alpha=(1,0,0,0)$.<br /><b>Iteration 2</b><br />For $\\mathbf{ n1=(-2,-1)}$, we have $x_{2}=(-2,-1)$ and $y_{2}=-1$, so we have $y_{i}\\sum_{j=1}^{4}\\alpha_{j}y_{j}x_{i}\\cdot x_{j}=$$-\\alpha_{1}y_{1}x_{2}\\cdot x_{1}=-(1,1)\\cdot(-2,-1)=3\\nleq0$. Therefore we do not update $\\alpha_{2}$.<br /><b>Iteration 3</b><br />For $\\mathbf{ n2=(2,-2)}$, we have $x_{3}=(2,-2)$ and $y_{3}=-1$, so we have $y_{i}\\sum_{j=1}^{4}\\alpha_{j}y_{j}x_{i}\\cdot x_{j}=$$-\\alpha_{1}y_{1}x_{3}\\cdot x_{1}=-(1,1)\\cdot(2,-2)=0$. Therefore $\\alpha_{3}=1$, giving $\\alpha=(1,0,1,0).$<br /><b>Iteration 4</b><br />For $\\mathbf{p2=(4,1)}$, we have $x_{4}=(4,1)$ and $y_{4}=1$, so we have $y_{i}\\sum_{j=1}^{4}\\alpha_{j}y_{j}x_{i}\\cdot x_{j}=\\alpha_{\\text{1}}y_{1}x_{4}\\cdot x_{1}+\\alpha_{\\text{3}}y_{3}x_{4}\\cdot x_{3}=(4,1)\\cdot(1,1)-(4,1)\\cdot(2,-2)=5-6=-1$. Therefore $\\alpha_{4}=1$, giving $\\alpha=(1,0,1,1).$",
+    "source": "-",
+    "comments": "This question tests the student's knowledge of the <b>dual perceptron algorithm</b> rather than the perceptron algorithm. The question involves applying an algorithm to a small set of training data so I have given it a difficulty level of 3."
+  },
+  
+  
+  "10": {
+    "difficulty": "5",
+    "reference": "8.6",
+    "problem_type": "beyond scope of book",
+    "answer_type": "blank_answer",
+    "question": [
+      "<b>Cosine similarity</b> is a measure that is often used in text mining, the process of deriving information from text. <br />Given the two quotes below, what is their cosine similarity? Round to two decimal places.<br /><b>Sentence 1:</b> A room without books is like a body without a soul.<br /><b>Sentence 2:</b> A house without books is like a room without windows.<br />",
+      "Answer: ", 1, "."
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "0.86",
+        "explanation": "See workings."
+      }
+    ],
+    "hint": "Count the number of occurrences of the word in each of the two sentences. This gives rise to two vectors. It is then possible to calculate the cosine similarity of the two vectors.",
+    "workings": "Begin by making a list of all the words in the two sentences:<br /><tt>a room without books is like body soul house windows</tt><br />Next, count the number of occurrences of the word in each of the two sentences. The results are displayed in the table below. <table><tr><td>&nbsp;</td><td>Sentence 1</td><td>Sentence 2</td></tr><tr><td>a</td><td>3</td><td>2</td></tr><tr><td>room</td><td>1</td><td>1</td></tr><tr><td>without</td><td>2</td><td>2</td></tr><tr><td>books</td><td>1</td><td>1</td></tr><tr><td>is</td><td>1</td><td>1</td></tr><tr><td>like</td><td>1</td><td>1</td></tr><tr><td>body</td><td>1</td><td>0</td></tr><tr><td>soul</td><td>1</td><td>0</td></tr><tr><td>house</td><td>0</td><td>1</td></tr><tr><td>windows</td><td>0</td><td>1</td></tr></table>This gives rise to two vectors:<br /> $\\mathbf{x=}[3,1,2,1,1,1,1,1,0,0]$ <br /> $\\mathbf{y=}[2,1,2,1,1,1,0,0,1,1]$<br />The cosine similarity of these two vectors is $cos\\theta=\\frac{\\mathbf{x\\cdot y}}{\\mathbf{||x||}\\cdot\\mathbf{||y||}}=\\frac{14}{\\sqrt{19}\\cdot\\sqrt{14}}\\approx0.86$.",
+    "source": "https://www.r-bloggers.com/text-mining-analysis-some-theory-and-practice-in-r/",
+    "comments": "Although cosine similarity was introduced in the textbook, it was not shown how this measure is applied within the field of text mining. The two sentences given can be thought of as high-dimensional vectors based on the number of word occurrences. If we consider $\\theta$ to be the angle between the two vectors, then cos$\\theta$ can be seen as a similarity measure between the two vectors - the closer cos$\\theta$ is to 1, the more similar the sentences. Because this question presents an application of cosine similarity outside of the textbook, I have given it a difficulty level of 5. "
+  },
+  
+  "11": {
+    "difficulty": "4",
+    "reference": "9.2",
+    "problem_type": "problem-solving",
+    "question": "The ideas of conditional and unconditional independence are very important in probability. Analogous to these are the ideas of conditional and unconditional dependence. Below are different sets of events A,B,C about a family with (exactly) two children. Identify correctly which list of events fits which description.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "<b>Independent but NOT conditionally independent</b>",
+        "answer": "A - Their first child is a girl.<br /> B - Their second child is a girl.<br />C - Both of their children are the same sex.",
+        "explanation": "Events A and B are independent, as the sex of each child is independent of the sex of the other.<br />However, events A and B are conditionally dependent, <b>not</b> conditionally independent. This is because, given event C, knowing that event A occurs implies that event B occurs (and vice-versa)."
+      },
+      { "correctness": "<b>Dependent but conditionally independent</b>",
+        "answer": "A - Their first child is a girl.<br />B - Their second child has a sister.<br /> C - Both of the children are girls.",
+        "explanation": "Events A and B are dependent, since if the second child has a sister (and we are assuming the family only has two children), then the first child must be a girl. So B implies A.<br />The events A and B are conditionally independent because they are both certainly true given event C, that is, we see that $P(A{\\bigcap}B|C)=1$ and $P(A|C)P(B|C)=1$."
+      },
+      { "correctness": "<b>Independent and conditionally independent</b>",
+        "answer": "A - Their first child is a girl.<br />B - Their second child is a girl.<br />C - Both of the children are girls.",
+        "explanation": "Events A and B are independent, as the sex of each child is independent of the sex of the other.<br />The events A and B are conditionally independent because they are both certainly true given event C, that is, we see that $P(A{\\bigcap}B|C)=1$ and $P(A|C)P(B|C)=1$."
+      }
+    ],
+    "hint": "Two events are <b>conditionally independent</b> if they are independent given the occurrence of a third event. Symbolically, events A and B are conditionally independent if, given, a third event C, $P(A{\\bigcap}B|C)=P(A|C)P(B|C).$",
+    "workings": "See explanations.",
+    "source": "https://www.quora.com/What-are-examples-of-events-that-are-independent-but-not-conditionally-independent-and-vice-versa",
+    "comments": "The idea of dependence or independence of events or random variables is a very important concept in probability. An extension of this is the concept of conditional dependent or independence. The textbook describes the difference between (unconditional) independence and conditional dependence, but this material was not covered in lectures. Therefore I have given it a difficulty level of 4."
+  },
+  
+  "12": {
+    "difficulty": "3",
+    "reference": "10.2",
+    "problem_type": "training",
+    "question": "The table below shows data on the gross disposable household income (GDHI) per capita for the London boroughs in 2014.<table><tr><td><b>Borough</b></td><td><b>Gross disposable household income (GDHI) per capita in £</b></td></tr><tr><td>Camden and City of London</td><td>43,735</td></tr><tr><td>Westminster</td><td>43,616</td></tr><tr><td>Kensington & Chelsea and Hammersmith & Fulham</td><td>45,988</td></tr><tr><td>Wandsworth</td><td>32,985</td></tr><tr><td>Hackney and Newham</td><td>19,199</td></tr><tr><td>Tower Hamlets</td><td>19,639</td></tr><tr><td>Haringey and Islington</td><td>23,602</td></tr><tr><td>Lewisham and Southwark</td><td>20,756</td></tr><tr><td>Lambeth</td><td>21,020</td></tr><tr><td>Bexley and Greenwich</td><td>18,473</td></tr><tr><td>Barking & Dagenham and Havering</td><td>18,312</td></tr><tr><td>Redbridge and Waltham Forest</td><td>18,722</td></tr><tr><td>Enfield</td><td>19,584</td></tr><tr><td>Bromley</td><td>23,111</td></tr><tr><td>Croydon</td><td>19,957</td></tr><tr><td>Merton, Kingston upon Thames and Sutton</td><td>22,104</td></tr><tr><td>Barnet</td><td>23,886</td><tr><td>Brent</td><td>21,284</td><tr><td>Ealing</td><td>22,089</td><tr><td>Harrow and Hillingdon</td><td>21,180</td></tr><tr><td>Hounslow and Richmond upon Thames</td><td>23,897</td></tr></table>Suppose you wish to use equal-frequency discretisation on the following data with 4 bins. Use Excel (or another software package) to make the necessary calculations. What are the correct bins (rounded to the nearest £1000)?",
+    "answer_type": "single",
+    "answers": [
+      { "correctness": "-",
+        "answer": "18k-20k, 20k-21k, 21k-24k, 24k-46k"
+      },
+      { "correctness": "-",
+        "answer": "0k-11k, 11k-23k, 23k-34k, 34k-46k"
+      },
+      { "correctness": "+",
+        "answer": "0-20k, 20k-21k, 21k-24k, 24k-infinity",
+        "explanation": "See workings."
+      },
+      { "correctness": "-",
+        "answer": "16k-24k, 24k-31k, 31k-39k, 39k-46k"
+      }
+    ],
+    "hint": "The bin boundaries of equal-frequency discretisation are quantiles. In the case of four bins, the bin boundaries are quartiles.",
+    "workings": " The bin boundaries of equal-frequency discretisation are quantiles. In the case of four bins, the bin boundaries are quartiles. Therefore, I used Excel on this table of data to calculate the quartiles with the help of the QUARTILE.EXC function. The quartiles returned were as follows: 19611.5, 21284, 23891.5. Rounding these to the nearest £1000 gives 20k, 21k, 24k. 0 is the lowermost bin boundary, whereas infinity is the uppermost bin boundary. Therefore the bins themselves are 0-20k, 20k-21k, 21k-24k, 24k-infinity.<br />Here is how the calculations are done step-by-step. Sort all the figures in ascending order, and now consider this sorted list of observations. As there are 21 observations, the median is the 11th observation, which is 21,284. The first quartile is the median of the set of observations 1-10. As this is an even number of observations, the first quartile is the average of the 5th and 6th observations, $\\frac{19,584+19,639}{2}=19611.5$. Similarly, the third quartile is the median of the set of observations 11-21, so it is the average of the 16th and 17th observations, $\\frac{23,886+23,897}{2}=23891.5$.<br /><br />Below I have included explanations for why the other solutions are incorrect:<br />18k-20k, 20k-21k, 21k-24k, 24k-46k is incorrect because the lower boundary should start at 0 while the upper boundary should end at infinity.<br />0k-11k, 11k-23k, 23k-34k, 34k-46k would be the correct solution if the question asked for equal-width discretisation, but the question asks for equal-frequency discretisation.<br />16k-24k, 24k-31k, 31k-39k, 39k-46k is again a solution obtained by having bins of equal width, but it starts (incorrectly) with 16k rather than 0.",
+    "source": "http://ai.fon.bg.ac.rs/wp-content/uploads/2015/04/ML-Attribute-Discretisation-and-Selection-Clustering-2014_eng.pdf and and https://www.ons.gov.uk/economy/regionalaccounts/grossdisposablehouseholdincome/datasets/regionalgrossdisposablehouseholdincomegdhi",
+    "comments": "This question gets the student to perform feature discretisation on a set of real-life data. It is crucial that the student understand the difference between equal-frequency discretisation and equal-width discretisation, as using the wrong method will lead to obtaining the wrong answer. The question uses a larger dataset than the problem sheet questions, so using software to calculate the quartiles is recommended. Because the question requires performing calculation on some training data, I have assigned it a difficulty level of 3."
+  },
+    
+  "13": {
+    "difficulty": "4",
+    "reference": "11.3",
+    "problem_type": "evaluation",
+    "question": "Which of the following are examples of meta-learners?",
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "+",
+        "answer": "Bagging",
+        "explanation": "Bagging is a meta-algorithm which creates diverse predictive models on different random samples and then combines these predictions in order to <b>reduce variance</b>. It is using (and then combining) a variety of models, so it is a meta-learner."
+      },
+      { "correctness": "+",
+        "answer": "Boosting",
+        "explanation": "Boosting is a meta-algorithm which iteratively trains 'weak' classifiers by increasing the weight of misclassified instances each time, and then combining them to make a 'strong' classifier. It is used in order to <b>reduce bias</b>. It is using (and then combining) a variety of models, so it is a meta-learner. "
+      },
+      { "correctness": "+",
+        "answer": "Stacking",
+        "explanation": "Stacking refers to the process of learning a linear meta-model. Rather than deriving the weights $\\alpha_{t}$ using a formula (as is done in the boosting algorithm), stacking 'learns' the weights by using another (meta-level) model to determine which weights work best. So again, stacking is using a variety of models, so it is a meta-learner, but it is also using an additional (meta-level) model. "
+      },
+      { "correctness": "-",
+        "answer": "Basic linear classifier"
+      }
+    ],
+    "hint": "Meta-learning involves training a variety of models on a large collection of data sets. Meta-algorithms are examples of meta-learners.",
+    "workings": "See explanations for bagging, boosting, and stacking. The basic linear classifier is clearly <b>not</b> a meta-learner because it uses only one model.",
+    "source": "http://stats.stackexchange.com/questions/18891/bagging-boosting-and-stacking-in-machine-learning",
+    "comments": "This question covers material on the topic of <b>meta-learning</b>, which was not covered in lectures. Therefore I have given it a difficulty level of 4."
+  },
+  
+  "14": {
+    "difficulty": "2",
+    "reference": "12.3",
+    "problem_type": "calculation",
+    "question": "To assess the effect of traffic on air pollution levels, the mayor of Data City wants to perform Wilcoxon's signed-rank test. The following table shows the air pollution level every hour for 15 hours on two separate days: one when the roads are open, and another when the roads are closed. The first step in Wilcoxon's signed-rank test is to rank the differences between the two days (in absolute value).<br />Order the hours in order of increasing rank.<table><tr><td>Hour</td><td>Open Roads</td><td>Closed Roads</td></tr><tr><td>8:00</td><td>214</td><td>159</td></tr><tr><td>9:00</td><td>159</td><td>135</td></tr><tr><td>10:00</td><td>169</td><td>141</td></tr><tr><td>11:00</td><td>202</td><td>101</td></tr><tr><td>12:00</td><td>103</td><td>102</td></tr><tr><td>13:00</td><td>119</td><td>168</td></tr><tr><td>14:00</td><td>200</td><td>62</td></tr><tr><td>15:00</td><td>109</td><td>167</td></tr><tr><td>16:00</td><td>132</td><td>174</td></tr><tr><td>17:00</td><td>142</td><td>159</td></tr><tr><td>18:00</td><td>194</td><td>66</td></tr></table>",
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "1",
+        "answer": "12:00",
+        "explanation": "See working."
+      },
+      { "correctness": "2",
+        "answer": "17:00",
+        "explanation": "See working."
+      },
+      { "correctness": "3",
+        "answer": "9:00",
+        "explanation": "See working."
+      },
+      { "correctness": "4",
+        "answer": "10:00",
+        "explanation": "See working."
+      },
+      { "correctness": "5",
+        "answer": "16:00",
+        "explanation": "See working."
+      },
+      { "correctness": "6",
+        "answer": "13:00",
+        "explanation": "See working."
+      },
+      { "correctness": "7",
+        "answer": "8:00",
+        "explanation": "See working."
+      },
+      { "correctness": "8",
+        "answer": "15:00",
+        "explanation": "See working."
+      },
+      { "correctness": "9",
+        "answer": "11:00",
+        "explanation": "See working."
+      },
+      { "correctness": "10",
+        "answer": "18:00",
+        "explanation": "See working."
+      },
+      { "correctness": "11",
+        "answer": "14:00",
+        "explanation": "See working."
+      }
+    ],
+    "hint": "Rank the differences between the two days (in absolute value), from smallest (rank 1) to largest (rank n), where n, the number of measurements for each day, is 11 in this case.",
+    "workings": "To rank the differences between the two days, we must first calculate the differences between the two days for every hour. This is done in the table below.<table><tr><td>Hour</td><td>Open Roads</td><td>Closed Roads</td><td>Difference</td></tr><tr><td>8:00</td><td>214</td><td>159</td><td>55</td></tr><tr><td>9:00</td><td>159</td><td>135</td><td>24</td></tr><tr><td>10:00</td><td>169</td><td>141</td><td>28</td></tr><tr><td>11:00</td><td>202</td><td>101</td><td>101</td></tr><tr><td>12:00</td><td>103</td><td>102</td><td>1</td></tr><tr><td>13:00</td><td>119</td><td>168</td><td>-49</td></tr><tr><td>14:00</td><td>200</td><td>62</td><td>138</td></tr><tr><td>15:00</td><td>109</td><td>167</td><td>-58</td></tr><tr><td>16:00</td><td>132</td><td>174</td><td>-42</td></tr><tr><td>17:00</td><td>142</td><td>159</td><td>-17</td></tr><tr><td>18:00</td><td>194</td><td>66</td><td>128</td></tr></table>Now, we rank the differences in absolute value with smallest (rank 1) to largest (rank n). The differences, in order of increasing magnitude, are 1 (12:00), 17 (17:00), 24 (9:00), 28 (10:00), 42 (16:00), 49 (13:00), 55 (8:00), 58 (15:00), 101 (11:00), 128 (18:00), and 138 (14:00).<br />Therefore, the hours, in order of increasing rank, are:<br />12:00 - 17:00 - 9:00 - 10:00 - 16:00 - 13:00 - 8:00 - 15:00 - 11:00 - 18:00 - 14:00",
+    "source": "https://www.r-bloggers.com/wilcoxon-signed-rank-test/",
+    "comments": "The Wilcoxon's signed-rank test is used to compare two learning algorithms over multiple data sets. This question tests the student's ability to perform the preliminary stage of this test. Therefore, because this question only asks to perform the first stage of the test, I have assigned it a difficulty level of 2."
+  },
+  
+  "15": {
+    "difficulty": "3",
+    "reference": "6.1",
+    "problem_type": "training",
+    "question": "Consider the following small dataset about weather conditions and whether or not to play tennis with positive examples:<br />p1: Outlook = Overcast ^ Temperature = Hot ^ Humidity = High ^ Wind = Weak<br />p2: Outlook = Rain ^ Temperature = Mild ^ Humidity = High ^ Wind = Weak<br />p3: Outlook = Rain ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Weak<br />p4: Outlook = Overcast ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Strong<br />p5: Outlook = Sunny ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Weak<br /> and negative examples:<br />n1: Outlook = Sunny ^ Temperature = Hot ^ Humidity = High ^ Wind = Weak<br />n2: Outlook = Sunny ^ Temperature = Hot ^ Humidity = High ^ Wind = Strong<br />n3: Outlook = Rain ^ Temperature = Cool ^ Humidity = Normal ^ Wind = Strong<br />n4: Outlook = Sunny ^ Temperature = Mild ^ Humidity = High ^ Wind = Weak<br />n5: Outlook = Rain ^ Temperature = Mild ^ Humidity = High ^ Wind = Strong.<br /><br />Using Laplace correction, order the following rules in order of decreasing Laplace-corrected precision.<br /><b>R1</b> if Outlook = Overcast <b>then</b> Class = +<br /><b>R2</b> if Wind = Weak <b>then</b> Class = +<br /><b>R3</b> if Temperature = Mild <b>then</b> Class = -<br /><b>R4</b> if Humidity = Normal <b>then</b> Class = +",
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "1",
+        "answer": "R1",
+        "explanation": "See working."
+      },
+      { "correctness": "2",
+        "answer": "R4",
+        "explanation": "See working."
+      },
+      { "correctness": "3",
+        "answer": "R2",
+        "explanation": "See working."
+      },
+      { "correctness": "4",
+        "answer": "R3",
+        "explanation": "See working."
+      }
+    ],
+    "hint": "Find the coverage count of each literal.",
+    "workings": "For each rule R1, R2, R3, and R4, we calculate the corresponding coverage counts, apply Laplace correction, and calculate the Laplace-corrected precision.<br />R1: [2+,0-] is 'corrected' to [3+,1-], giving a precision of 3/4 = 0.75<br />R2: [4+,2-] is 'corrected' to [5+,3-] giving a precision fo 5/8 = 0.625<br />R3: [1+,2-] is 'corrected' to [2+,3-] giving a precision of 3/5 = 0.6<br />R4: [3+,1-] is 'correceted' to [4+,2-] giving a precision of 4/6 = 0.667<br />Therefore the rules, in decreasing Laplace-corrected precision, are R1 - R4 - R2 - R3.",
+    "source": "The training data was taken from https://www.cs.swarthmore.edu/~meeden/cs63/f05/lab05.html.",
+    "comments": "This question is similar to that Exercise 1 question 2 on the problem sheet on rule models. It tests the student's knowledge of coverage counts of literals, precision, and Laplace correction. Because a similar question has already been seen before, and because the calculations are relatively straightforward, this question has a difficulty level of 2."
+  },
+  
+  "16": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculation",
+    "question": "<b>Reinforcement learning</b> is an active area of machine learning. It is about learning policies for deciding which actions to take so as to maximise value (total reward). In this question we consider a simple finite MDP (Markov decision process) called 'Gridworld.' The cells of the grid correspond to states of the environment. At each cell, the agent can select one of four actions with equal probability - north, south, east, or west.<br />Actions that take the agent off the grid leave the location unchanged, but result in a reward of -1.<br />Actions that move the agent out of state A take the agent to A' and result in a reward of +10.<br />Actions that move the agent out of state B take the agent to B' and result in a reward of +5.<br />All other actions result in a reward of 0.<br />The value functions $V^{\\pi}$ for most of the states have already been provided in the figure below.<br /><img src = 'img/33368/q20.png'><br /> Using a discount rate of γ = 0.9, what is the value function $V^{\\pi}$ for state B? For state (2,3)? Round your answers to one decimal point.",
+  "answer_type": "blank_answer",
+  "question": [
+      "<b>Reinforcement learning</b> is an active area of machine learning. It is about learning policies for deciding which actions to take so as to maximise value (total reward). In this question we consider a simple finite MDP (Markov decision process) called 'Gridworld.' The cells of the grid correspond to states of the environment. At each cell, the agent can select one of four actions with equal probability - north, south, east, or west.<br />Actions that take the agent off the grid leave the location unchanged, but result in a reward of -1.<br />Actions that move the agent out of state A take the agent to A' and result in a reward of +10.<br />Actions that move the agent out of state B take the agent to B' and result in a reward of +5.<br />All other actions result in a reward of 0.<br />The value functions $V^{\\pi}$ for most of the states have already been provided in the figure below.<br /><img src = 'img/33368/q20.png'><br /> Using a discount rate of γ = 0.9, what is the value function $V^{\\pi}$ for state B? For state (2,3)? Round your answers to one decimal point.<br />",
+      "$V^{\\pi}(B)=$ ", 1, "<br />$V^{\\pi}((2,3))=$", 2
+    ],
+  "answers": [
+    { "correctness": 1,
+    "answer": "5.4",
+    "explanation": "For state B, we have:<br />$V^{\\pi}(B)=P_{BB'}\\left[R_{BB'}+\\gamma V(B')\\right]=1\\times\\left[5+0.9\\times V(B')\\right]=5+0.9\\times0.4\\approx5.4$."
+    },
+    { "correctness": 2,
+    "answer": "2.3",
+    "explanation": "For state (2,3), we have:<br />$V^{\\pi}((2,3))=P_{(2,3)(3,1)}\\left[R_{(2,3)(3,1)}+\\gamma V((3,1))\\right]+P_{(2,3)(2,2)}\\left[R_{(2,3)(2,2)}+\\gamma V((2,2))\\right]+P_{(2,3)(3,3)}\\left[R_{(2,3)(3,3)}+\\gamma V((3,3))\\right]+P_{(2,3)(2,4)}\\left[R_{(2,3)(2,4)}+\\gamma V((2,4))\\right]$<br />$=\\frac{1}{4}\\times\\left[0+0.9\\times4.4\\right]+\\frac{1}{4}\\times\\left[0+0.9\\times3.0\\right]+\\frac{1}{4}\\times\\left[0+0.9\\times0.7\\right]+\\frac{1}{4}\\times\\left[0+0.9\\times1.9\\right]$<br />$=\\frac{1}{4}\\times0.9\\times\\left[4.4+3.0+0.7+1.9\\right]=\\frac{9}{4}\\approx2.3$."
+    }
+    ],
+    "hint": "Using the Bellman equation, the value function of state s is: $V^{\\pi}(s)=\\underset{a}{\\sum}\\pi(s,a)\\underset{s'}{\\sum}Pss\\prime\\left[Rss\\prime+\\gamma V(s')\\right]$ where $\\pi(s,a)$ is the probability of taking action a  when in state s, $Pss\\text{′}$ is the transition probability of s to s', $Rss\\text{′}$ is the expected reward of moving from s to s' and V(s') is the value of state s.",
+    "workings": "Using the Bellman equation, the value function of state s is: $V^{\\pi}(s)=\\underset{a}{\\sum}\\pi(s,a)\\underset{s'}{\\sum}Pss\\prime\\left[Rss\\prime+\\gamma V(s')\\right]$ where $\\pi(s,a)$ is the probability of taking action a  when in state s, $Pss\\text{′}$ is the transition probability of s to s', $Rss\\text{′}$ is the expected reward of moving from s to s' and V(s') is the value of state s.",
+    "source": "Richard S. Sutton; Andrew G. Barto, The Reinforcement Learning Problem, in Reinforcement Learning: An Introduction, MIT Press, 1998, pp.51-85",
+    "comments": "This question involves evaluating value functions for a particular reinforcement learning problem. Reinforcement learning is mentioned in the Epilogue, but is not covered in the textbook. Therefore this question has a difficulty level of 5."
+  },
+
+  "17": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "evaluation",
+    "question": "A major statistical challenge is that of establishing a causal relationship between two variables. This is because 'correlation does not imply causation' - one may find that there is a close association between two variables but this does not establish causality, as there may be other explanations for the observed relationship.<br />Match each of the following correlations found to its most relevant confounding variable.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "Ice cream sales and bikini sales",
+        "answer": "Confounder: hot weather",
+        "explanation": "Both ice cream sales and bikini sales increase with hot weather. It is unlikely that ice cream sales cause bikini sales, or vice-versa."
+      },
+      { "correctness": "Coffee drinking and increased mortality rate",
+        "answer": "Confounder: smoking",
+        "explanation": "Although it may be the case that cofee drinking does result in an increased mortality rate, smoking may be a confounding variable. According to the second source listed, people who drink more coffee tend to smoke more cigarettes. Smoking is likely to result in an increased mortality rate."
+      },
+      { "correctness": "Pumpkins and candy",
+        "answer": "Confounder: Halloween",
+        "explanation": "Do people crave more candy when they have pumpkins? Do people crave more pumpkins when they have candy? The most likely answer is that people are buying both pumpkins and candy as a result of it being Halloween."
+      }
+    ],
+    "hint": "A <b>confounding variable</b> is one which has a causal effect on both variables. Do people crave more candy when they have pumpkins? Do people crave more pumpkins when they have candy? Or is there a third thing, which we haven't considered, that causes both?",
+    "workings": "See explanations.",
+    "source": "Schutt, Rachel, and Cathy O'Neil. Doing Data Science. 3rd ed, O'Reilly Media, 2014. Print. and http://psy2.ucsd.edu/~nchristenfeld/Publications_files/statcontrol.pdf",
+    "comments": "This question tests the student's understanding of causality (and in particular, the statistical concept of confounding), a topic that was not explored in the textbook. Therefore I have given it a difficulty level of 5. Causality is an important topic within the area of data science - in fact, the book <i>Doing Data Science</i> has an entire chapter devoted to this."
+  },
+  
+  "18": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "evaluation",
+    "question": "The <b>binary relevance</b> (BR) method is one problem transformation method which can be used in multi-label classification. What are the advantanges and disavantages of this method? Select all that apply.",
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "+",
+        "answer": "Disadvantage: Does not take label dependency into account",
+        "explanation": "The method assumes independence of labels. This means that dependencies between labels are ignored. This information loss may result in a decrease in predictive performance."
+      },
+      { "correctness": "+",
+        "answer": "Advantage: Can add/remove label(s) without affecting the rest of the model",
+        "explanation": "In this method, labels are independent of one another. This means that they can be added or removed without affecting the rest of the model."
+      },
+      { "correctness": "+",
+        "answer": "Advantage: Low computational complexity, scales linearly with the number of labels",
+        "explanation": "The method learns |L| binary classifiers, where L is the label set. Therefore, it scales linearly with the number of labels in the label set. This results in a low computational complexity, and excludes another answer (Disadvantage: High computational complexity, may scale exponentially with the number of labels)."
+      },
+      { "correctness": "-",
+        "answer": "Disadvantage: High computational complexity, may scale exponentially with the number of labels"
+      },
+      { "correctness": "-",
+        "answer": "Advantage: Takes label dependency into account"
+      }
+    ],
+    "hint": "The binary relevance method generates one binary dataset for each label in the label set. It then learns a binary classifier for each of those datasets. Within each dataset, a particular data point is classified positive if it does predict the label, and negative otherwise.",
+    "workings": "See explanations.",
+    "source": "de Carvalho, A.C. and Freitas, A.A., 2009. A tutorial on multi-label classification techniques. In Foundations of Computational Intelligence Volume 5 (pp. 177-195). Springer Berlin Heidelberg",
+    "comments": "This question tests the student's understanding of the binary relevance method. This is a problem transformation method used in multi-label classification, an area of machine learning which was mentioned in the Epilogue of the textbook. Because this question delves deeper into an advanced topic outside of the textbook, I have given it a difficulty level of 5."
+  },
+  
+  "19": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "evaluation",
+    "question": "Consider the following multilabel dataset with label set $L=\\{\\lambda_{1},\\lambda_{2},\\lambda_{3},\\lambda_{4}\\}$ and elements $y_{i}$ which take the value 1 if the instance carries label $\\lambda_{i}$ and 0 otherwise.<table><tr><td><b>Example</b></td><td><b>y1</b></td><td><b>y2</b></td><td><b>y3</b></td><td><b>y4</b></td><td><b>$Y\\subset L=\\{\\lambda_{1},\\lambda_{2},\\lambda_{3},\\lambda_{4}\\}$</b></td></tr><tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>$\\{\\lambda_{1},\\lambda_{2}\\}$</td></tr><tr><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>$\\{\\lambda_{3}\\}$</td></tr><tr><td>3</td><td>0</td><td>1</td><td>1</td><td>1</td><td>$\\{\\lambda_{2},\\lambda_{3},\\lambda_{4}\\}$</td><tr><td>4</td><td>1</td><td>0</td><td>1</td><td>1</td><td>$\\{\\lambda_{1},\\lambda_{3},\\lambda_{4}\\}$</td><tr><td>5</td><td>0</td><td>1</td><td>1</td><td>0</td><td>$\\{\\lambda_{2},\\lambda_{3}\\}$</td></tr><td>Totals:</td><td>2</td><td>3</td><td>4</td><td>2</td><td>&nbsp;</td></tr></table>Problem transformation methods transform a multilabel problem into a set of binary classification problems. Match each simple problem transformation method to its corresponding transformed dataset.",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "<table><tr><td>Example</td><td>$Y\\subset L$</td></tr><tr><td>2</td><td>$\\lambda_{3}$</td></tr></table>",
+        "answer": "ignore",
+        "explanation": "<b>ignore</b>: ignores all multilabel instances<br />As Example 2 is the only instance with a single label, it is the only instance in the transformed dataset. "
+      },
+      { "correctness": "<table><tr><td>Example</td><td>$Y\\subset L$</td></tr><tr><td>1</td><td>$\\lambda_{2}$</td></tr><tr><td>2</td><td>$\\lambda_{3}$</td></tr><tr><td>3</td><td>$\\lambda_{3}$</td></tr><tr><td>4</td><td>$\\lambda_{3}$</td></tr><tr><td>5</td><td>$\\lambda_{3}$</td></tr></table>",
+        "answer": "select-max",
+        "explanation": "<b>select-max</b>: select the most frequent label for each instance</br>For instance, Example 1 has labels 1 and 2. Because 1 has a count of 2, and 2 has a count of 3, we select label 2 as this is the more frequent label."
+      },
+      { "correctness": "<table><tr><td>Example</td><td>$Y\\subset L$</td></tr><tr><td>1</td><td>$\\lambda_{1}$</td></tr><tr><td>2</td><td>$\\lambda_{3}$</td></tr><tr><td>3</td><td>$\\lambda_{4}$</td></tr><tr><td>4</td><td>$\\lambda_{1}$</td></tr><tr><td>5</td><td>$\\lambda_{2}$</td></tr></table>",
+        "answer": "select-min",
+        "explanation": "<b>select-min</b>: select the least frequent label for each instance"
+      },
+      { "correctness": "<table><tr><td>Example</td><td>$Y\\subset L$</td></tr><tr><td>1</td><td>$\\lambda_{1}$</td></tr><tr><td>1</td><td>$\\lambda_{2}$</td></tr><tr><td>2</td><td>$\\lambda_{3}$</td></tr><tr><td>3</td><td>$\\lambda_{2}$</td></tr><tr><td>3</td><td>$\\lambda_{3}$</td></tr><tr><td>3</td><td>$\\lambda_{4}$</td></tr><tr><td>4</td><td>$\\lambda_{1}$</td></tr><tr><td>4</td><td>$\\lambda_{3}$</td></tr><tr><td>4</td><td>$\\lambda_{4}$</td></tr><tr><td>5</td><td>$\\lambda_{2}$</td></tr><tr><td>5</td><td>$\\lambda_{3}$</td></tr></table>",
+        "answer": "copy",
+        "explanation": "<b>copy</b>: transform every multilabel instance into several instances, one for each label"
+      }
+    ],
+    "hint": "The simple problem transformation methods work as follows:<br /><b>ignore</b>: ignores all multilabel instances<br /><b>select-max</b>: select the most frequent label<br /><b>select-min</b>: select the least frequent label<br /><b>copy</b>: transform every multilabel instance into several instances, one for each label",
+    "workings": "See explanations.",
+    "source": "https://en.wikipedia.org/wiki/Multi-label_classification and de Carvalho, A.C. and Freitas, A.A., 2009. A tutorial on multi-label classification techniques. In Foundations of Computational Intelligence Volume 5 (pp. 177-195). Springer Berlin Heidelberg.",
+    "comments": "This question tests the student's knowledge of a few simple problem transformation methods used in multi-label classification, an area of machine learning which was mentioned in the Epilogue of the textbook. Because this question is about a topic outside of the textbook, I have given it a difficulty level of 5."
+  }
+
+}

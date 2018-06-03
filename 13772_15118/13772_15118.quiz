@@ -1,0 +1,1039 @@
+{
+  // example quiz text
+  // <- (this is a comment and will be ignored)
+
+  // this is the url for your quiz
+  "url": "127.0.0.1",
+
+  // this are your UoB candidate numbers as a comma separated list
+  "candidate_number": [13772, 15118],
+
+  // this is the title of the quiz
+  "title": "Machine Learning Quiz.",
+
+  // this is an example question.
+  // the number signifies the question order,
+  // meaning questions can be placed in random order
+  // within the file
+  // these are answers, a correct answer
+  // is indicated by a "+", incorrect answer has a "-"
+
+  // Chapter 1, Question 1 - Nearest-Neighbour accuracy using cross-validation
+  "1": {
+    "difficulty": "3",
+    "reference": "1.1",
+    "problem_type": "evaluation",
+    "question":
+      "Using the classifier 1-Nearest-Neighbours, use 4-fold cross-validation to test the accuracy of the classifier. Use the testing pairs (1,2), (3,4), (5,6), (7,8) and use Euclidean Distance to find the closest neighbours. What is the resulting accuracy of the classifier?",
+    "images": [
+      { "url": "img/13772_15118/c1q1_table.png",
+        "caption": "Dataset"
+      },
+      { "url": "img/13772_15118/c1q1_graph.png"}
+    ],
+    "answer_type": "single",
+    "answers": [
+      { "correctness": "-",
+        "answer": "50%"
+      },
+      { "correctness": "-",
+        "answer": "70%"
+      },
+      { "correctness": "+",
+        "answer": "75%",
+        "explanation": "The accuracy of the first fold was 100%, the second fold was 50%, the third fold was 50% and the fourth fold was 100%. This leads to an average accuracy of 75%."
+      },
+      { "correctness": "-",
+        "answer": "100%"
+      }
+    ],
+    "hint": "If $p = (p_1, p_2)$ and $q = (q_1, q_2)$ use the equation Euclidean Distance = $\\sqrt{(q_{1}-p_{1})^{2}+(q_{2}-p_{2})^{2}}$ to work out the distance between the two points $p$ and $q$.",
+    "workings": "Selecting the first two data points as test data, we find the 1-Nearest-Neighbour to them for classification. The data point (1,2) is 2 units away from (1,4), which is the closest point to it. This therefore classifies it as No Night Vision. We have the same case for (2,3), where using Euclidean Distance we find the point (1,4) to be closer (root 2 units away) than the point (4,3) (2 units away). We therefore classify both of these data points correctly as No Night Vision, leading to 100% accuracy for this fold. We then take the next 2 test data points (2,5) and (1,4). The data point (1,4) is closest to (2,3) being root 2 units away and hence is classified as No Night Vision. This data point is classified correctly. The data point (2,5) is closest to the point (3,5) with a 1 unit distance, and hence is classified as Night Vision. This data point is not classified correctly because when it was used in the training set it was given a classification of No Night Vision. We therefore have 50% accuracy for this fold. Using the next 2 test data points (3,5) and (4,3), we can see the point (3,5) is closest to the point (2,5) with a distance of 1 giving it a classification of No Night Vision. This is an incorrect classification. The data point (4,3) is closest to the point (5,4) with a distance of root 2, giving it a classification of Night Vision. This is a correct classification. Therefore, this fold has an overall accuracy of 50%. We have the last 2 test data points (5,4) and (6,2). The data point (5,4) is closest to the point (4,3) with a distance of root 2. This gives a correct classification of Night Vision. The data point (6,2) is closest to the point (4,3) with a distance of root 5, giving it a correct classification of Night Vision. This therefore gives an accuracy of 100% for this fold. Averaging the accuracy from each fold gives us a final overall accuracy for our 1-Nearest-Neighbour classifier. (50 + 100 + 50 + 100) / 4 = 75%. The answer is therefore 75%.",
+    "source": "ML Book chapter 1.1",
+    "comments": "This question tests your knowledge on the k-NN classifier and cross-validation. We believe that this question is a level 3 difficulty because it requires involved reasoning and calculations. We have to give reasoning when using 1-NN why data points are classified as Night Vision or No Night Vision. We have to calculate the Euclidean Distance between points to choose the classification, and calculate the accuracy of each fold of cross-validation to then produce the final answer of the average accuracy between the folds."
+  },
+
+  // Chapter 1, Question 2 - Calculating Posterior Odds and classifying e-mails
+  "2": {
+    "difficulty": "3",
+    "reference": "1.2",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "question": [
+      "Use the data given in the e-mails to fill in the blanks below. Given that $P(A)=P(B)=0.3$ use the posterior odds (ensuring spam is used as the numerator) in order to classify the four test e-mails being either 'spam' or 'ham'.<br><br>",
+      "A test e-mail that contains neither word A or B is classified as: ", 1, ".<br><br>",
+      "A test e-mail that contains only word B is classified as: ", 2, ".<br><br>",
+      "A test e-mail that contains only word A is classified as: ", 3, ".<br><br>",
+      "A test e-mail that contains both word A and B is classified as: ", 4, ".<br><br>"
+    ],
+    "images": [
+      { "url": "img/13772_15118/c1q2_spam-ham.png",
+        "caption": "Spam and Ham e-mails with the words A and B."
+      }
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "ham",
+        "explanation": "Looking at the workings, we can see that the posterior odd is under 1 (it is 0.75) and hence is classified as ham."
+      },
+      { "correctness": 2,
+        "answer": "ham",
+        "explanation": "Looking at the workings, we can see that the posterior odd is under 1 (it is 0.40) and hence is classified as ham."
+      },
+      { "correctness": 3,
+        "answer": "spam",
+        "explanation": "Looking at the workings, we can see that the posterior odd is above 1 (it is 3.00) and hence is classified as spam."
+      },
+      { "correctness": 4,
+        "answer": "ham",
+        "explanation": "Looking at the workings, we can see that the posterior odd is under 1 (it is 0.20) and hence is classified as ham."
+      }
+    ],
+    "hint": "First work out the prior probabilities for spam and ham e-mails, and then use Bayes' Rule to work out the posterior odds.",
+    "workings": "First we have to work out the prior probabilities of the words appearing or not appearing in a spam or ham e-mail.<br><br>$P(A = 0, B = 0 | spam)$ = 6 is the number of spam e-mails containing neither A or B. 15 is the number of spam e-mails in total. Therefore 6/15.<br><br>$P(A = 0, B = 0 | ham)$ = 8 is the number of ham e-mails containing neither A or B. 20 is the number of ham e-mails in total. Therefore 8/20.<br><br>$P(A = 0, B = 1 | spam)$ = 2 is the number of spam e-mails containing just B. 15 is the number of spam e-mails in total. Therefore 2/15.<br><br>$P(A = 0, B = 1 | ham)$ = 5 is the number of ham e-mails containing just B. 20 is the number of ham e-mails in total. Therefore 5/20.<br><br>$P(A = 1, B = 0 | spam)$ = 6 is the number of spam e-mails containing just A. 15 is the number of spam e-mails in total. Therefore 6/15.<br><br>$P(A = 1, B = 0 | ham)$ = 2 is the number of ham e-mails containing just A. 20 is the number of ham e-mails in total. Therefore 2/20.<br><br>$P(A = 1, B = 1 | spam)$ = 1 is the number of spam e-mails containing both A and B. 15 is the number of spam e-mails in total. Therefore 1/15.<br><br>$P(A = 1, B = 1 | ham)$ = 5 is the number of ham e-mails containing both A and B. 20 is the number of ham e-mails in total. Therefore 5/20.<br><br>We then can use Bayes' Rule to work out the posterior odds.<br><br><b>For the test e-mail that contains neither word:</b><br><br>$\\frac{(Y = spam | A = 0, B = 0)}{(Y = ham | A = 0, B = 0)}$ gives the posterior odd using Bayes' Rule. $\\frac{\\frac{\\frac{6}{15} * \\frac{15}{35}}{0.3}}{\\frac{\\frac{8/20}{20/35}}{0.3}} = 0.75$.<br><br>The posterior odd 0.75 is below 1 and hence is declared ham.<br><br><b>For the test e-mail that contains only word B:</b><br><br>$\\frac{(Y = spam | A = 0, B = 1)}{(Y = ham | A = 0, B = 1)}$ gives the posterior odd using Bayes' Rule. $\\frac{\\frac{\\frac{2}{15} * \\frac{15}{35}}{0.3}}{\\frac{\\frac{5/20}{20/35}}{0.3}} = 0.40$.<br><br>The posterior odd 0.40 is below 1 and hence is declared ham.<br><br><b>For the test e-mail that contains only word A:</b><br><br>$\\frac{(Y = spam | A = 1, B = 0)}{(Y = ham | A = 1, B = 0)}$ gives the posterior odd using Bayes' Rule.<br><br>$\\frac{\\frac{\\frac{6}{15} * \\frac{15}{35}}{0.3}}{\\frac{\\frac{2/20}{20/35}}{0.3}} = 3.00$.<br><br>The posterior odd 3.00 is clearly above 1 and hence is definitely declared spam.<br><br><b>For the test e-mail that contains both words A and B:</b><br><br>$\\frac{(Y = spam | A = 1, B = 1)}{(Y = ham | A = 1, B = 1)}$ gives the posterior odd using Bayes' Rule.<br><br>$\\frac{\\frac{\\frac{1}{15} * \\frac{15}{35}}{0.3}}{\\frac{\\frac{5/20}{20/35}}{0.3}} = 0.20$.<br><br>The posterior odd 0.20 is clearly below 1 and hence is definitely declared ham.",
+    "source": "ML Book chapter 1.2",
+    "comments": "This question tests your knowledge on using posterior odds to classify e-mails. We believe that this question is a level 3 because it needs involved reasoning and calculations to get the correct answer. You need to give reasoning for why each test e-mail is classified as spam or ham, using the calculations of prior probabilities and Bayes' rule to work out the posterior odds."
+  },
+
+  // Chapter 2, Question 1 - Calculating accuracy and recall for binary classification models
+  "3": {
+    "difficulty": "3",
+    "reference": "2.1",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "question": [
+      "Below you will find 6 binary classification models with performances on a test set containing 100 positives and 100 negatives. Work out the true positive rate (TPR), false positive rate (FPR), accuracy and average re-call for each. Put your answers to 2 decimal places.<br><br>",
+      "Model 1: TPR = ", 5, ". FPR = ", 6, ". Accuracy = ", 7, ". Average Recall = ", 8, ".<br><br>",
+      "Model 2: TPR = ", 9, ". FPR = ", 10, ". Accuracy = ", 11, ". Average Recall = ", 12, ".<br><br>",
+      "Model 3: TPR = ", 13, ". FPR = ", 14, ". Accuracy = ", 15, ". Average Recall = ", 16, ".<br><br>",
+      "Model 4: TPR = ", 17, ". FPR = ", 18, ". Accuracy = ", 19, ". Average Recall = ", 20, ".<br><br>",
+      "Model 5: TPR = ", 21, ". FPR = ", 22, ". Accuracy = ", 23, ". Average Recall = ", 24, ".<br><br>",
+      "Model 6: TPR = ", 25, ". FPR = ", 26, ". Accuracy = ", 27, ". Average Recall = ", 28, ".<br><br>"
+    ],
+    "images": [
+      { "url": "img/13772_15118/c2q1_table.png",
+        "caption": "Binary Classification Models with their performances on a test set."
+      }
+    ],
+    "answers": [
+      { "correctness": 5,
+        "answer": "0.92",
+        "explanation": "TPR = 92/100 = 0.92."
+      },
+      { "correctness": 6,
+        "answer": "0.30",
+        "explanation": "FPR = 30/100 = 0.30."
+      },
+      { "correctness": 7,
+        "answer": "0.81",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{92 + 70}{100 + 100} = 0.81$, where 70 is the number of true negatives."
+      },
+      { "correctness": 8,
+        "answer": "0.92",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{92}{92 + 8} = 0.92$, where 8 is the number of false negatives."
+      },
+      { "correctness": 9,
+        "answer": "0.75",
+        "explanation": "TPR = 75/100 = 0.75."
+      },
+      { "correctness": 10,
+        "answer": "0.36",
+        "explanation": "FPR = 36/100 = 0.36."
+      },
+      { "correctness": 11,
+        "answer": "0.70",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{75 + 64}{100 + 100} = 0.70$, where 64 is the number of true negatives."
+      },
+      { "correctness": 12,
+        "answer": "0.75",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{75}{75 + 25} = 0.75$, where 25 is the number of false negatives."
+      },
+      { "correctness": 13,
+        "answer": "0.25",
+        "explanation": "TPR = 25/100 = 0.25."
+      },
+      { "correctness": 14,
+        "answer": "0.39",
+        "explanation": "FPR = 39/100 = 0.39."
+      },
+      { "correctness": 15,
+        "answer": "0.43",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{25 + 61}{100 + 100} = 0.43$, where 61 is the number of true negatives."
+      },
+      { "correctness": 16,
+        "answer": "0.25",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{25}{25 + 75} = 0.25$, where 75 is the number of false negatives."
+      },
+      { "correctness": 17,
+        "answer": "0.63",
+        "explanation": "TPR = 63/100 = 0.63."
+      },
+      { "correctness": 18,
+        "answer": "0.22",
+        "explanation": "FPR = 22/100 = 0.22."
+      },
+      { "correctness": 19,
+        "answer": "0.71",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{63 + 78}{100 + 100} = 0.71$, where 78 is the number of true negatives."
+      },
+      { "correctness": 20,
+        "answer": "0.63",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{63}{63 + 37} = 0.63$, where 37 is the number of false negatives."
+      },
+      { "correctness": 21,
+        "answer": "0.43",
+        "explanation": "TPR = 43/100 = 0.43."
+      },
+      { "correctness": 22,
+        "answer": "0.17",
+        "explanation": "FPR = 17/100 = 0.17."
+      },
+      { "correctness": 23,
+        "answer": "0.63",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{43 + 83}{100 + 100} = 0.70$, where 83 is the number of true negatives."
+      },
+      { "correctness": 24,
+        "answer": "0.43",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{43}{43 + 57} = 0.43$, where 57 is the number of false negatives."
+      },
+      { "correctness": 25,
+        "answer": "0.80",
+        "explanation": "TPR = 80/100 = 0.80."
+      },
+      { "correctness": 26,
+        "answer": "0.20",
+        "explanation": "FPR = 20/100 = 0.20."
+      },
+      { "correctness": 27,
+        "answer": "0.80",
+        "explanation": "Looking at the workings, we use the accuracy equation to get $\\frac{80 + 80}{100 + 100} = 0.80$, where 80 is the number of true negatives."
+      },
+      { "correctness": 28,
+        "answer": "0.80",
+        "explanation": "Looking at the workings, we use the average recall equation to get $\\frac{80}{80 + 20} = 0.80$, where 20 is the number of false negatives."
+      }
+    ],
+    "hint": "Use the equations $Accuracy = \\frac{TP + TN}{Pos + Neg}$ and $Average Recall = \\frac{TP}{TP + FN}$.",
+    "workings": "To begin with, we have to work out the True Positive Rate and the False Positive Rates. This is calculated by using True Positives / Number of Positives and False Positives / Number of Negatives respectively.<br><br>Model 1: TPR =  92/100 = 0.92, FPR = 30/100 = 0.3.<br><br>Model 2: TPR = 75/100 = 0.75, FPR = 36/100 = 0.36.<br><br>Model 3: TPR = 25/100 = 0.25, FPR = 39/100 = 0.39.<br><br>Model 4: TPR = 63/100 = 0.63, FPR = 22/100 = 0.22.<br><br>Model 5: TPR = 43/100 = 0.43, FPR = 17/100 = 0.17.<br><br>Model 6: TPR = 80/100 = 0.80, FPR = 20/100 = 0.20.<br><br>We then need to work out the ranking accuracy. This is done by using the equation:<br><br>$Accuracy = \\frac{TP + TN}{Pos + Neg}$<br><br>We therefore have to use the table to work out the TN, and this is done by:<br><br>$TN = Neg - FP$<br><br>Model 1: TN = 100 - 30 = 70. Accuracy = $\\frac{92+70}{100+100}$ = 0.81.<br><br>Model 2: TN = 100 - 36 = 64. Accuracy = $\\frac{75+64}{100+100}$ = 0.70.<br><br>Model 3: TN = 100 - 39 = 61. Accuracy = $\\frac{25+61}{100+100}$ = 0.43.<br><br>Model 4: TN = 100 - 22 = 78. Accuracy = $\\frac{63+78}{100+100}$ = 0.71.<br><br>Model 5: TN = 100 - 17 = 83. Accuracy = $\\frac{83+43}{100+100}$ = 0.63.<br><br>Model 6: TN = 100 - 20 = 80. Accuracy = $\\frac{80+80}{100+100}$ = 0.80.<br><br>Average Recall is calculated using:<br><br>$Average Recall = \\frac{TP}{TP + FN}$<br><br>We don't have to worry about weighting it because our class proportions are equal. We have to calculate the FN by:<br><br>$FN = Pos - TP$<br><br>Model 1: FN = 100 - 92 = 8. Recall = $\\frac{92}{92+8}$ = 0.92.<br><br>Model 2: FN = 100 - 75 = 25. Recall = $\\frac{75}{75+25}$ = 0.75.<br><br>Model 3: FN = 100 - 25 = 75. Recall = $\\frac{25}{75+25}$ = 0.25.<br><br>Model 4: FN = 100 - 63 = 37. Recall = $\\frac{63}{63+37}$ = 0.63.<br><br>Model 5: FN = 100 - 43 = 57. Recall = $\\frac{43}{43+57}$ = 0.43.<br><br>Model 6: FN = 100 - 80 = 20. Recall = $\\frac{80}{80+20}$ = 0.80.",
+    "source": "Problem Sheet",
+    "comments": "This question tests your knowledge on evaluating binary classification models. We believe that this question is a difficulty level 3 because it requires involved calculations. There are involved calculations because there are many intermediate calculations - to calculate the accuracy you must use the data provided, and we must intermediately calculate the true negatives. For recall you must use the data provided and also must calculate the false negatives intermediately. These values aren't just given to you."
+  },
+
+  // Chapter 2, Question 2 - Fill in contingency table from decision / feature tree
+  "4": {
+    "difficulty": "2",
+    "reference": "2.2",
+    "problem_type": "evaluation",
+    "images": [
+      { "url": "img/13772_15118/c2q2_decision_tree.png",
+        "caption": "Feature Tree"
+      }
+    ],
+    "question": "Use the feature tree and a majority class classifier to fill in the contingency table.",
+    "answer_type": "cloze_answer",
+    "answers": {
+      "answer": ["100 | 35 | 135 ",
+                 "----------",
+                 "0 | 70 | 70 ",
+                 "----------",
+                 "100 | 105 | 205 "],
+      "explanation": "Following the workings out, all the contingency table has been filled in with correct answers."
+    },
+    "hint": "The majority class classifier declares a positive or negative class to whomever has the highest number.",
+    "workings": "First use the majority class classifier to classify each leaf on the feature tree to turn it into a decision tree. From left to right, the first leaf is going to be spam (40 > 5), the next leaf is going to be spam again (50 > 25), the next leaf is going to be ham (70 > 0), and the last leaf is going to be spam (10 > 5).<br><br>Actual spam and predicted spam is found by summing the amount of spam e-mails on leaves where spam is the majority class, which is 40 + 50 + 10 = 100. Predicted spam and actual ham is found by summing the amount of ham e-mails on leaves where spam is the majority class, 5 + 25 + 5 = 35. <br><br>Actual spam and predicted ham is found by summing the amount of spam e-mails on leaves where ham is the majority class, which is 0 = 0. Predicted ham and actual ham is found by summing the amount of ham e-mails on leaves where ham is the majority class, which is 70.<br><br>135 is the number of actual spam. <br><br>70 is the number of actual ham.<br><br>100 is the number of predicted spam.<br><br> 105 is the number of predicted ham.<br><br> 205 is the number of total number of spam and ham.<br><br>",
+    "source": "ML Book chapter 2.2",
+    "comments": "This question tests your knowledge on feature and decision trees. We believe this question is a level 2 difficulty because it uses simple reasoning and calculations. You have to reason how you have classified each leaf using the majority class classifier to turn the feature tree into a decision tree. You also have to reason what counts as a true positive, false positive, true negative and false negative. Once this has been done, you can calculate the true positives, false positives, true negatives and false negatives using the decision tree, and fill in all the contingency table. we thought it could possibly be a level 3 difficulty because you actually have to use a classifier to create a model and then use this model to calculate the true positives, false positives, true negatives and false negatives, and then fill in the contingency table, but opted for a level 2 to reduce the chance of a penalisation."
+  },
+
+  // Chapter 3, Question 1 - Calculate K-Means
+  "5": {
+    "difficulty": "3",
+    "reference": "3.3",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Using the 1-D data points $D = [2, 4, 9, 14, 15.5, 16, 19, 21, 22, 23]$ calculate the means resulting from running 3-means clustering until you hit convergence using the initial configurations. Pick the correct answer out of the options.<br><br> 1) $\\mu_1 = 7, \\mu_2 = 14, \\mu_1 = 16$ \\ 2) $\\mu_1 = 15, \\mu_2 = 19, \\mu_3 = 22$<br>",
+    "answers": [
+      { "correctness": "+",
+        "answer": "$\\;1)\\; \\mu_1 = 5.00,\\; \\mu_2 = 5.17,\\; \\mu_3 = 21.25,\\; 2)\\; \\mu_1 = 5.00,\\; \\mu_2 = 16.13,\\; \\mu_3 = 22.00$",
+        "explanation": "Correct calculations. Worked out 3 clusters using minimum distance, and then work out new centroids using the cluster's mean. Keep on clustering according to minimum distance to centroids, until the means no longer change (convergence). Follow workings out for full details."
+      },
+      { "correctness": "-",
+        "answer": "$\\;1)\\; \\mu_1 = 5.20,\\; \\mu_2 = 5.25,\\; \\mu_3 = 21.30,\\; 2)\\; \\mu_1 = 6.00,\\; \\mu_2 = 14.40,\\; \\mu_3 = 15.00$"
+      },
+      { "correctness": "-",
+        "answer": "$\\;1)\\; \\mu_1 = 5.00,\\; \\mu_2 = 4.50,\\; \\mu_3 = 21.30,\\; 2)\\; \\mu_1 = 6.50,\\; \\mu_2 = 14.00,\\; \\mu_3 = 14.00$"
+      },
+      { "correctness": "-",
+        "answer": "$\\;1)\\; \\mu_1 = 4.98,\\; \\mu_2 = 5.25,\\; \\mu_3 = 23.00,\\; 2)\\; \\mu_1 = 6.00,\\; \\mu_2 = 14.15,\\; \\mu_3 = 15.30$"
+      },
+      { "correctness": "-",
+        "answer": "$\\;1)\\; \\mu_1 = 5.20,\\; \\mu_2 = 5.20,\\; \\mu_3 = 21.25,\\; 2)\\; \\mu_1 = 6.00,\\; \\mu_2 = 14.40,\\; \\mu_3 = 15.00$"
+      }
+    ],
+    "hint": "Use the equation Euclidean Distance = $\\sqrt{(x - y)^{2}}.$ to work out the distance between two points x =and y.",
+    "workings": "As it is 3-means we know we have to predict 3 clusters. We first calculate the Euclidean distance from each data point to each centroid. We then cluster the data point dependent on its minimum distance. After doing this, we work out new centroids in the 3 clusters by calculating the mean of the clusters, and constantly re-iterate until the centroids stay the same and we've hit convergence.<br><br>For example, in our question part 1) we split the clusters due to their minimum distance:<br><br>{2, 4, 9}, {14}, {15.5, 16, 19, 21, 22, 23}.<br><br>We then work out the new centroids using their means:<br><br>$\\mu_1 = \frac{2 + 4 + 9}{3} = 5$<br><br>$\\mu_2 = \frac{14}{1} = 14$<br><br>$\\mu_3 = \\frac{15.5 + 16 + 19 + 21 + 22 + 23}{6} = 19.4$<br><br>Now iterating, we cluster again using minimum distance to these new centroids:<br><br>{2, 4, 9}, {14, 15.5, 16}, {19, 21, 22, 23}<br><br>New centroids calculated:<br><br>$\\mu_1 = \\frac{2 + 4 + 9}{3} = 5$<br><br>$\\mu_2 = \\frac{14 + 15.5 + 16}{3} = 15.17$<br><br>$\\mu_3 = \\frac{19 + 21 + 22 + 23}{4} = 21.25$<br><br>Iterating again, we cluster using the new centroids:<br><br>{2, 4, 9}, {14, 15.5, 16}, {19, 21, 22, 23}  <br><br>The clusters have not changed since the previous iteration so therefore we have hit the convergence stage. The centroids won't change as the means don't change. We therefore have our answers of $\\mu_1 = 5.00$, $\\mu_2 = 5.17$ and $\\mu_3 = 21.25$.<br><br>We also follow the same method for our question part 2).<br><br>Using the centroids, we predict the clusters using their minimum distance again:<br><br>{2, 4, 9, 14, 15.5, 16}, {19}, {21, 22, 23}<br><br>Calculate new centroids:<br><br>$\\mu_1 = \\frac{2 + 4 + 9 + 14 + 15.5 + 16}{6} = 10.08$<br><br>$\\mu_2 = \\frac{19}{1} = 19$<br><br>$\\mu_3 = \\frac{21 + 22 + 23}{3} = 22$<br><br>Iterate again, cluster using new centroids:<br><br>{2, 4, 9, 14}, {15.5, 16, 19}, {21, 22, 23}<br><br>New centroids:<br><br>$\\mu_1 = \\frac{2 + 4 + 9 + 14}{4} = 7.25$<br><br>$\\mu_2 = \\frac{15.5 + 16 + 19}{3} = 16.83$<br><br>$\\mu_3 = \\frac{21 + 22 + 23}{3} = 22$<br><br>Iterating again, new predicted clusters:<br><br>{2, 4, 9}, {14, 15.5, 16, 19}, {21, 22, 23}<br><br>New centroids:<br><br>$\\mu_1 = \\frac{2 + 4 + 9}{3} = 5$<br><br>$\\mu_2 = \\frac{14 + 15.5 + 16 + 19}{4} = 16.13$<br><br>$\\mu_3 = \\frac{21 + 22 + 23}{3} = 22$<br><br>Predict clustering:<br><br>{2, 4, 9}, {14, 15.5, 16, 19}, {21, 22, 23}<br><br>These clusters haven't changed since previous iteration so therefore we have hit the convergence point. The final answers are therefore $\\mu_1 = 5.00$, $\\mu_2 = 16.13$ and $\\mu_3 = 22.00$.",
+    "source": "Past Paper",
+    "comments": "This question tests your knowledge on K-Means and how it works. We believe that this is a level 3 question because it requires involved reasoning - you must reason when you finish iterating through K-means (when you hit convergence) otherwise you will get the wrong answer and you must reason why data points are assigned to certain clusters per iteration. It also requires involved calculation - you must calculate the new centroids each iteration using the cluster means, and cluster data points according to the minimum distance calculated from the new centroids to the data points."
+  },
+
+  // Chapter 3, Question 2 - Exponential Loss
+  "6": {
+    "difficulty": "3",
+    "reference": "3.1",
+    "problem_type": "calculation",
+    "answer_type": "blank_answer",
+    "images": [
+      { "url": "img/13772_15118/c3q2_matrix.png",
+        "caption": "One vs one code matrix for k=4 class and the word $w$."
+      }
+    ],
+    "question": [
+      "Given this one vs one code matrix for k=4 classes and using word $w$ select which class would be predicted for the two loss schemes.<br><br>",
+      "The class C", 1, " would be selected for the 0-1 loss scheme.<br><br>",
+      "The class C", 2, " would be selected for the exponential loss schemes.<br><br>"
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "3",
+        "explanation": "Looking at the workings, we can see that C3 has the highest votes, so we pick C3 based on the voting-based scheme.."
+      },
+      { "correctness": 2,
+        "answer": "4",
+        "explanation": "Looking at the workings, we can see that C4 has the lowest distance for exponential loss out of the classes by using the margin matrix, and hence is selected."
+      }
+    ],
+    "hint": "The 0-1 loss scheme calculates votes, where the voting-based scheme chooses the class with the highest votes. The exponential loss scheme chooses the class with the lowest distance.",
+    "workings": "The first step, to make life easier, is to create the margins matrix.<br><br>$\\begin{pmatrix}0 & 0 & +12 & -0.5 & -5 & 0\\\\ 0 & -0.5 & -12 & 0 & 0 & -5\\\\ +0.5 & +0.5 & 0 & +0.5 & 0 & 0 \\\\ -0.5 & 0 & 0 & 0 & +5 & +5\\end{pmatrix}$\\<br><br>The votes for 0-1 loss are as follows<br><br>$C1 = 0+0+1+0+0+0 = 1$<br><br>$C2 = 0+0+0+0+0+0 = 0$<br><br>$C3 = 1+1+0+1+0+0 = +3$<br><br>$C4 = 1+0+0+0+1+1 = +2$<br><br>So pick C3 as it has most votes, based on the voting-based scheme.<br><br>The distance for exponential loss are as follows<br><br>$C1 = e^{0}+e^{0}+e^{-12}+e^{0.5}+e^{5}+e^{0} = 153.062$<br><br>$C2 = e^{0}+e^{0.5}+e^{12}+e^{0}+e^{0}+e^{5} = 162907.853$<br><br>$C3 = e^{-0.5}+e^{-0.5}+e^{0}+e^{-0.5}+e^{0}+e^{0} =  7.946$<br><br>$C4 = e^{0.5}+e^{0}+e^{0}+e^{0}+e^{-5}+e^{-5} =  4.662<br><br>So pick C4 as it has lowest distance.",
+    "source": "ML Book chapter 3.1",
+    "comments": "This question tests your knowledge on 0-1 loss and exponential loss. We believe this is a level 3 difficulty question because it requires involved calculations. You need to calculate the votes for the 0-1 loss scheme for each class and reason why a class is picked. You also need to calculate the distances for the exponential loss scheme for each class and reason why a class is picked."
+  },
+
+  // Chapter 4, Question 1  - Consistent Hypotheses
+  "7": {
+    "difficulty": "4",
+    "reference": "4.2",
+    "problem_type": "probem-solving",
+    "question": "We have a data set below containing 5 positive samples:<br><br>$pA : rating = 3 \\land sweet = no \\land hot = yes \\land texture = dry$<br><br>$pB : rating = 4 \\land sweet = no \\land hot = yes \\land texture = dry$<br><br>$pC : rating = 3 \\land sweet = no \\land hot = yes \\land texture = wet$<br><br>$pD : rating = 5 \\land sweet = no \\land hot = yes \\land texture = dry$<br><br>$pE : rating = 5 \\land sweet = no \\land hot = yes \\land texture = wet$<br><br>and 5 negative samples:<br><br>$nA : rating = 5 \\land sweet = yes \\land hot = yes \\land texture = dry$<br><br>$nB : rating = 4 \\land sweet = no  \\land hot = yes \\land texture = wet$<br><br>$nC : rating = 5 \\land sweet = yes \\land hot = no  \\land texture = dry$<br><br>$nD : rating = 4 \\land sweet = yes \\land hot = no  \\land texture = dry$<br><br>$nE : rating = 4 \\land sweet = yes \\land hot = yes \\land texture = dry$<br><br>Please select the correct options where each selection is a most general consistent hypothesis. Then proceed to answer whether there is exists a complete hypothesis within the correct selections.",
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "-",
+        "answer": "$sweet = no \\land hot = yes$"
+      },
+      { "correctness": "+",
+        "answer": "$Rating = 3$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this only covers the positive samples only, within $pA$ and $pC$."
+      },
+      { "correctness": "+",
+        "answer": "$Rating = [3, 5] \\land sweet = no$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this only covers the positive samples only, within $pA$, $pC$, $pD$ and $pE$."
+      },
+      { "correctness": "-",
+        "answer": "$Rating = 4 \\land sweet = no$"
+      },
+      { "correctness": "+",
+        "answer": "$Rating = [3, 5] \\land texture = wet$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this covers the positive samples only, within $nC$ and $nE$."
+      },
+      { "correctness": "+",
+        "answer": "$sweet = no \\land texture = dry$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this covers the positive samples only, within $nA$, $nB$ and $nD$."
+      },
+      { "correctness": "-",
+        "answer": "$Rating = 5 \\land sweet = yes$"
+      },
+      { "correctness": "-",
+        "answer": "$sweet = yes \\land texture = dry$"
+      },
+      { "correctness": "+",
+        "answer": "$sweet = no \\land hot = no$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent."
+      },
+      { "correctness": "+",
+        "answer": "$sweet = yes \\land texture = wet$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent."
+      },
+      { "correctness": "+",
+        "answer": "$hot = no \\land texture = wet$",
+        "explanation": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent."
+      },
+      { "correctness": "-",
+        "answer": "There exists atleast one complete hypothesis within the correct selections."
+      },
+      { "correctness": "+",
+        "answer": "There does not exists a complete hypothesis within the correct selections.",
+        "explanation": "This is correct because the definition for being complete is that the hypothesis must cover all the positive samples. There does not exist a correctly selected hypothesis that covers all the positive samples, and hence this option is correct as none of the hypotheses are complete."
+      }
+    ],
+    "hint": "To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples.",
+    "workings": "Option 1: $sweet = no \\land hot = yes$ (WRONG).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is not a consistent hypothesis because this covers the negative samples, within $nB$, and hence is inconsistent. <br><br>Option 2: $Rating = 3$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this only covers the positive samples only, within $pA$ and $pC$.<br><br>Option 3: $Rating = [3, 5] \\land sweet = no$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this only covers the positive samples only, within $pA$, $pC$, $pD$ and $pE$.<br><br>Option 4: $Rating = 4 \\land sweet = no$ (WRONG).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is not a consistent hypothesis because this covers the negative samples, within $nB$, and hence is inconsistent.<br><br>Option 5: $Rating = [3, 5] \\land texture = wet$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this covers the positive samples only, within $nC$ and $nE$.<br><br>Option 6: $sweet = no \\land texture = dry$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this covers the positive samples only, within $nA$, $nB$ and $nD$.<br><br>Option 7: $Rating = 5 \\land sweet = yes$ (WRONG).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is not a consistent hypothesis because this covers the negative samples, within $nA$ and $nC$, and hence is inconsistent.<br><br>Option 8: $sweet = yes \\land texture = dry$ (WRONG).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is not a consistent hypothesis because this covers the negative samples, within $nA$, $nC$, $nD$ and $nE$, and hence is inconsistent.<br><br>Option 9: $sweet = no \\land hot = no$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent.<br><br>Option 10: $sweet = yes \\land texture = wet$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent.<br><br>Option 11: $hot = no \\land texture = wet$ (ANSWER).<br><br>To be a most general consistent hypothesis the hypothesis must not cover any of the negative samples. This is a consistent hypothesis because this does not cover the negative samples, nor the positive samples, and hence is defined as consistent.<br><br>Option 12: There exists atleast one complete hypothesis within the correct selections. (WRONG)<br><br>This is incorrect because the definition for being complete is that the hypothesis must cover all the positive samples. However none of the correct selections cover all of the positive samples, and hence none of the hypotheses are complete.<br><br>Option 13: There does not exists a complete hypothesis within the correct selections. (ANSWER)<br><br>This is correct because the definition for being complete is that the hypothesis must cover all the positive samples. There does not exist a correctly selected hypothesis that covers all the positive samples, and hence this option is correct as none of the hypotheses are complete.",
+    "source": "ML Book chapter 4.2",
+    "comments": "This question tests your knowledge on hypotheses within concept learning. We believe this is a level 4 question because it is a question from chapter 4. It also has involved calculations and reasoning. You need to reason why a certain hypothesis is a most general consistent hypothesis or not, and whether there are any complete hypotheses within the selections. You will have to logically calculate whether certain samples cover the positive and negative samples."
+  },
+
+  // Chapter 5, Question 1 - Grow a tree according to the following features
+  "8": {
+    "difficulty": "3",
+    "reference": "5.2",
+    "problem_type": "training",
+    "question": "Grow a tree according to the following features. Use entropy measures to decide what ordering should be split and order the features accordingly below.",
+    "images": [
+      { "url": "img/13772_15118/c5q1_table.png",
+        "caption": "A dataset of lions containing the features, fur, mane and tail length."
+      }
+    ],
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "The first feature to split on should be:  ",
+        "answer": "'Mane.'",
+        "explanation": "Mane has the lowest weighted entropy and hence is the best possible split for the root."
+      },
+      { "correctness": "The second feature to split on should be: ",
+        "answer": "'Tail Length'.",
+        "explanation": "With Mane at the root of the tree, must consider splits between Tail Length and Fur. Tail Length has the lowest entropy compared to Fur and hence is the next feature to split on."
+      },
+      { "correctness": "The third feature to split on should be: ",
+        "answer": "'Fur'.",
+        "explanation": "After the other features are picked for having lower entropies, Fur is picked last."
+      }
+    ],
+    "hint": "The entropy of a split is: $E(S) = \\sum_{i=1}^{c} - p_i log_2 p_i$",
+    "workings": "The four features available result in the following splits:<br><br>Tail Length = [5,6,7] = [-2,+1][-1,+1][0,+1]<br><br>Fur = [yes,no] = [-2,+3][-1,0]<br><br>Mane = [yes,no] = [0,+2][-3,+1]<br><br>Now you must calculate the entropy for each split<br><br>Tail Length[5] = $-\\frac{2}{3}* \\log{\\frac{2}{3}} - \\frac{1}{3}*\\log{\\frac{1}{3}} = 0.918$<br><br>Tail Length[6] = $1$<br><br>Tail Length[7] = $0$<br><br>Fur[yes] = $-\\frac{3}{5}* \\log{\\frac{3}{5}} - \\frac{2}{5}*\\log{\\frac{2}{5}} = 0.971$<br><br>Fur[no] = $0$<br><br>Mane[yes] = $0$<br><br>Mane[no] = $-\\frac{1}{4}* \\log{\\frac{1}{4}} - \\frac{3}{4}*\\log{\\frac{3}{4}}=0.811$<br><br>Now the weighted entropy shows us the best possible split for the root<br><br>Tail Length = $\\frac{3}{6}*0.918 + \\frac{2}{6}*1 +\\frac{1}{6}*0 = 0.792$<br><br>Fur = $\\frac{5}{6}*0.971+ \\frac{1}{6}*0 = 0.809$<br><br>Mane = $\\frac{2}{6}*0 + \\frac{4}{6}*0.811 = 0.541$<br><br>From this you can see Mane has the lowest entropy therefore it is used as the root split<br><br>With mane at the root of the tree we must consider the splits for the child. They are as follows:<br><br>Tail Length = [5,6,7] = [-2,0][-1,0][0,+1]<br><br>Fur = [yes,no] = [-2,+1][-1,0]<br><br>Now you must calculate the entropy for each split<br><br>Tail length[5] = $0$<br><br>Tail length[6] = $0$<br><br>Tail length[7] = $0$<br><br>Fur[yes] = $-\\frac{1}{3}* \\log{\\frac{1}{3}} - \\frac{2}{3}*\\log{\\frac{2}{3}} = 0.918$<br><br>Fur[no] = $0$<br><br>It is clear from these calculations that Tail Length has the lowest entropy and so is selected as the next feature. The order of the features is therefore : Mane, Tail length, Fur",
+    "source": "ML Book chapter 5.2",
+    "comments": "This question tests your knowledge on how to grow a tree using features and how the tree should be split. This requires involved reasoning and calculations and hence we have given the question a difficulty level of 3. You need to reason why the the features give certain splits to obtain the correct final answer, and must use reasoning why a split is the best possible split using the entropy. It requires calculations of entropies for each split and weighted entropies. "
+  },
+
+  // Chapter 5, Question 2 - Learn a regression tree
+  "9": {
+    "difficulty": "3",
+    "reference": "5.3",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Learn a regression tree from the data set below. Once you have worked this out, pick the correct regression tree.",
+    "images": [
+      { "url": "img/13772_15118/c5q2_table.png",
+        "caption": "Dataset of cars for sale, with their colours, whether they're limited edition, and their price."
+      }
+    ],
+    "answers": [
+      { "correctness": "-",
+        "answer": "<img src=\"img/13772_15118/c5q2_option1.png\">"
+      },
+      { "correctness": "+",
+        "answer": "<img src=\"img/13772_15118/c5q2_option2_answer.png\">",
+        "explanation": "This is correct because the top level Limited Edition has the highest weighted squared mean, and then the following splits also have the highest weighted squared mean following relevant calculations done in the workings. The leaves are also calculated correctly."
+      },
+      { "correctness": "-",
+        "answer": "<img src=\"img/13772_15118/c5q2_option3.png\">"
+      },
+      { "correctness": "-",
+        "answer": "<img src=\"img/13772_15118/c5q2_option4.png\">"
+      }
+    ],
+    "hint": "At each split you must calculate the weighted average of squared means. This means we square each mean and multiply each mean by its weight in the feature set, and sum all these up.",
+    "workings": "There are three features and hence there are three possible splits. We first work out the means of each split.<br><br>Car = $[Ford, Jaguar, Rolls Royce, Honda, Vauxhall] = [32433, 12022, 21231][23222, 40121][29933][12102][20123]$<br><br>Colour = $[red, blue, green] = [32433, 12022, 20123][23222, 21231, 30011][29933, 12102, 40121]$<br><br>Limited Edition = $[yes, no] = [32433, 23222, 40121][12022, 29933, 12102, 21231, 20123, 30011]$<br><br>The means of the first split are worked out below:<br><br>(32433 + 12022 + 21231)/3 = 21895.33 = 21896<br><br>(23222 + 40121) / 2 = 31671.5 = 31672<br><br>29933 / 1 = 29933<br><br>12102 / 1 = 12102<br><br>20123 / 1 = 20123<br><br>The means are: 21896, 31672, 29933, 12102, 20123. To calculate the weighted average of squared means, we square each mean and then multiply each mean its weight in the feature set, and then sum them all up.<br><br>Weighted average of squared means = $\\frac{3}{9} * 21896^2 + \\frac{2}{9} * 31672^2 + \\frac{1}{9} * 29933^2 + \\frac{1}{9} * 12102^2 + \\frac{1}{9} * 20123^2 = 543545959.78$<br><br>The means of the second split are worked out below:<br><br>(32433 + 12022 + 20123) / 3 = 12526<br><br>(23222 + 21231 + 30011) / 3 = 24821.33 = 24821<br><br>(29933 + 12102 + 40121) / 3 = 27385.33 = 27385<br><br>The means are: 12526, 24821, 27385.<br><br>Weighted average of squared means = $\\frac{3}{9} * 12526^2 + \\frac{3}{9} * 24821^2 + \\frac{3}{9} * 27385^2 = 507640314.0$<br><br>The means of the third split are worked out below:<br><br>(32433 + 23222 + 40121) / 3 = 31925.33 = 31925<br><br>(12022 + 29933 + 12102 + 21231 + 20123 + 30011) / 6 = 20903.66 = 20903<br><br>T<br><br>he means are: 31925, 20903.<br><br>Weighted average of squared means = $\\frac{3}{9} * 31925^2 + \\frac{6}{9} * 20903^2 = 631025481.0$<br><br>We therefore branch on Limited Edition on the top level. We have no single-instance leaves at this level, but 3 yes' and 6 no's.<br><br>For the yes', we obtain the following splits:<br><br>Car = $[Ford, Jaguar] = [32433][23222, 40121]$<br><br>Colour = $[red, blue, green] = [32433][23222][40121]$<br><br>Means of first split are worked out below:<br><br>(32433) / 1 = 32433<br><br>(23222 + 40121) / 2 = 31671.5 = 31672<br><br>Means are: 32433, 31672.<br><br>Weighted average = $1019376885.66$<br><br>The means of the second split are 32433, 23222, 40121.<br><br>Weighted average = $2319835326.66$<br><br>We therefore branch on Colour on this next level. This means the leaves will be:<br><br>if red = 32433<br><br>if green = 29933<br><br>if blue = 23222<br><br>For the no's, we obtain the following splits:<br><br>Car = $[Ford, Rolls Royce, Honda, Vauxhall, Jaguar] = [12022, 21231][29933][12102][20123][30011]$<br><br>Colour = $[red, green, blue] = [12022, 20123][29933, 12102][21231, 30011]$<br><br>Means of the first split are worked out below:<br><br>(12022 + 21231) / 2 = 16626.5 = 16627<br><br>29933 / 1 = 29933<br><br>12102 / 1 = 12102<br><br>20123 / 1 = 20123<br><br>30011 / 1 = 30011<br><br>The means of the first split are 16627, 29933, 12102, 20123, 30011.<br><br>Weighted average = $483492066.8333334$<br><br>Means of the second split are worked out below:<br><br>(12022 + 20123) / 2 = 16072.5 = 16073<br><br><br><br>(29933 + 12102) / 2 = 21017.5 = 21018<br><br>(21231 + 30011) / 2 = 25621<br><br>The means of the second split are 16073, 21018, 25621<br><br>Weighted average = $452177764.6666666$<br><br>We therefore branch on Cars at this level. This leaves us with the leaves:<br><br>if Ford = (12022 + 21231) / 2 = 16627<br><br>if Rolls Royce = 29933<br><br>if Honda = 12102<br><br>if Vauxhall = 20123<br><br>if Jaguar = 30011<br><br>This therefore leaves us with the correct regression tree.",
+    "source": "ML Book chapter 5.3",
+    "comments": "This question tests your knowledge on learning regression trees. We believe that this is a level 3 difficulty because it requires involved reasoning and calculations. You must have solid reasoning on how to learn a regression tree - how the correct answer produces the branches at the levels, using possible splits and choosing the feature with the highest weighted average of squared means to branch. This means that it involves lots of calculations - we calculate the means of each possible split at each level and work out the weighted average of squared means for the split. Without these involved calculations we cannot reach the final answer."
+  },
+
+  // Chapter 6, question 1 - Ordered Rules classfier contingency table evaluation
+  "10": {
+    "difficulty": "2",
+    "reference": "6.1",
+    "problem_type": "evaluation",
+    "question": "Given the following data set with 5 positives and 5 negatives and the rules for classification below, fill in the contingency table to assess performance of the classifier.<br><br>$p1 : Fur = yes \\land Mane = yes \\land Tail Length = 7$<br><br>$p2 : Fur = yes \\land Mane = yes \\land Tail Length = 6$<br><br>$p3 : Fur = yes \\land Mane = no \\land Tail Length = 7$<br><br>$p4 : Fur = yes \\land Mane = yes \\land Tail Length = 5$<br><br>$p5 : Fur = yes \\land Mane = no \\land Tail Length = 4$<br><br>$n1 : Fur = no \\land Mane = no \\land Tail Length = 4$<br><br>$n2 : Fur = no \\land Mane = no \\land Tail Length = 5$<br><br>$n3 : Fur = yes \\land Mane = no \\land Tail Length = 4$<br><br>$n4 : Fur = yes \\land Mane = no \\land Tail Length = 6$<br><br>$n5 : Fur = no \\land Mane = no \\land Tail Length = 7$<br><br>Rules:<br><br>$\\text{if Mane = yes then Class = }\\oplus $<br><br>$\\text{if Mane = no }\\land\\text{ Tail Length }\\leq 5\\text{ then Class = }\\ominus $<br><br>$\\text{if Mane = no }\\land\\text{ Tail Length > 5 then Class = }\\oplus $",
+    "answer_type": "cloze_answer",
+    "answers": {
+      "answer": ["4 | 1 | 5 ",
+                 "----------",
+                 "2 | 3 | 5 ",
+                 "----------",
+                 "6 | 4 | 7 "],
+      "explanation": "Following the workings out, all the contingency table has been filled in with correct answers. There are 4 true positives and 3 true negatives giving an accuracy of $\\frac{7}{10} * 100 = 70%$."
+    },
+    "hint": "If a positive rule covers any of the samples, then we classify the sample as positive. If a negative rule covers any of the samples, then we classify the sample as negative. A sample won't be covered by both a positive and negative rule.",
+    "workings": "First we classify the data set:<br><br>$p1 = \\oplus$ using the rule $\\text{if Mane = yes then Class = }\\oplus $<br><br>$p2 = \\oplus$ using the rule $\\text{if Mane = yes then Class = }\\oplus $<br><br>$p3 = \\oplus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length > 5 then Class = }\\oplus $<br><br>$p4 = \\oplus$ using the rule $\\text{if Mane = yes then Class = }\\oplus $<br><br>$p5 = \\ominus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length }\\leq 5\\text{ then Class = }\\ominus $<br><br>$n1 = \\ominus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length }\\leq 5\\text{ then Class = }\\ominus $<br><br>$n2 = \\ominus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length }\\leq 5\\text{ then Class = }\\ominus$<br><br>$n3 = \\ominus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length }\\leq 5\\text{ then Class = }\\ominus$<br><br>$n4 = \\oplus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length > 5 then Class = }\\oplus$<br><br>$n5 = \\oplus$ using the rule $\\text{if Mane = no }\\land\\text{ Tail Length > 5 then Class = }\\oplus$<br><br>From these classifications you can complete the contigency table:<br><br>We have 4 actual positives that are predicted as positive, and 1 actual positive that is predicted as negative. We also have 2 actual negatives predicted as positives, and 3 actual negaitives predicted as negative. This gives us a diagonal sum of the true positives and true negatives, 4 + 3 = 7. We divide this by the total population, 5 + 5 = 10, giving the classifier an accuracy of 70%.",
+    "source": "ML Book Chapter 6.1",
+    "comments": "This question tests the knowledge of the evaluation of ordered rules, and how to fill in a contingency table using a dataset of ordered rules. We believe that this is a level 2 question because it involves reasoning and calculations. You need to know how to use the rule set to classify each positive and negative sample, and how to fill in the contingency table with reasonings for true and false positives and true and false negatives using the original dataset. We thought it could be a level 3 difficulty as you need to use a rule-based classifier, evaluate your dataset with this classifier and produce values for each slot in the contingency table from this evaluation, but opted for a level 2 to decrease the chance of a penalisation."
+  },
+
+  // Chapter 6, question 2  - Calculate precision for each rule and order
+  "11": {
+    "difficulty": "3",
+    "reference": "6.1",
+    "problem_type": "evaluation",
+    "question": "Given the data set below, sort the rules depdendent on their precision using the Laplace Correction.<br><br>$p1 : Fur = yes \\land Mane = yes \\land Tail Length = 7$<br><br>$p2 : Fur = yes \\land Mane = yes \\land Tail Length = 5$<br><br>$p3 : Fur = yes \\land Mane = no \\land Tail Length = 7$<br><br>$p4 : Fur = yes \\land Mane = yes \\land Tail Length = 5$<br><br>$p5 : Fur = yes \\land Mane = no \\land Tail Length = 4$<br><br>$n1 : Fur = no \\land Mane = no \\land Tail Length = 4$<br><br>$n2 : Fur = no \\land Mane = no \\land Tail Length = 5$<br><br>$n3 : Fur = yes \\land Mane = no \\land Tail Length = 4$<br><br>$n4 : Fur = yes \\land Mane = no \\land Tail Length = 5$<br><br>$n5 : Fur = no \\land Mane = no \\land Tail Length = 5$<br><br>Rules:<br><br>$\\text{R1: if Fur = yes then Class = }\\oplus$<br><br>$\\text{R2: if Mane = yes then Class = }\\oplus$<br><br>$\\text{R3: if Tail Length = 4 then Class =}\\ominus$<br><br>$\\text{R4: if Tail Length = 5 then Class =}\\ominus$",
+    "answer_type": "matrix_sort_answer",
+    "answers": [
+      { "correctness": "The rule with the highest precision is:  ",
+        "answer": "R2",
+        "explanation": "R2 has the highest precision with 4/5."
+      },
+      { "correctness": "The rule with the second highest precision is: ",
+        "answer": "R1",
+        "explanation": "R1 has the second highest precision with 6/9."
+      },
+      { "correctness": "The rule with the second lowest precision is: ",
+        "answer": "R3",
+        "explanation": "R3 has the second lowest precision with 3/5."
+      },
+      { "correctness": "The rule with the lowest precision is: ",
+        "answer": "R4",
+        "explanation": "R4 has the lowest precision with 4/7."
+      }
+    ],
+    "hint": "Use the equation $Precision = \\frac{TP}{TP + FP}$",
+    "workings": "The precision calculated for each rule is as follows:<br><br>R1 has coverage [5+,2-]. Applying the Laplace correction gives [6+,3-] leading to $ Precision = \\frac{TP}{TP+FP} = \\frac{6}{6+3} = \\frac{6}{9}$<br><br>R2 has coverage [3+,0-]. Applying the Laplace correction gives [4+,1-] leading to $ Precision = \\frac{TP}{TP+FP} = \\frac{4}{4+1} = \\frac{4}{5}$<br><br>R3 has coverage [1+,2-]. Applying the Laplace correction gives [2+,3-] leading to $ Precision = \\frac{TP}{TP+FP} = \\frac{3}{3+2} = \\frac{3}{5}$<br><br>R4 has coverage [2+,3-]. Applying the Laplace correction gives [3+,4-] leading to $ Precision = \\frac{TP}{TP+FP} = \\frac{4}{4+3} = \\frac{4}{7}$<br><br>Therefore the rules are ordered as follows: R2 with the highest precision, R1 with the second highest precision, R3 with the second lowest precision and R4 with the lowest precision",
+    "source": "Problem Sheet",
+    "comments": "It tests your knowledge of precision, laplace correction and ordered rules. We believe this is a level 3 difficulty because it needs involved reasoning - how do we calculate precision and sort it, when do we use laplace correction, and how do we gain such calculations from ordered rules. It also needs involved calculations where we have to calculate the coverage for each rule, apply laplace correction to this coverage, and finally calculate the precision for each rule."
+  },
+
+  // Chapter 7, question 1 - calculate bivariate linear least squares
+  "12": {
+    "difficulty": "3",
+    "reference": "7.1",
+    "problem_type": "calculation",
+    "question": "Use bivariate linear least squares in matrix form to find $\\alpha$ and $\\beta$ in the equation for linear regression ($y = \\alpha +x\\beta$) for the following data set. Please choose 2 options: the calculated alpha and the calculated beta.",
+    "images": [
+      { "url": "img/13772_15118/c7q1_table.png",
+        "caption": "Dataset."
+      }
+    ],
+    "answer_type": "multiple",
+    "answers": [
+      { "correctness": "-",
+        "answer": "$\\beta = 0.70$"
+      },
+      { "correctness": "+",
+        "answer": "$\\beta = 0.57$",
+        "explanation": "Following the workings, $\\beta$ is calculated as 0.57."
+      },
+      { "correctness": "-",
+        "answer": "$\\beta = 0.42$"
+      },
+      { "correctness": "-",
+        "answer": "$\\alpha = 1.95$"
+      },
+      { "correctness": "-",
+        "answer": "$\\alpha = 1.80$"
+      },
+      { "correctness": "+",
+        "answer": "$\\alpha = 2.00$",
+        "explanation": "Followng the workings, $\\alpha$ is calculated as 2.00."
+      }
+    ],
+    "hint": "The matrix form of the bivariate least squares to derive: $\\begin{pmatrix} \\alpha\\\\ \\beta\\end{pmatrix} = (\\textbf{X}^{T}\\textbf{X})^{-1}\\textbf{X}^{T}\\textbf{y}$",
+    "workings": "Using the matrix form of the bivariate least squares we can derive that:<br><br>$\\begin{pmatrix} \\alpha\\\\ \\beta\\end{pmatrix} = (\\textbf{X}^{T}\\textbf{X})^{-1}\\textbf{X}^{T}\\textbf{y}$<br><br>where<br><br>$\\textbf{X} =  \\begin{pmatrix}1 & 11\\\\1 & 9\\\\1 & 8 \\\\1 & 14 \\end{pmatrix}\\textbf{y} = \\begin{pmatrix}8\\\\8\\\\6 \\\\10 \\end{pmatrix}$<br><br>Therefore, by using a matrix calculator or by hand:<br><br>$ \\textbf{X}^{T}\\textbf{X} = \\begin{pmatrix}4 & 42\\\\42 & 462\\end{pmatrix}$<br><br>$ (\\textbf{X}^{T}\\textbf{X})^{-1} = \\begin{pmatrix}\\frac{11}{2} & \\frac{-1}{2}\\\\\\frac{-1}{2} & \\frac{1}{21}\\end{pmatrix}$<br><br>$ (\\textbf{X}^{T}\\textbf{X})^{-1}\\textbf{X}^{T} = \\begin{pmatrix}0& 1 &\\frac{3}{2} & \\frac{-3}{2}\\\\ \\frac{1}{42}& \\frac{-1}{14} & \\frac{-5}{42} &\\frac{1}{6}\\end{pmatrix}$<br><br>$ (\\textbf{X}^{T}\\textbf{X})^{-1}\\textbf{X}^{T}\\textbf{y} = \\begin{pmatrix}2\\\\0.57\\end{pmatrix}$<br><br>Giving the equation y = 0.57x + 2. Therefore $\\beta = 0.57$ and $\\alpha = 2.00$",
+    "source": "Past Papers",
+    "comments": "It tests your knowledge of how to use bivariate linear least squares in matrix form. We believe that this is a level 3 question because it needs involved calculations. You must use the data column vectors x and y and place these in X and y matrices, where linear algebra must be known to transpose, multiply and invert matrices."
+  },
+
+  // Chapter 7, question 2 - Perceptron Learning Algorithm
+  "13": {
+    "difficulty": "3",
+    "reference": "7.2",
+    "problem_type": "calculation",
+    "question": "Assuming a learning rate $η = 1$ and an initial weight vector $w = (0, 0)$, order the below options giving the sequence of weight vectors derived by the perceptron learning algorithm on the given data set (top-down). You may assume that the decision threshold $t$ stays fixed at 0.",
+    "images": [
+      { "url": "img/13772_15118/c7q2_matrix.png",
+        "caption": "Matrices X and Y."
+      }
+    ],
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "2",
+        "answer": "(1,1)",
+        "explanation": "This is the next adjusted weight vector from the original (0,0) weight vector, and hence is second."
+      },
+      { "correctness": "1",
+        "answer": "(0,0)",
+        "explanation": "This is the original weight vector and hence is first."
+      },
+      { "correctness": "3",
+        "answer": "(0,2))",
+        "explanation": "This is the next adjusted weight vector from the (1,1) weight vector, and hence is last. It converges on this weight vector."
+      }
+    ],
+    "hint": "Use the dot products of the weight vector and data points x in the matrix X to test whether the weight vector needs adjusting. If it does need adjusting, then $w' = w + x * \\eta",
+    "workings": "The first step is to find the dot product of x1 with the weight vector. As the weight vector is 0 the result is 0 and so x1 is misclassified and w requires adjusting as shown below:<br><br>$w' = w+x1*\\eta =x1= (1,1)$<br><br>Now we run the algorithm on the second point. The dot product of the weight vector with x2 gives:<br><br>$1*1+1*-1 = 0$<br><br>This point is therefore misclassified and thus the weight vector must be adjusted:<br><br>$w' = w - x2*\\eta = (0,2)$<br><br>Now we run the algorithm on x3. The dot product of the weight vector with x3 gives:<br><br>$0*0 +1*2 = 2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>Now we run the algorithm on x4. The dot product of the weight vector with x4 gives:<br><br>$0*-1 2*1 = 2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>Since we have adjusted w we have not yet converged so we run the algorithm over the data set again.<br><br>Running the algorithm on x1 again gives:<br><br>$0*1+2*1 = 2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>Running the algorithm on x2 again gives:<br><br>$0*1+2*-1 = -2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>Running the algorithm on x3 again gives:<br><br>$0*0+2*1 = 2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>Running the algorithm on x4 again gives:<br><br>$0*-1+2*1 = 2$<br><br>This is correctly classified and so the weight vector does not need adjusting.<br><br>As we have run this weight vector through all the data without needing to adjust w we have converged and can terminate the algorithm with $w = (0,2)$<br><br>This means the correct order is (0,0) (1,1) (0,2)",
+    "source": "Problem Sheet",
+    "comments": "This question tests the knowledge on how to use the perceptron learning algorithm on a dataset. We have given this a difficulty of level 3 because it needs involved reasoning and calculations - you must know how to use the perceptron learning algorithm and how and why to adjust the weight vectors. This involves many intermediate calculations before arriving at your final answer, you must calculate the dot products of data vectors and the weight vector, and calculate new weight vectors if the data vector is misclassified."
+  },
+
+  // Chapter 8, question 1 - Dendrograms
+  "14": {
+    "difficulty": "3",
+    "reference": "8.5",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Sketch the dendrograms obtained by agglomerative hierarchical clustering using single and complete linkage of the data D = [5.5, -3.5, 12, 5.5, 7, 8, 2, 0]. Use your dendrograms to cluster the data into three clusters. Choose below the correct clusterings given by the linkages.",
+    "answers": [
+      { "correctness": "-",
+        "answer": " Single Linkage = {-3.5}{0,2,5,5.5,7}{8,12}, Complete Linkage = {-3.5,0,2}{5,5.5,7,8}{12}"
+      },
+      { "correctness": "+",
+        "answer": " Single Linkage = {-3.5}{0,2,5,5.5,7,8}{12}, Complete Linkage = {-3.5,0,2}{5,5.5,7,8}{12}",
+        "explanation": "Following the workings, we have calculated these clusters using distances between points and clusters."
+      },
+      { "correctness": "-",
+        "answer": " Single Linkage = {-3.5,0,2}{5,5.5,7,8}{12}, Complete Linkage = {-3.5,0,2}{5,5.5,7}{8,12}"
+      },
+      { "correctness": "-",
+        "answer": " Single Linkage = {-3.5,0,2,5,5.5}{7,8}{12}, Complete Linkage = {-3.5,0,2}{5,5.5,7}{8,12}"
+      }
+    ],
+    "hint": "Single Linkage defines the distance between two clusters as the smallest pairwise distance between elements from each cluster, whilst Complete Linkage defines the distance between two clusters as the largest pointwise distance.",
+    "workings": "The differences between Single Linkage and Complete Linkage are that Single Linkage defines the distance between two clusters as the smallest pairwise distance between elements from each cluster, whilst Complete Linkage defines the distance between two clusters as the largest pointwise distance. <br><br>When drawing the dendograms we have changed the data points to labels, and so the labels are mapped below:<br><br><img src=\"img/13772_15118/c8q1_table.png\"<br><br>The first link made in single linkage is between 5 and 5.5 because they are closest together (0.5). The next closest link is between 7 and 8 (1) and so they are linked. The next smalled single linkage distance is between these two clusters (1.5 between 7 and 5.5) and so they are joined. The next link made is between the next closest point 0 and 2 (difference of 2). Then this cluster {0,2} is joined together with {5,5.5,7,8} because the next closest pair is 5 and 2 (3). -3.5 is then linked with this cluster followed by 12. Therefore when this dendogram is split it gives the following clustering:<br><br>{-3.5}{0,2,5,5.5,7,8}{12}<br><br><img src=\"img/13772_15118/c8q1_dend1.jpg\"><br><br>As with single linkage the first link made for complete linkage is between 5 and 5.5 as they have the closest distance (0.5), and the next is between 7 and 8 (they have distance of 1). The next link made is between 0 and 2 as they have next lowest distance of 2. After this the next lowest distance is between the cluster {5,5.5} and {7,8} with 3 between 5 & 8 so these clusters are merged. After this -3.5 is linked with {0,2} with the next lowest distance of 5.5. After this 12 is merged with {5,5.5,7,8} and then both clusters are merged together. Therefore when this dendogram is split it gives the following  clustering:<br><br>{-3.5,0,2}{5,5.5,7,8}{12}<br><br><img src=\"img/13772_15118/c8q1_dend2.jpg\"<br><br>",
+    "source": "Past Paper",
+    "comments": "This questions tests knowledge on dendrograms and the agglomerative hierarchical clustering using single and complete linkage. We have classed this as a level 3 question because this needs involved reasoning and calculations. You must know how to cluster the data using these dendrograms and the differences between single and complete linkages. You must also know how to sketch a dendrogram. You need to calculate the distances frequently and compare clusters to finally arrive at the 3 clusters."
+  },
+
+  // Chapter 8, question 2 - Scatter Matrix
+  "15": {
+    "difficulty": "3",
+    "reference": "8.4",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Using the 2-D dataset D = [(2,3), (0.5,6), (5,2), (10,2), (7.5,2)] calculate the scatter matrix and determine its trace. Choose the correct trace from the options below.",
+    "answers": [
+      { "correctness": "-",
+        "answer": "36.50"
+      },
+      { "correctness": "+",
+        "answer": "41.25",
+        "explanation": "Following the workings, this is the correct trace of the scatter matrix, where the scatter matrix has the diagonals 40.25 and 11 which summed up equals 41.25."
+      },
+      { "correctness": "-",
+        "answer": "38.00"
+      },
+      { "correctness": "-",
+        "answer": "48.75"
+      }
+    ],
+    "hint": "The Scatter Matrix equation is $S = (X - 1\\mu)^T(X - 1\\mu)$, where $\\mu$ is a row vector containing all column means of the data matrix $X$. The trace of this matrix is the sum of the diagonal elements.",
+    "workings": "The Scatter Matrix is $S = (X - 1\\mu)^T(X - 1\\mu)$, where $\\mu$ is a row vector containing all column means of the data matrix $X$.<br><br>Trace(S) = sum of elements on the diagonal of the matrix.<br><br>$\\textbf{X} = \\begin{pmatrix} 2&3\\\\ 0.5&6\\\\5&2\\\\10&2\\\\7.5&2 \\end{pmatrix}$ using the 2-D dataset D<br><br>$\\textbf{$\\mu$} = \\frac{\\begin{pmatrix} 25&15 \\end{pmatrix}}{5} = \\begin{pmatrix} 5&3 \\end{pmatrix}$, where 25 is the sum from the first column of X (2 + 0.5 + 5 + 10 + 7.5) and 15 is the sum from the second column of X (3 + 6 + 2 + 2 + 2). We divide by 5 because this is number of data points.<br><br>$\\textbf{X - $\\mu$} = \\begin{pmatrix} 2-5&3-3\\\\ 0.5-5&6-3\\\\5-5&2-3\\\\10-5&2-3\\\\7.5-5&2-3 \\end{pmatrix} = \\begin{pmatrix} -3&0\\\\ -4.5&3\\\\0&-1\\\\5&-1\\\\2.5&-1 \\end{pmatrix}$<br><br>$\\textbf{S} = \\begin{pmatrix} -3&-4.5&0&5&2.5 \\\\ 0&3&-1&-1&-1 \\end{pmatrix} \\begin{pmatrix} -3&0\\\\ -4.5&3\\\\0&-1\\\\5&-1\\\\2.5&-1 \\end{pmatrix} = \\begin{pmatrix} 40.25&-21\\\\ -21&11 \\end{pmatrix}$<br><br>$\\textbf{Trace(S)} = 40.25 + 11 = 41.25$",
+    "source": "Problem Sheet",
+    "comments": "This question tests the knowledge of using a 2-D dataset to calculate a scatter matrix and the trace of this matrix. We believe this is a level 3 difficulty because it needs involved reasoning and calcultions. You need to understand how the scatter matrix works to calculate the trace of the matrix and need to understand how to calculate the scatter matrix using the 2-D dataset. It needs involved calculations because you need to do many intermediate calculations before reaching your final answer - you need to first calculate the column means of the data matrix to hence calculate $\\mu$ the row vector. You then need to minus the row vector from the data matrix, using knowledge of linear algebra. Finally you can use the Scatter Matrix equation to produce a final matrix, where you sum up the elements on the diagonal to produce the trace."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE), question 2 - Reinforcement Learning
+  "16": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Markov decision processes formally describe an environment for reinforcement learning when the environment is fully observable.<br><br>The Utility function captures agent’s preferences, accumulating rewards over sequences of states. For the decision process (S,P,R,$\\gamma$) decribed below, calculate the utility of S1 and select the correct answer.<br><br>S = (S1,S2,S3,S4,S5), $\\gamma$ = 0.9",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q2_P.png",
+        "caption": "P"
+      },
+      { "url": "img/13772_15118/cOUTOFBOOK_q2_R.png",
+        "caption": "R"
+      }
+    ],
+    "answers": [
+      { "correctness": "-",
+        "answer": "$U(S1$) = 2.500"
+      },
+      { "correctness": "+",
+        "answer": "$U(S1$) = 2.655",
+        "explanation": "Following the workings, we have calculated the utility of S1 using the equation $U(s) = R(s) +\\gamma\\max{a}\\sum_{s'}{P(s,s')}U(s')$, giving the correct answer of 2.655"
+      },
+      { "correctness": "-",
+        "answer": "$U(S1$) = 2.725"
+      },
+      { "correctness": "-",
+        "answer": "$U(S1$) = 2.690"
+      }
+    ],
+    "hint": "The equation to calculate the utility of a state is $U(s) = R(s) +\\gamma\\max{a}\\sum_{s'}{P(s,s')}U(s')$.",
+    "workings": "When the process is drawn out:<br><br>S1 -> S2 -> S3<br><br>S1 -> S4<br><br>S1 -> S5<br><br>It is clear you need to calculate the utility of the states in this order: S3, S2, S4 and S5 before S1 can be calculated.<br><br>We use the equation $U(s) = R(s) +\\gamma\\max{a}\\sum_{s'}{P(s,s')}U(s')$ to calculate the utility of a state.<br><br>The utility for the states are calculated as follows:<br><br>$U(S3) = 5$<br><br>$U(S2) = 0 + 0.9*1*5 = 4.5$<br><br>$U(S4) = 1$<br><br>$U(S5) = 2$<br><br>We can then use these values to calculate $U(S1)$:<br><br>$U(S1) = 0 + 0.9*(0.5*4.5 + 0.3*1 + 0.2*2)  = 2.655$",
+    "source": "https://cw.fel.cvut.cz/wiki/_media/courses/a3m33ui/prednasky/ui11_markovdecisionprocesses.pdf",
+    "comments": "Reinforcement learning is an area of machine learning inspired by behavioural psychologists and is interested in giving reward for certain actions. This question gives an introduction to the topic and one of the few functions that can be performed on a Markov decision process. It tests the knowledge of how to use Markov decision processes within reinforcement learning and the utility function. We believe this is a level 5 question because it is not covered in the book, but is mentioned in the epilogue. It also needs involved reasoning because you need to work out the order of calculation for the utility of states and how to use the utility function to give a final utility for state 1. It needs involved calculations because it requires you to use the utility function $U(s) = R(s) +\\gamma\\max{a}\\sum_{s'}{P(s,s')}U(s')$. to calculate each utility of each state in a certain order, and then use these values to calculate the utility of the state 1."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE), question 3 - Multi Label Classification
+  "17": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "evaluation",
+    "answer_type": "single",
+    "question": "Multi label classification is where multiple target labels must be assigned to each instance. Common examples of this problem would be - assigning music to genres, classifying academic papers into research areas etc. Use the binary relevance dataset below to assess the hamming loss of the instances.<br><br>I1 -{pop,rap}<br><br>I2 -{country}<br><br>I3 -{pop}<br><br>I4 -{rock,country}<br><br>I5 -{country}<br><br>I6 -{rock,rap}br><br>I7 -{pop}",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q3_tables.png",
+        "caption": "Dataset"
+      }
+    ],
+    "answers": [
+      { "correctness": "-",
+        "answer": " 0.62"
+      },
+      { "correctness": "+",
+        "answer": " 0.57",
+        "explanation": "Following the workings, we sum all the hamming distances and divide by the number of instances giving a hamming loss of 0.57"
+      },
+      { "correctness": "-",
+        "answer": " 0.70"
+      },
+      { "correctness": "-",
+        "answer": " 0.65"
+      }
+    ],
+    "hint": "Begin by calculating the hamming distances for each individual instance. You can sum these up and divide by the number of instances to give the hamming loss.",
+    "workings": "The first step is to calculate the hamming distance for each individual instance according to the equation:<br><br>$\\frac{1}{|D|} \\sum_{i=1}^{|D|}\\frac{Yi\\Delta Zi}{|L|}$<br><br>where D is our dataset (xi, Yi), i = 1..|D|, Yi ⊆ L , Zi = is the set of labels predicted by binary relevance, L = {Pop, Rap, Country, Rock}<br><br>I1 : 0 + 0 + 0 + 0 = 0<br><br>I2 : 1 + 0 + 1 + 0 = 2<br><br>I3 : 0 + 0 + 0 + 0 = 0<br><br>I4 : 0 + 0 + 1 + 1 = 2<br><br>I5 : 0 + 0 + 0 + 0 = 0<br><br>I6 : 0 + 0 + 0 + 0 = 0<br><br>I7 : 0 + 0 + 0 + 0 = 0<br><br>After this you sum all the hamming distances and divide by the number of instances:<br><br>$\\frac{0+2+0+2+0+0+0}{7} = 0.57$",
+    "source": "http://lpis.csd.auth.gr/publications/tsoumakas-ijdwm.pdf",
+    "comments": "This question introduces multi label classification, an area exemplified by categorisation of websites, music, academic papers etc. It introduces two early concepts in this area - binary relevance and hamming distance to evaluate the efficacy of the classifier. It enables an intuitive approach to further interest into this topic. It tests the knowledge of how multi-label classification works, and how to use the hamming distance to evaluate the hamming loss of the instances. We believe that this is a level 5 question because it is not covered in the book and is mentioned in the epilogue. It needs involved calculation when calculating the hamming distance for each distance and remembering to sum all of these distances and dividing by the number of instances."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE), question 4 - Preference Learning
+  "18": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculation",
+    "answer_type": "single",
+    "question": "Preference learning is an important subfield in machine learning which learns a predictive preference from observed preference information. This question is about learning pairwise preferences to produce a weighted label ranking.<br><br>Given the dataset below, produce a weighted label ranking for the test data x1 = 0, x2 = 1, x3 = 0",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q4_dataset.png",
+        "caption": "Dataset"
+      }
+    ],
+    "answers": [
+      { "correctness": "-",
+        "answer": "The ranking A$\\succ$B$\\succ$C$\\succ$D"
+      },
+      { "correctness": "+",
+        "answer": "The ranking B$\\succ$A$\\succ$C$\\succ$D",
+        "explanation": "Following the workings, we end up with the ranking B$\\succ$A$\\succ$C$\\succ$D using the votes calculated. The other rankings are incorrectly calculated."
+      },
+      { "correctness": "-",
+        "answer": "The ranking C$\\succ$D$\\succ$A$\\succ$B"
+      },
+      { "correctness": "-",
+        "answer": "The ranking B$\\succ$C$\\succ$A$\\succ$D"
+      }
+    ],
+    "hint": "To see whether rankings are pure or not, first create the pairwise preference tables.",
+    "workings": "First we create the pairwise preference tables:<br><br><img src=\"img/13772_15118/cOUTOFBOOK_q4_pref_tables.png\"><br><br>From these you can see that A$\\succ$C,A$\\succ$D and B$\\succ$C are pure and thus require no further processing. <br><br>A$\\succ$B, B$\\succ$D and C$\\succ$D are impure and so require further processing.<br><br>The next step is to use the features that give the lowest entropy of the preferences to construct decision trees. With this example you can do this intuitively giving the trees below:<br><br>A$\\succ$B :<br><br>X1 = 1 -> +<br><br>X1 = 0 -> -<br><br>B$\\succ$D :<br><br>X2 = 1 -> +<br><br>X2 = 0 -> -<br><br>C$\\succ$D :<br><br>X3 = 1 -> -<br><br>X3 = 0 -> +<br><br>We can now use this data to cast votes on our test data:<br><br>Because A$\\succ$C we cast one vote for A.<br><br>Because A$\\succ$D we cast another vote for A.<br><br>Because B$\\succ$C we cast a vote for B.<br><br>Because x1 = 0 we cast no votes for A$\\succ$B.<br><br>Because x2 = 1 we cast a vote for B.<br><br>Because x3 = 0 we cast a vote for C.<br><br>This gives overall votes:<br><br>A=2<br><br>B=2<br><br>C=1<br><br>D=0<br><br>Now we have to adjust the votes according to the weightings of the preferences which are calculated according to the amount of preferences given in the training data and are thus as follows A = 5, B = 6, C = 5 D = 6 giving votes:<br><br>A = 10<br><br>B = 12<br><br>Which gives the ranking:<br><br>B$\\succ$A$\\succ$C$\\succ$D",
+    "source": "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.6356&rep=rep1&type=pdf",
+    "comments": "Preference learning is an emerging topic that is featured a lot in the news with companies like Amazon and Facebook. The method used here to rank labels shows how algorithms like this work. The questions tests your knowledge of how to learn pairwise preferences to produce weighted label rankings. We believe this question warrants a level 5 difficulty because it is not covered in the book - it is mentioned in the epilogue. It requires involved calculations, needing numerous intermediate calculations to retrieve the final ranking / final answer, including the calculation of pairwise preference tables, calculation of entropies, and adjusting votes using weightings of the preferences."
+  },
+
+  // Chapter 9, question 1 - Multinomial model to classify letter
+  "19": {
+    "difficulty": "3",
+    "reference": "9.2",
+    "problem_type": "problem solving",
+    "answer_type": "single",
+    "question": "Estimate the parameters of a multinomial model and use this model with the Maximum Likelihood decision rule (predict $argmax_yP(X = x | Y = y))$ to classify the letter X = (4, 1, 0).<br><br> Using the dataset below with the word counts of the words w1, w2 and w3 appearing in a letter, what is the classification of X?",
+    "images": [
+      { "url": "img/13772_15118/c9q1_table.png",
+        "caption": "Dataset"
+      }
+    ],
+    "answers": [
+      { "correctness": "-",
+        "answer": "-ve"
+      },
+      { "correctness": "+",
+        "answer": "+ve",
+        "explanation": "Following the workings, we calculate a larger likelihood for the positive class for the test letter X (0.03698 > 0.01013)."
+      }
+    ],
+    "hint": "For the Multinomial Distribution: $P(X = (x_1,...,x_k)) = n!\\frac{\\theta_1^{x_1}}{x_1!}...\\frac{\\theta_k^{x_k}}{x_k!}$",
+    "workings": "First we need to sum up the count vectors for each class:<br><br>+ve : (10, 5, 8)<br><br>-ve : (5, 4, 8)<br><br>We then need to add a pseduo-count for each word to smooth the probability estimates. This ensures we have no 0 word count. We pretend instead that (10, 5, 8) is now (11, 6, 9), giving a total of 26 word occurences in the positive class. We also pretend that (5, 4, 8) is now (6, 5, 9), giving a total of 20 word occurences in the negative class.<br><br>This gives the following parameter estimates:<br><br>$\\theta^\\oplus = (\\frac{11}{26}, \\frac{6}{26}, \\frac{9}{26}) = (0.423, 0.231, 0.346)$<br><br>$\\theta^\\ominus = (\\frac{6}{20}, \\frac{5}{20}, \\frac{9}{20}) = (0.300, 0.250, 0.450)$<br><br>Using these parameter estimates we can now classify the letter X = (4, 1, 0).<br><br>For the Multinomial Distribution:<br><br>$P(X = (x_1,...,x_k)) = n!\\frac{\\theta_1^{x_1}}{x_1!}...\\frac{\\theta_k^{x_k}}{x_k!}$<br><br>We can calculate $argmax_yP(X = x | Y = y)$ :<br><br>$P(X | \\theta^\\oplus) = 5!\\frac{0.423^4}{4!}\\frac{0.231^1}{1!}\\frac{0.346^0}{0!} = 0.03698$<br><br>$P(X | \\theta^\\ominus) = 5!\\frac{0.300^4}{4!}\\frac{0.250^1}{1!}\\frac{0.450^0}{0!} = 0.01013$<br><br>The ML classification of X is therefore positive because we have a larger positive likelihood (0.03698 > 0.01013).",
+    "source": "Problem Sheet / ML Book Chapter 9.2",
+    "comments": "This question tests your knowledge of the multinomial model - how to estimate parameters for it, and how to use it with the ML decision rule to classify a piece of test data. We believe that this warrants a difficulty level of 3 because it needs involved reasoning of the multinomial model and how to use it with the ML decision rule and why you apply pseudo counts beforehand to smooth probability estimates. We believe this needs involved calculation because there are many intermediate calculations needed to get to the final answer - you need to sum up count vectors, apply pseduo counts, estimate parameters, use the multinomial distribution equation and make use of the calculated likelihoods."
+  },
+
+  // Chapter 9, question 2 - Compression Based Models
+  "20": {
+    "difficulty": "4",
+    "reference": "9.5",
+    "problem_type": "problem solving",
+    "answer_type": "blank_answer",
+    "images": [
+      { "url": "img/13772_15118/c9q2_table.png",
+        "caption": "Dataset of e-mails with a word count of containing words w1, w2 and w3 with their classifications."
+      }
+    ],
+    "question": [
+      "Estimate the parameters of a multivariate Bernoulli model using the dataset below and use this model for $P(X = x | Y = y)$ to give the information-based classification of a new e-mail $X = (1, 6, 2)$.<br><br>Once this has been calculated, you are told that the positive class is 7 times more likely than the negative class. Does this effect the classification of the e-mail X? Fill in the relevant blanks below using the words 'positive' or 'negative'.<br><br>",
+      "The initial classification of the e-mail $X$ <b>without</b> the prior is: ", 1, ".<br><br>",
+      "The classification of the e-mail $X$ <b>with</b> the prior is: ", 2, ".<br><br>"
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "negative",
+        "explanation": "Looking at the workings, we can see that the information content is lower for $Y = \\ominus$ and hence using the information-based classification we choose the negative class."
+      },
+      { "correctness": 2,
+        "answer": "positive",
+        "explanation": "Looking at the workings, we can see that the information content has now grown larger for $Y = \\ominus$ due to the prior, and hence $Y = \\oplus$ has a smaller information content and using the information-based classification we choose the positive class."
+      }
+    ],
+    "hint": "The negative log of a probability p of an event quantifies the information content (IC) of the event.<br><br>$IC(X | Y) = (-\\log_2{P(X | Y)})$ and $IC(Y) = (-\\log_2{P(Y)})$. The minimum IC declares the classification of the e-mail.",
+    "workings": "We use bit vectors to represent the e-mails and sum up the numbers of bits for each word:<br><br>+ve : (1, 4, 2)<br><br>-ve : (4, 2, 3)<br><br>We need to divide each of the counts by the number of e-mails in a class. We first need to smooth the probabilities by adding two pseudo counts - one e-mail count containing none of the words, and one e-mail count containing each word.<br><br>This gives (2, 5, 3) instead of (1, 4, 2) for the positive counts, and (5, 3, 4) instead of (4, 2, 3) for the negative counts.<br><br>The following parameter estimates can now be calculated:<br><br>$\\theta^\\oplus = (\\frac{2}{6}, \\frac{5}{6}, \\frac{3}{6}) = (0.333, 0.833, 0.500)$<br><br>We divide by 6 because we have 4 positive instances normally but have added those 2 e-mails to smooth the probability.<br><br>$\\theta^\\ominus = (\\frac{5}{6}, \\frac{3}{6}, \\frac{4}{6}) = (0.833, 0.500, 0.667)$<br><br>Now we can calculate $argmax_yP(X = x | Y = y)$ using the multivariate Bernoulli distribution:<br><br>$P(X | \\oplus) = 0.333 * (1 - 0.833) * 0.500 = 0.0278$<br><br>$P(X | \\ominus) = 0.833 * (1 - 0.500) * 0.667 = 0.2778$<br><br>If an event has probability p of happening, the negative logarithm of p quantifies the information content (IC) of the message that the event has indeed happened.<br><br>We know that Y is uniformally distributed and thereore $IC(Y = \\oplus) = IC(Y = \\ominus) = -\\log_2{\\frac{1}{2}} = 1$<br><br>To classify the e-mail we need to look for the $argmin_y (IC(X | Y = y) + IC(Y = y))$ :<br><br>$IC(X | Y = \\oplus) + IC(Y = \\oplus) = (-\\log_2{0.0278}) + 1 = 6.17$<br><br>$IC(X | Y = \\ominus) + IC(Y = \\ominus) = (-\\log_2{0.2778}) + 1 = 2.85$<br><br>The information based-classification of X using the multivariate Bernoulli model is negative.<br><br>Having been told the positive class is 7 times more likely than the negative class, we now have:<br><br>$IC(Y = \\oplus) = (-\\log_2{\\frac{7}{10}} = 0.5146$<br><br>$IC(Y = \\ominus) = (-\\log_2{\\frac{3}{10}} = 1.7370$<br><br>Therefore:<br><br>$IC(X | Y = \\oplus) + IC(Y = \\oplus) = (-\\log_2{0.0278}) - (\\log_2{\\frac{7}{10}}) = 5.68$<br><br>$IC(X | Y = \\ominus) + IC(Y = \\ominus) = (-\\log_2{0.0278}) - (\\log_2{\\frac{3}{10}}) = 6.91$<br><br>The prior distribution for $Y = \\oplus$ is high enough to change the classification - the information-based classification of X using the multivariate Bernoulli model is now positive.",
+    "source": "Problem Sheet / ML Book chapter 9.5",
+    "comments": "This questions tests your knowledge of the multivariate Bernoulli distribution, pseudo counts, and how to calculate the information content and use an information-based classification to classify a piece of test data. We believe this warrants a difficulty of level 4 because it requires involved reasoning on how to use the Bernoulli model and the information-based classifier, and it also requires involved calculation where intermediates calculations needed to be done - for example, this question could have just given the Bernoulli model but instead you have to work it out. Within the slides Compressed Based Models is a starred topic, where Information Content is a part of this, and hence we gave it a 4 instead of a 3."
+  },
+
+  // Chapter 12, question 1 - F1 Score
+  "21": {
+    "difficulty": "3",
+    "reference": "12.1",
+    "problem_type": "evaluation",
+    "question": "You have a dataset containing 4 models with their performances on a test set containing 1000 positives and 1000 negatives. Use the F1 score to evaluate and rank the models, where the top selection is the best performing model, and the bottom is the worst.<br>",
+    "images": [
+      { "url": "img/13772_15118/cOUT_q1_table.png",
+        "caption": "A dataset containing performances on test set."
+      }
+    ],
+    "answer_type": "sort",
+    "answers": [
+      { "correctness": "3",
+        "answer": "Model 4",
+        "explanation": "F1 Score = $2 * \\frac{0.5 * 0.5}{0.5 + 0.5} = 0.50$. This is the second lowest score."
+      },
+      { "correctness": "1",
+        "answer": "Model 1",
+        "explanation": "F1 Score = $2 * \\frac{0.9560439560439561 * 0.87}{0.9560439560439561 + 0.87} = 0.9109947643979057 = 0.911$. This is the highest score."
+      },
+      { "correctness": "4",
+        "answer": "Model 3",
+        "explanation": "F1 Score = $2 * \\frac{0.25 * 0.25}{0.25 + 0.25} = 0.25$. This is the lowest score."
+      },
+      { "correctness": "2",
+        "answer": "Model 2",
+        "explanation": "F1 Score = $2 * \\frac{0.5294117647058824 * 0.54}{0.5294117647058824 + 0.54} = 0.5346534653465347 = 0.535$. This is the second highest score."
+      }
+    ],
+    "hint": "The F1 Score equation is : $2 * \\frac{\\text{Precision}*\\text{Recall}}{\\text{Precision}+\\text{Recall}}$. Find out the equations for Precision and Recall and plug values in.",
+    "workings": "First we need to figure out what the F1 Score is. The F1 Score is a measure of a test's accuracy, and considers both the precision and recall of the test to compute the overall score.<br><br>F1 Score = $2 * \\frac{\\text{Precision}*\\text{Recall}}{\\text{Precision}+\\text{Recall}}$<br><br>We also need these equations to work out the F1 Score:<br><br>Precision = $\\frac{\\text{TP}}{\\text{TP}+\\text{FP}}$<br><br>Recall = $\\frac{\\text{TP}}{\\text{TP}+\\text{FN}}$<br><br>To calculate Recall, we need the False Negatives. This can be calculated as:<br><br>FN = Number of Positives - TP<br><br>Model 1:<br><br>Precision = $\\frac{870}{870 + 40} = 0.9560439560439561$<br><br>FN = 1000 - 870 = 130<br><br>Recall = $\\frac{870}{870 + 130} = 0.87$<br><br>The F1 score is hence:<br><br>F1 Score = $2 * \\frac{0.9560439560439561 * 0.87}{0.9560439560439561 + 0.87} = 0.9109947643979057 = 0.911$<br><br>Model 2:<br><br>Precision = $\\frac{540}{540 + 480} = 0.5294117647058824$<br><br>FN = 1000 - 540 = 460<br><br>Recall = $\\frac{540}{540 + 460} = 0.54$<br><br>The F1 score is hence:<br><br>F1 Score = $2 * \\frac{0.5294117647058824 * 0.54}{0.5294117647058824 + 0.54} = 0.5346534653465347 = 0.535$<br><br>Model 3:<br><br>Precision = $\\frac{250}{250 + 750} = 0.25$<br><br>FN = 1000 - 250 = 750<br><br>Recall = $\\frac{250}{250 + 750} = 0.25$<br><br>The F1 score is hence:<br><br>F1 Score = $2 * \\frac{0.25 * 0.25}{0.25 + 0.25} = 0.25$<br><br>Model 4:<br><br>Precision = $\\frac{500}{500 + 500} = 0.50$<br><br>FN = 1000 - 500 = 500<br><br>Recall = $\\frac{500}{500 + 500} = 0.50$<br><br>The F1 score is hence:<br><br>F1 Score = $2 * \\frac{0.5 * 0.5}{0.5 + 0.5} = 0.50$<br><br>The ordering is therefore Model 3, Model 4, Model 2 and Model 1 (0.25, 0.50, 0.54, 0.91).",
+    "source": "ML Book chapter 12.1 / https://en.wikipedia.org/wiki/F1_score",
+    "comments": "This questions tests your knowledge of the F1 score. The F1 score is a measure of a test's accuracy and is used in statistical analytsis of binary classification. It's a useful evaluation technique, and this question tests the knowledge of how to calculate and use the F1 score. Our rationale to score this a level 3 difficulty is that it requires involved calculation - you have to calculate the intermediates Precision, Recall and False Negatives. It also contains involved reasoning - you need to know what true positives, true negatives and false negatives are, and that a higher F1 score implies a more accurate test."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE) question 5 - Online learning
+  "22": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "problem solving",
+    "answer_type": "blank_answer",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q5_table.png",
+        "caption": "3 trials and forecasts."
+      }
+    ],
+    "question": [
+      "Online Learning is a subsection of machine learning where your data is not immediately available as a training set and is slowly released. Real life examples of this include weather prediction, stock market prediction or predicting consumer purchasing habits.<br><br>Given the trials and the forecasts for the experts below, according to the weighted majority algorithm, fill in the predictions for each trial and calculate the weights of the experts to make a prediction for the 4th trial. Use $\\beta = 0.5$. Drop all trailing zeros from decimals.<br><br>",
+      "A = ", 1, ".<br><br>",
+      "B = ", 2, ".<br><br>",
+      "C = ", 3, ".<br><br>",
+      "D = ", 4, ".<br><br>",
+      "E = ", 5, ".<br><br>",
+      "F = ", 6, ".<br><br>",
+      "G = ", 7, ".<br><br>",
+      "H = ", 8, ".<br><br>",
+      "I = ", 9, ".<br><br>",
+      "J = ", 10, ".<br><br>",
+      "K = ", 11, ".<br><br>",
+      "L = ", 12, ".<br><br>",
+      "M = ", 13, ".<br><br>",
+      "N = ", 14, ".<br><br>",
+      "O = ", 15, ".<br><br>",
+      "P = ", 16, ".<br><br>"
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that 1 is predicted for the first trial as the sum of weights for those that have predicted 1 is higher than those that predicted 0."
+      },
+      { "correctness": 2,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that E1 predicted correctly so doesn't change weight and hence stays at 1."
+      },
+      { "correctness": 3,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E2 predicted incorrectly and hence we penalise the weight, changing it by using  $W2 = W2*\\beta = 0.5$."
+      },
+      { "correctness": 4,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that E3 predicted correctly so doesn't change weight and hence stays at 1."
+      },
+      { "correctness": 5,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that E4 predicted correctly so doesn't change weight and hence stays at 1."
+      },
+      { "correctness": 6,
+        "answer": "0",
+        "explanation": "Looking at the workings, we can see that 0 is predicted for the second trial as the sum of weights for those that have predicted 0 is higher than those that predicted 1."
+      },
+      { "correctness": 7,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that E1 predicted correctly so doesn't change weight and hence stays at 1."
+      },
+      { "correctness": 8,
+        "answer": "0.25",
+        "explanation": "Looking at the workings, we can see that E2 predicted incorrectly and hence we penalise the weight, changing it by using  $W2 = W2*\\beta = 0.25$."
+      },
+      { "correctness": 9,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E3 predicted incorrectly and hence we penalise the weight, changing it by using  $W3 = W3*\\beta = 0.5$."
+      },
+      { "correctness": 10,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E4 predicted incorrectly and hence we penalise the weight, changing it by using  $W4 = W4*\\beta = 0.5$."
+      },
+      { "correctness": 11,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that 1 is predicted for the third trial as the sum of weights for those that have predicted 1 is higher than those that predicted 0."
+      },
+      { "correctness": 12,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E1 predicted incorrectly and hence we penalise the weight, changing it by using  $W1 = W1*\\beta = 0.5$."
+      },
+      { "correctness": 13,
+        "answer": "0.125",
+        "explanation": "Looking at the workings, we can see that E2 predicted incorrectly and hence we penalise the weight, changing it by using  $W2 = W2*\\beta = 0.25$."
+      },
+      { "correctness": 14,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E3 predicted correctly so doesn't change weight and hence stays at 0.5."
+      },
+      { "correctness": 15,
+        "answer": "0.5",
+        "explanation": "Looking at the workings, we can see that E4 predicted correctly so doesn't change weight and hence stays at 0.5."
+      },
+      { "correctness": 16,
+        "answer": "1",
+        "explanation": "Looking at the workings, we can see that 1 is predicted for the last trial as the sum of weights for those that have predicted 1 is higher than those that predicted 0."
+      }
+    ],
+    "hint": "Calculate the sum of weights for those that have predicted 1, and do the same for those that have predicted 0. The larger of these sums produces the prediction for the trial.",
+    "workings": "First we sum the weights for those that have predicted 1. The resulting weight is 3 (E1, E3, and E4 all predict 1).<br><br>This is clearly much higher than those who have predicted 0 (only E2). Therfore 1 is predicted for the first trial (A = 1).<br><br>Now we penalise the weights of those who predicted incorrectly, but those who predicted correctly stay the same. In this case it was E2, therefore $W2 = W2*\\beta = 0.5$. Therefore B = 1, C = 0.5, D = 1, and E = 1.<br><br>To assess the prediction for the next trial we sum the weights of those who predicted 1. Only E1 predicts 1 so hence has a weight of 1. We also sum the weights for those who predicted 0, being E2, E3 nd E4 and therefore having a summed weight of 0.5 + 1 + 1 = 2.5. We therefore predict 0 as this has a greater sum, so F = 0.<br><br>After this trial we adjust the weights to penalise those who predicted incorrectly, this case it E2, E3 and E4, $W2 = W2*\\beta = 0.25$, $W3 = W3*\\beta = 0.5$ and $W4 = W4*\\beta = 0.5$. E1 stays the same because it was predicted correctly. Therefore G = 1, H = 0.25, I = 0.5 and J = 0.5.<br><br>To assess the prediction for the third trial we sum the weights of those who predicted 1. E1 and E2 predicted 1 and hence the sum of these weights is 1 + 0.25 = 1.25. We also sum the weights of those of who predicted 0, which is E3 and E4 and hence 0.5 + 0.5 = 1. The former has a greater sum and therefore we predict 1, so K = 1.<br><br>After the third trial we adjust the weights to penalise those who predicted incorrectly, this case it E1 and E2, so $W1 = W1*\\beta = 0.5$ and $W2 = W2*\\beta = 0.125$. E3 and E4 stay the same as they predicted correctly. Therefore L = 0.5, M = 0.5, N = 0.5 and O = 0.5.<br><br>Now we have all this information we can predict for the last trial by summing the weights of those who predict 1. E1, E2 and E3 all predict 1 and hence 0.5 + 0.125 + 0.5 = 1.125, and the sum of weights of those who predict 0 = 0.5 as only E4 predicts 0. The former sum is larger and hence the prediction is 1, so P = 1. <br><br>This gives the filled in table below:<br><br><img src=\"img/13772_15118/cOUTOFBOOK_q5_answer.png\">",
+    "source": "Youtube Video - https://www.youtube.com/watch?v=tlJkTTJrwdY",
+    "comments": "This question gives an example of online learning and also the weighted majority algorithm which can also be used for other topics. For instance the experts can be replaced with classifiers. Continuation of this question would be to look into the randomised weighted majority algorithm which guarantees to perform as well as the best performing expert. Unfortunately this could not be asked in this question because the random aspect would cause variation in the answers. We believe this is a level 5 difficulty because Online Learning is mentioned in the epilogue as a machine learning topic that isn't included in the book. It also requires involved reasoning, as to when we penalise weights and assess predictions. It also requires involved calculations using the weighted majority algorithm, calculating new weights using $\\beta$."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE) question 6 - Reinforcement Learning - Direct Evaluation
+  "23": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "calculations",
+    "answer_type": "blank_answer",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q6_table.png",
+        "caption": "Rewards Return Table"
+      },
+      { "url": "img/13772_15118/cOUTOFBOOK_q6_states.png",
+        "caption": "Input Policy $\\pi$"
+      }
+    ],
+    "question": [
+      "Reinforcement Learning is the aim of teaching an agent to act in a certain way, and we do that by letting it try various things in the world and receive rewards. Obviously the higher the reward, the better the action taken.<br><br>Use only 1 iteration of the Direct Evaluation algorithm on the training set below to compute values for each state under the input policy $\\pi$. Fill in the relevant blanks ensuring you put the + or - sign before the value. The input policy and reward return table for the states are found below, where A and D are terminating states and E and B are starting states. Assume $\\gamma = 1$.<br><br>Observed training set of 4 episodes:<br><br>B -> C -> D<br>B -> C -> D<br>E -> C -> D<br>E -> C -> A<br><br>",
+      "A = ", 1, ".<br><br>",
+      "B = ", 2, ".<br><br>",
+      "C = ", 3, ".<br><br>",
+      "D = ", 4, ".<br><br>",
+      "E = ", 5, ".<br><br>"
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "-10",
+        "explanation": "Looking at the workings, we can see that A's value under the input policy is -10."
+      },
+      { "correctness": 2,
+        "answer": "+8",
+        "explanation": "Looking at the workings, we can see that B had an average score of +8 from $\\frac{8 + 8}{2}$."
+      },
+      { "correctness": 3,
+        "answer": "+4",
+        "explanation": "Looking at the workings, we can see that C had an average score of +4 from $\\frac{9 + 9 + 9 - 11}{4}$"
+      },
+      { "correctness": 4,
+        "answer": "+10",
+        "explanation": "Looking at the workings, we can see that D's value under the input policy is +10."
+      },
+      { "correctness": 5,
+        "answer": "-2",
+        "explanation": "Looking at the workings, we can see that E had an average score of -2 from $\\frac{8 - 12}{2}$."
+      }
+    ],
+    "hint": "First calculate the scores using the return reward table for each episode in the observed training set, and then depending on whether a state is within a training set, average the scores to produce a final state value.",
+    "workings": "Our aim is to learn the state values. We plan to average together observed sample values.<br><br>Episode 1:<br>We start at B, and go east onto C, and so score -1 from B.<br>At C we go east onto D, where we score -1 from C.<br>At D we terminate and so score +10 from D.<br><br>Episode 2:<br>We start at B again, and go east onto C, and so score -1 from B.<br>At C we go east onto D again, where we score -1 from C.<br>At D we terminate and so score +10 from D.<br><br>Episode 3: <br>We start at E and go north onto C, and so score -1 from E.<br>We then go from C onto D, where we score -1 from C.<br>At D we terminate and so score +10 from D.<br><br>Episode 4:<br>We start at E again and go north onto C, and so score -1 from E.<br>We then go from C to A, where we score -1 from C.<br>We terminate at A and so score -10 from A.<br><br>Looking at these episodes we can see that A is the bad exit. For each of these states we need to write down the value under this policy.<br><br>First looking at the termination states, we can see that under this policy:<br>$D = + 10$<br>$A = + 10$<br><br>C's value under the policy is more interesting. We need to calculate the scores for everytime we were in C (4 times):<br>Episode 1 = -1 + 10 = +9<br>Episode 2 = -1 + 10 = +9<br>Episode 3 = -1 + 10 = +9<br>Episode 4 = -1 - 10 = -11<br><br>We need to average these scores, so $\\frac{9 + 9 + 9 -11}{4} = 4$ and hence $C = + 4$<br><br>We were in B twice within the training set:<br>Episode 1 = -1 + -1 + 10 = +8<br>Episode 2 = -1 + -1 + 10 = +8<br><br>We receive +8 both times and hence $\\frac{8 + 8}{2} = 8$ and hence $B = + 8$<br><br>We were also in E twice within the training set, and so we need to calculate the scores:<br>Episode 3 = -1 + -1 + 10 = 8<br>Episode 4 = -1 + -1 - 10 = -12<br><br>We need to average these scores, so $\\frac{8 - 12}{2} = -2$ and hence $E = - 2$",
+    "source": "Reinforcement Learning Lecture - https://www.youtube.com/watch?v=w33Lplx49_A",
+    "comments": "This question tests your knowledge on Reinforcement Learning. You will need to know how the Direct Evaluation algorithm works. We believe that this question is a level 5 because it is on a topic that isn't covered in the book, but is mentioned in the epilogue. It requires involved reasoning and calculations - you must have correct reasoning for giving scores for each episode and how many scores we sum and average depending on how many episodes we access that state. There are many intermediate calculations before reaching the final state values, you must calculate and sum scores for each episode and then produce the final state scores by looking at the input policy and sum then average scores depending on the state."
+  },
+
+  // Chapter OUT OF BOOK (EPILOGUE) question 7 - Semi-Supervised Learning
+  "24": {
+    "difficulty": "5",
+    "reference": "0",
+    "problem_type": "problem solving",
+    "answer_type": "blank_answer",
+    "images": [
+      { "url": "img/13772_15118/cOUTOFBOOK_q7_table.png",
+        "caption": "Labelled and unlabelled data."
+      }
+    ],
+    "question": [
+      "The self training algorithm is used to classify data where you only have the true labels of a few instances. Semi-Supervised algorithms are very useful in machine learning as labelling data is expensive. Below is a collection of data points with 4 with correct labels. Use 3NN and the self-training algorithm to classify the rest of the data and fill in the relevant blanks with '+' or '-'. (assuming most confident data points are those that are closest to their assigned class and add the 2 most confident instances for each cycle).<br><br>",
+      "X = 1, Y = 1", 1, ".<br><br>",
+      "X = 3, Y = 1", 2, ".<br><br>",
+      "X = 4, Y = 4", 3, ".<br><br>",
+      "X = 5, Y = 4", 4, ".<br><br>",
+      "X = 1, Y = 4", 5, ".<br><br>",
+      "X = 2, Y = 2", 6, ".<br><br>",
+      "X = 4, Y = 5", 7, ".<br><br>",
+      "X = 3, Y = 5", 8, ".<br><br>",
+      "X = 1, Y = 3", 9, ".<br><br>",
+      "X = 2, Y = 1", 10, ".<br><br>"
+    ],
+    "answers": [
+      { "correctness": 1,
+        "answer": "+",
+        "explanation": "We can see that this is already classified in the training data as +ve."
+      },
+      { "correctness": 2,
+        "answer": "+",
+        "explanation": "We can see that this is already classified in the training data as +ve."
+      },
+      { "correctness": 3,
+        "answer": "-",
+        "explanation": "We can see that this is already classified in the training data as -ve."
+      },
+      { "correctness": 4,
+        "answer": "-",
+        "explanation": "We can see that this is already classified in the training data as -ve."
+      },
+      { "correctness": 5,
+        "answer": "+",
+        "explanation": "Looking at the workings, we can see that the label predicted is a +ve."
+      },
+      { "correctness": 6,
+        "answer": "+",
+        "explanation": "Looking at the workings, we can see that the label predicted is a +ve."
+      },
+      { "correctness": 7,
+        "answer": "-",
+        "explanation": "Looking at the workings, we can see that the label predicted is a -ve."
+      },
+      { "correctness": 8,
+        "answer": "-",
+        "explanation": "Looking at the workings, we can see that the label predicted is a -ve."
+      },
+      { "correctness": 9,
+        "answer": "+",
+        "explanation": "Looking at the workings, we can see that the label predicted is a +ve."
+      },
+      { "correctness": 10,
+        "answer": "+",
+        "explanation": "Looking at the workings, we can see that the label predicted is a +ve."
+      }
+    ],
+    "hint": "First classify by using 3-NN, then assess confidence levels using the distance to the points in its class, and then add the two instances with the highest confidence levels to the labelled data and re-train.",
+    "workings": "The first thing to do is to classify the unlabelled data points according to the model trained with the current labelled data. We will use summed distance to the two nearest neighbours as our confidence level. for the first stage that gives us the following table.<br><br><img src=\"img/13772_15118/cOUTOFBOOK_q7_answer1.png\"><br><br>Therefore the 2 points we are most confident on are (2,1) and (5,4) so these are now inserted into the training data. The second cycle creates this table.<br><br><img src=\"img/13772_15118/cOUTOFBOOK_q7_answer2.png\"><br><br>You can clearly see the two closest points are (2,2) and (3,5), and these are subsequently added to the training data. We now run the algorithm a final time to include the last two points, classifying them as their majority class in 3NN.<br><br><img src=\"img/13772_15118/cOUTOFBOOK_q7_answer3.png\"><br><br>You can see how this classification has differed from the first classification as the point (1,4) is now classified as a positive, this gives clear intuition as to how including non labelled data can refine the decision boundaries of a model.",
+    "source": "Lecture - https://www.cs.utah.edu/~piyush/teaching/8-11-slides.pdf",
+    "comments": "Integrating unlabelled data via the self learning algorithm gives a better view of the actual decision boundary and so creates a better model. This is a small taster into the sub topic of semi labelled data. Semi labelled data is an important topic of machine learning as it allows us to learn from cheaper data. If this is something that interest you try looking into more complex algorithms such as co-training and the expectation maximisation approach. This question tests your knowledge of using semi-supervised algorithm of self-learning, where we have ranked this a level 5 - this topic is mentioned within chapter 1 but stated that it is not covered within the book. It requires involved calculations including calculations of distances and the use of 3-NN, with involved reasoning of the use of 3-NN and why the data chosen is used when re-training the whole data set."
+  }
+
+}
